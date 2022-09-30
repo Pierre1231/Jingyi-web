@@ -59,7 +59,8 @@ email: ''
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
-Jingyi HUANG is now a master student in ECPKn, Beihang University.
+Bonjour! I am a master student in ECPKn ([école Centrale de Pékin](http://ecpknen.buaa.edu.cn/)), Beihang University, under the guidance of Assoc. Prof. Liang HAN.
+My research includes formation control of Unmanned Aerial Vehicles (UAVs), path planning problems, and artificial intelligence applications in UAVs' decision-making and planning.
 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
