@@ -5,7 +5,7 @@
 The Hugo **Academic Resumé Template** empowers you to easily create your job-winning online resumé, showcase your academic publications, and create online courses or knowledge bases to grow your audience.
 
 [![Get Started](https://img.shields.io/badge/-Get%20started-ff4655?style=for-the-badge)](https://wowchemy.com/hugo-themes/)
-[![Discord](https://img.shields.io/discord/722225264733716590?style=for-the-badge)](https://discord.com/channels/722225264733716590/742892432458252370/742895548159492138)  
+[![Discord](https://img.shields.io/discord/722225264733716590?style=for-the-badge)](https://discord.com/channels/722225264733716590/742892432458252370/742895548159492138)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wowchemy?label=Follow%20on%20Twitter)](https://twitter.com/wowchemy)
 
 ️**Trusted by 250,000+ researchers, educators, and students.** Highly customizable via the integrated **no-code, widget-based Wowchemy page builder**, making every site truly personalized ⭐⭐⭐⭐⭐
@@ -48,4 +48,5 @@ We're an open source movement that depends on your support to stay online and th
 - [What&#39;s new in v5.1?](https://wowchemy.com/blog/whats-new-in-v5.1/)
 - [Version 5.0 (February 2021)](https://wowchemy.com/blog/version-5.0-february-2021/)
 - [Version 5.0 Beta 3 (February 2021)](https://wowchemy.com/blog/version-5.0-beta-3-february-2021/)
+
 <!--END_SECTION:news-->
