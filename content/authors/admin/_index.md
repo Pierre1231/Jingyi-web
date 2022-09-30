@@ -59,7 +59,7 @@ email: ''
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
-Bonjour! I am a master student in ECPKn ([école Centrale de Pékin](http://ecpknen.buaa.edu.cn/)), Beihang University, under the guidance of Assoc. Prof. Liang HAN.
+Bonjour! I am a master student in ECPKn ([école Centrale de Pékin](http://ecpknen.buaa.edu.cn/)), Beihang University, under the guidance of _Assoc._ _Prof._ Liang HAN.
 My research includes formation control of Unmanned Aerial Vehicles (UAVs), path planning problems, and artificial intelligence applications in UAVs' decision-making and planning.
 
 
