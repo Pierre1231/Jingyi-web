@@ -31,6 +31,8 @@ content:
       tag: Deep Learning
     - name: Reinforcement Learning
       tag: RL
+    - name: Formation
+      tag: Control
     - name: Other
       tag: Demo
 
