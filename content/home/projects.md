@@ -29,6 +29,8 @@ content:
       tag: '*'
     - name: Deep Learning
       tag: Deep Learning
+    - name: Reinforcement Learning
+      tag: RL
     - name: Other
       tag: Demo
 
