@@ -22,28 +22,34 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: CEO
-    company: GenCoin
+  - title: Master student
+    company: Beihang University
     company_url: ''
-    company_logo: org-gc
-    location: California
-    date_start: '2021-01-01'
+    company_logo: Beihang_University_Logo
+    location: Beijing, China
+    date_start: '2020-09-01'
     date_end: ''
-    description: |2-
-        Responsibilities include:
-        
-        * Analysing
-        * Modelling
-        * Deploying
+    description: Do researches including multi-agents formation control, artificial intelligent in robotics, simulation development, etc.
 
-  - title: Professor of Semiconductor Physics
-    company: University X
+
+  - title: Exchange Student
+    company: INSA Toulouse
     company_url: ''
-    company_logo: org-x
-    location: California
-    date_start: '2016-01-01'
-    date_end: '2020-12-31'
-    description: Taught electronic engineering and researched semiconductor physics.
+    company_logo: INSA_Toulouse
+    location: Toulouse, France
+    date_start: '2019-09-01'
+    date_end: '2020-01-28'
+    description: Major in Ingénierie des Matériaux, Composants et Systèmes (IMACS). This pre-specialization develops skills in analog and digital electronics and the electronic command of systems. It treats microscopic and nanoscopic physics and physics of materials.It provides an introduction to the physics of electronic components and develops skills in material informatics including real-time control and setting up automatic measures.
+
+  - title: Undergraduate Student
+    company: Beihang University
+    company_url: ''
+    company_logo: Beihang_University_Logo
+    location: beijing, China
+    date_start: '2016-09-01'
+    date_end: '2020-06-16'
+    description: Learn algebra, geometry, mathematical analysis, Newtonian mechanics, thermodynamics, automatic control, etc. 
+
 
 design:
   columns: '2'
