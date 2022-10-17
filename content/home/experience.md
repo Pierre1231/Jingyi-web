@@ -25,7 +25,7 @@ experience:
   - title: Master student
     company: Beihang University
     company_url: ''
-    company_logo: Beihang_University_Logo
+    company_logo: buaa
     location: Beijing, China
     date_start: '2020-09-01'
     date_end: ''
@@ -44,7 +44,7 @@ experience:
   - title: Undergraduate Student
     company: Beihang University
     company_url: ''
-    company_logo: Beihang_University_Logo
+    company_logo: buaa
     location: beijing, China
     date_start: '2016-09-01'
     date_end: '2020-06-16'
