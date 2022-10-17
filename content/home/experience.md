@@ -35,7 +35,7 @@ experience:
   - title: Exchange Student
     company: INSA Toulouse
     company_url: ''
-    company_logo: INSA_Toulouse
+    company_logo: insa
     location: Toulouse, France
     date_start: '2019-09-01'
     date_end: '2020-01-28'
