@@ -9,8 +9,8 @@ headless: true
 # Order that this section appears on the page.
 weight: 30
 
-title: Featured Publications
-subtitle: ''
+title: Researches
+subtitle: 'scientific works and papers'
 
 content:
   # Page type to display. E.g. post, talk, publication...
