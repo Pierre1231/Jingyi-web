@@ -24,7 +24,7 @@ date_format: Jan 2006
 experience:
   - title: Master student
     company: Beihang University
-    company_url: ''
+    company_url: 'https://www.buaa.edu.cn/'
     company_logo: buaa
     location: Beijing, China
     date_start: '2020-09-01'
@@ -34,7 +34,7 @@ experience:
 
   - title: Exchange Student
     company: INSA Toulouse
-    company_url: ''
+    company_url: 'https://www.insa-toulouse.fr/fr/index.html'
     company_logo: Insa
     location: Toulouse, France
     date_start: '2019-09-01'
@@ -43,7 +43,7 @@ experience:
 
   - title: Undergraduate Student
     company: Beihang University
-    company_url: ''
+    company_url: 'https://www.buaa.edu.cn/'
     company_logo: buaa
     location: beijing, China
     date_start: '2016-09-01'
