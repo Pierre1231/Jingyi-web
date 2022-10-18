@@ -15,7 +15,7 @@ author_notes:
   - 'first author'
 
 
-date: '2013-07-01T00:00:00Z'
+date: '2022-10-01T00:00:00Z'
 doi: ''
 
 # Schedule page publish date (NOT publication's date).
@@ -35,7 +35,7 @@ abstract: Path planning and obstacle avoidance problems are now the focus of rob
 # Summary. An optional shortened abstract.
 summary: This paper uses the Dyna-Q reinforcement learning algorithm to implement an obstacle avoidance and a path planning algorithm for unmanned ground vehicle(UGV) under urban environment.
 
-tags: []
+tags: ["Dyna-Q", "path planning", "UGV", "simulation platform"]
 
 # Display this page in the Featured widget?
 featured: true
