@@ -18,7 +18,7 @@ organizations:
     url: http://ecpkn.buaa.edu.cn/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include AI in robotics, multi-agents formation control and path planning.
 
 # Interests to show in About widget
 interests:
