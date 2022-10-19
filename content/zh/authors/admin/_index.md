@@ -29,8 +29,8 @@ interests:
 # Education to show in About widget
 education:
   courses:
-    - course: BSc in Applied Mathematics
-      institution: Beihang University
+    - course: 本科（应用数学）
+      institution: 北京航空航天大学
       year: 2020
 
 # Social/Academic Networking
