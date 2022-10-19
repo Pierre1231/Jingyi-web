@@ -62,4 +62,4 @@ highlight_name: true
 您好！我是一名就读于北航中法工程师学院的研究生，师从([韩亮](https://shi.buaa.edu.cn/lianghan))_副教授_。我的研究包括无人机的编队控制问题、路径规划问题和人工智能在无人机决策和规划过程中的应用。
 
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}}{{< staticref "uploads/demo_resume.pdf" "newtab" >}}简历{{< /staticref >}}.
