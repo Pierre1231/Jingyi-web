@@ -1,30 +1,30 @@
 ---
 # Display name
-title: Jingyi Huang
+title: 黄靖宜
 
 # Full name (for SEO)
-first_name: Jingyi
-last_name: Huang
+first_name: 靖宜
+last_name: 黄
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Master Student
+role: 硕士研究生
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: ECPKn, Beihang University
+  - name: 北航中法工程师学院
     url: http://ecpkn.buaa.edu.cn/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include AI in robotics, multi-agents formation control and path planning.
+bio: 我的研究兴趣包括人工智能的机器人应用，多智能体编队控制和路径规划问题。
 
 # Interests to show in About widget
 interests:
-  - Artificial Intelligence
-  - Bearing only formation control
-  - Path planning
+  - 人工智能的机器人应用
+  - 基于方位角的编队控制方法
+  - 路径规划算法
 
 # Education to show in About widget
 education:
