@@ -1,36 +1,36 @@
 ---
 # Display name
-title: 黄靖宜
+title: Jingyi Huang
 
 # Full name (for SEO)
-first_name: 靖宜
-last_name: 黄
+first_name: Jingyi
+last_name: Huang
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: 硕士研究生
+role: Master Student
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: 北航中法工程师学院
+  - name: ECPKn, Beihang University
     url: http://ecpkn.buaa.edu.cn/
 
 # Short bio (displayed in user profile at end of posts)
-bio: 我的研究兴趣包括人工智能的机器人应用，多智能体编队控制和路径规划问题。
+bio: My research interests include AI in robotics, multi-agents formation control and path planning.
 
 # Interests to show in About widget
 interests:
-  - 人工智能的机器人应用
-  - 基于方位角的编队控制方法
-  - 路径规划算法
+  - Artificial Intelligence
+  - Bearing only formation control
+  - Path planning
 
 # Education to show in About widget
 education:
   courses:
-    - course: 本科（应用数学）
-      institution: 北京航空航天大学
+    - course: BSc in Applied Mathematics
+      institution: Beihang University
       year: 2020
 
 # Social/Academic Networking
@@ -59,7 +59,8 @@ email: ''
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
-您好！我是一名就读于北航中法工程师学院的研究生，师从([韩亮](https://shi.buaa.edu.cn/lianghan))_副教授_。我的研究包括无人机的编队控制问题、路径规划问题和人工智能在无人机决策和规划过程中的应用。
+Bonjour! I am a master student in ECPKn ([école Centrale de Pékin](http://ecpknen.buaa.edu.cn/)), Beihang University, under the guidance of _Assoc._ _Prof._ Liang HAN.
+My research includes formation control of Unmanned Aerial Vehicles (UAVs), path planning problems, and artificial intelligence applications in UAVs' decision-making and planning.
 
 
-{{< icon name="download" pack="fas" >}}{{< staticref "uploads/demo_resume.pdf" "newtab" >}}简历下载{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
