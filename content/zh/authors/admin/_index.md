@@ -23,7 +23,7 @@ bio: 我的研究兴趣包括人工智能的机器人应用，多智能体编队
 # Interests to show in About widget
 interests:
   - 人工智能的机器人应用
-  - 基于方位角的编队控制方法
+  - 基于一致性的编队控制方法
   - 路径规划算法
 
 # Education to show in About widget
