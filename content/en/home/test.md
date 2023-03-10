@@ -28,3 +28,7 @@ gallery_item:
 ---
 {{< gallery album="demo" >}}
 
+design:
+  columns: "1"
+
+
