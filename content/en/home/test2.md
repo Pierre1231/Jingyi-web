@@ -16,9 +16,8 @@ content:
   title: content test2
   subtitle: 'this is a content test2'
 
-{{< gallery album="demo" >}}
-
 design:
   columns: '1'
 
 ---
+{{< gallery album="demo" >}}
