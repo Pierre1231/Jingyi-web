@@ -26,7 +26,7 @@ gallery_item:
   caption: "test2"
 
 ---
-{{< gallery album="demo" >}}
+# {{< gallery album="demo" >}}
 
 design:
   columns: "1"
