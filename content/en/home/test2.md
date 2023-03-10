@@ -1,12 +1,23 @@
 ---
-title: test2
-subtitle: 'this is a test2
+# An instance of the Portfolio widget.
+# Documentation: https://wowchemy.com/docs/page-builder/
+# widget: markdown
 
+# This file represents a page section.
+# headless: true
 
-gallery_item:
-- album: "demo"'"
-  image: "chris-montgomery-smgTvepind4-unsplash.jpg"
-  caption: 'this is a caption test2'
+# Order that this section appears on the page.
+# weight: 100
+
+title: "test2"
+subtitle: "this is a test2"
+
+content:
+  title: "Gallery"
+  subtitle: "this is a content test2"
+
+design:
+  columns: '1'
 
 ---
 {{< gallery album="demo" >}}
