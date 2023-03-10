@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 ---
 title: "Fishes of the Eastern Pacific coast of Panama"
 subtitle: "This guide includes "
@@ -25,10 +33,13 @@ gallery_item:
   image: "dan-gold-4_jhDO54BYg-unsplash-f.jpg"
   caption: "test2"
 
----
-# {{< gallery album="demo" >}}
-
 design:
   columns: "1"
+
+---
+
+{{< gallery album="demo" >}}
+
+
 
 

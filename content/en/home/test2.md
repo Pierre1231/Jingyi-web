@@ -1,0 +1,24 @@
+---
+# An instance of the Portfolio widget.
+# Documentation: https://wowchemy.com/docs/page-builder/
+widget: markdown
+
+# This file represents a page section.
+headless: true
+
+# Order that this section appears on the page.
+weight: 100
+
+title: test2
+subtitle: 'this is a test2
+
+content:
+  title: content test2
+  subtitle: 'this is a content test2'
+  text:|-
+        {{< gallery album="demo" >}}
+
+design:
+  columns: '1'
+
+---
