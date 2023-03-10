@@ -11,4 +11,4 @@ design:
 
 ---
 
-{{< gallery album="demo" resize_options="50x50" >}}
+{{< gallery album="demo">}}
