@@ -7,7 +7,7 @@ title: "test2"
 subtitle: "this is a test2"
 
 design:
-  columns: '2'
+  columns: '3'
 
 ---
 {{< gallery album="demo" >}}
