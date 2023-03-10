@@ -13,7 +13,7 @@ title: test2
 subtitle: 'this is a test2
 
 content:
-  title: content test2
+  title: Gallery
   subtitle: 'this is a content test2'
 
 design:
