@@ -6,6 +6,9 @@
 title: "test2"
 subtitle: "this is a test2"
 
+content:
+  text: "this is a test2"
+
 design:
   columns: '2'
 
