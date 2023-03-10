@@ -4,10 +4,10 @@
 # widget: markdown
 
 # This file represents a page section.
-headless: true
+# headless: true
 
 # Order that this section appears on the page.
-weight: 100
+# weight: 100
 
 title: test2
 subtitle: 'this is a test2
@@ -15,8 +15,8 @@ subtitle: 'this is a test2
 content:
   title: content test2
   subtitle: 'this is a content test2'
-  text:|-
-        {{< gallery album="demo" >}}
+
+{{< gallery album="demo" >}}
 
 design:
   columns: '1'
