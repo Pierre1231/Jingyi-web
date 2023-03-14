@@ -5,6 +5,8 @@ weight: 60
 title: Misc.
 subtitle: 'this is a test'
 
+text: 'this is a test1'
+
 design:
   columns: '2'
 
