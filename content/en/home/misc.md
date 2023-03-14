@@ -3,7 +3,7 @@
 weight: 60
 
 title: Misc.
-subtitle: 'Badminton has been a passion of mine for years, and I've practiced it for three years.'
+subtitle: 'this is a test'
 
 design:
   columns: '2'
