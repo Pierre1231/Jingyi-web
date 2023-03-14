@@ -19,5 +19,5 @@ design:
 
 ---
 
-{{< gallery album="demo">}}
+
 
