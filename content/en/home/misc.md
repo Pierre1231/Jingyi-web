@@ -3,9 +3,16 @@
 weight: 60
 
 title: Misc.
-subtitle: 'this is a test'
+type: landing
 
-text: this is a test1
+sections:
+  - block: markdown
+    id: section-1
+    content:
+      title: 
+      subtitle: 
+      text: Add any **markdown** formatted content here - text, images, videos, galleries - and even HTML code!
+
 
 design:
   columns: '2'
