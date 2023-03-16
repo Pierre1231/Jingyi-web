@@ -27,8 +27,8 @@ content:
   filter_button:
     - name: All
       tag: '*'
-    - name: Deep Learning
-      tag: Deep Learning
+    - name: Research class
+      tag: course
     - name: Reinforcement Learning
       tag: RL
     - name: Formation
