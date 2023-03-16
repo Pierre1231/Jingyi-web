@@ -14,5 +14,5 @@ Badminton🏸 has been a passion of mine for years, and I've practiced it for th
 
 Traveling has inspired me to become a photographer. I enjoy capturing the essence of different places, people, and things through the lens of my camera. I have attached some of my work below, but if you want to see more, feel free to follow my [Instagram account](https://www.instagram.com/jingyi.huang_98/) where I post my latest creations.
 
-{{< gallery album="demo">}}
+{{< gallery album="photography">}}
 
