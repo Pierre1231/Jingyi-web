@@ -19,7 +19,6 @@ content:
   address:
     street: Zhichun road 29
     city: Beijing
-    region: Beijing
     postcode: '100191'
     country: China
     country_code: CN
