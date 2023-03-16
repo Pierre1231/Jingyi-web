@@ -29,12 +29,9 @@ content:
       tag: '*'
     - name: Courses
       tag: course
-    - name: Reinforcement Learning
-      tag: RL
-    - name: Formation
-      tag: Control
-    - name: Other
-      tag: Demo
+    - name: Simulation Platform
+      tag: SP
+
 
 design:
   # Choose how many columns the section has. Valid values: '1' or '2'.
