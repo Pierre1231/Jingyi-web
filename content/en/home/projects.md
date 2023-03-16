@@ -27,7 +27,7 @@ content:
   filter_button:
     - name: All
       tag: '*'
-    - name: Research class
+    - name: Courses
       tag: course
     - name: Reinforcement Learning
       tag: RL
