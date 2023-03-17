@@ -14,7 +14,7 @@ image:
 
 links:
 url_code: ''
-url_pdf: 'content/en/project/Research class/科研课堂指南.pdf'
+url_pdf: ''
 url_slides: ''
 url_video: ''
 
