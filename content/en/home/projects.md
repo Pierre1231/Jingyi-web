@@ -31,6 +31,8 @@ content:
       tag: course
     - name: Simulation Platform
       tag: SP
+    - name: Competition
+      tag: competition
 
 
 design:
