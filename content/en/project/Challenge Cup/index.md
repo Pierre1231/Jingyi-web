@@ -30,5 +30,5 @@ To inspire university students to actively participate in cutting-edge scientifi
 
 {{< figure src="album/IMG_5724.jpg" caption="Attending the competition" numbered="true" >}}
 
-**title:**Challenge Cup
+## title : Challenge Cup
 
