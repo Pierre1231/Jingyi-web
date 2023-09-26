@@ -26,9 +26,13 @@ url_video: ''
 
 ---
 
+## Overall introduction
+
 To inspire university students to actively participate in cutting-edge scientific research addressing critical national needs, the renowned science and technology competition, the "Challenge Cup," introduced the special competition known as "Jie Bang Gua Shuai." This year's competition took place in Guizhou and featured a total of 21 topics, with over 2,000 projects in participation. We were proud to achieve the Grand Prize(特等奖) in this competition.
 
 {{< figure src="album/IMG_5724.jpg" caption="Attending the competition" numbered="true" >}}
 
-## title : Challenge Cup
+
+
+## Achievements
 
