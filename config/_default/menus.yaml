@@ -6,22 +6,22 @@
 main:
   - name: Home
     url: '#about'
-    weight: 10
+    weight: 8
   - name: Experiences
     url: '#experience'
-    weight: 20
+    weight: 16
   - name: Researches
     url: '#researches'
-    weight: 30
+    weight: 24
   - name: Projects
     url: '#projects'
-    weight: 40
+    weight: 32
   - name: Talks
     url: '#talks'
-    weight: 50
+    weight: 40
   - name: Misc.
     url: '#misc'
-    weight: 60
+    weight: 48
 
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/uploads/resume.pdf` and uncomment the lines below.
