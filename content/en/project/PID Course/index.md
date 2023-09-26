@@ -1,9 +1,9 @@
 ---
 title: PID Course
-summary: to be updated
+summary: We have designed a simple PID demo using our lab's simulation platform to assist students in grasping the principles of PID control.
 tags:
   - course
-date: '2016-04-27T00:00:00Z'
+date: '2023-09-27T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
 external_link: ''
