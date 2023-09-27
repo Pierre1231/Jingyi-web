@@ -48,6 +48,8 @@ Designed the framework, set coverage path planning algorithm, coded OpenCV-based
 
 **WANG Yue**
 
+Set collaborative exploration and collaborative task allocation algorithm
+
 **HUANG Jingyi**
 
 **LIN Yuheng**
