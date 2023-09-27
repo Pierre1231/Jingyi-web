@@ -36,3 +36,6 @@ Faced with the challenge of information gathering in multiple unmanned marine re
 
 ## Achievements
 
+The following video showcases our final results (the video has been sped up):
+
+{{< video src="videos/result.mp4" controls="yes" >}}
