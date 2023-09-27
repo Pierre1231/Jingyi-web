@@ -47,14 +47,14 @@ The following video showcases our final results (the video has been sped up):
 
 **HAO Pengkun (Team leader)**
 
-Designed the framework, set coverage path planning algorithm, coded OpenCV-based simulation, do the system integration.
+Designed the framework, created the simulation environment, set coverage path planning algorithm, defined multi-agents' decisions, coded OpenCV-based simulation, did the system integration.
 
 **WANG Yue**
 
-Set collaborative exploration and collaborative task allocation algorithm.
+Set collaborative exploration and collaborative task allocation algorithm, did the system integration.
 
 **HUANG Jingyi**
 
-Created algorithms for obstacle avoidance using artificial potential fields, designed A* path planning algorithms, wrote practical functions such as to calculate the shortest distance between points and a convex hull, etc.
+Used artificial potential fields algorithm for obstacle avoidance, coded A* algorithm, wrote practical functions such as to calculate the shortest distance between points and a convex hull, etc.
 
 **LIN Yuheng**
