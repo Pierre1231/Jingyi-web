@@ -39,3 +39,15 @@ Faced with the challenge of information gathering in multiple unmanned marine re
 The following video showcases our final results (the video has been sped up):
 
 {{< video src="videos/result.mp4" controls="yes" >}}
+
+## Division
+
+**HAO Pengkun (Team leader)**
+
+Designed the framework, set coverage path planning algorithm, coded OpenCV-based simulation, do the system integration
+
+**WANG Yue**
+
+**HUANG Jingyi**
+
+**LIN Yuheng**
