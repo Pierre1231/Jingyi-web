@@ -65,4 +65,8 @@ Designed a multi-agent collision avoidance algorithm based on RVO (Reciprocal Ve
 
 Built and debugged the cluster simulation platform -- Potato. For more infomation about Potato, please [click here](https://arxiv.org/abs/2308.12698).
 
+### Our plan
+
+---
+
 {{< figure src="album/framework.png" caption="Framework of our project" numbered="true" >}}
