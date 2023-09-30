@@ -35,6 +35,18 @@ To inspire university students to actively participate in cutting-edge scientifi
 
 Faced with the challenge of information gathering in multiple unmanned marine regions, this project presents a multi-agent decision control model. We have devised multi-agent area coverage and task allocation algorithms and integrated trajectory planning algorithms based on Conflict-Based Search, along with velocity obstacle algorithms to ensure collision avoidance. An online optimization approach is employed to enhance overall coverage efficiency. Algorithm validation is conducted using platforms based on OpenCV and a self-developed simulation platform based on Cesium. Following multiple iterations of testing, our algorithm consistently achieves high-level performance, including an average area coverage rate of 99%, an average correct detection rate of 99%, and an average total time of 61 minutes.
 
+## Requirements
+
+Duration: Apr. 2023 - Sept. 2023
+
+Design a multi-agent decision control model for collision-free area information collection and target exploration within a convex polygonal target area:
+
+- Complete coverage of the entire area;
+- For each target, perform multiple scans at fixed angles;
+- Avoid restricted zones and prevent collisions between agents.
+
+In the end, we will deploy our model into the organizer's simulation system, validating it using real ship dynamics. The final results will take into account the agent coverage ratio, the number of collision avoidance failures, and the overall simulation time.
+
 ## Achievements
 ---
 
