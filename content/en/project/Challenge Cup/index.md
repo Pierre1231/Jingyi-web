@@ -58,3 +58,5 @@ Set collaborative exploration and collaborative task allocation algorithm, did t
 Used artificial potential fields algorithm for obstacle avoidance, coded A* algorithm, wrote practical functions such as to calculate the shortest distance between points and a convex hull, etc.
 
 **LIN Yuheng**
+
+Designed a multi-agent collision avoidance algorithm based on RVO (Reciprocal Velocity Obstacles) 
