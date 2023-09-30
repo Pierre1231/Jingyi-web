@@ -60,3 +60,7 @@ Used artificial potential fields algorithm for obstacle avoidance, coded A* algo
 **LIN Yuheng**
 
 Designed a multi-agent collision avoidance algorithm based on RVO (Reciprocal Velocity Obstacles) 
+
+**Rest People**
+
+Built and debugged the cluster simulation platform -- Potato.
