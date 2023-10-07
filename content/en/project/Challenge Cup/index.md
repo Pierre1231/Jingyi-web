@@ -89,3 +89,41 @@ Our algorithm consists of four algorithmic modules for executing subtasks and a 
 {{< figure src="album/framework.png" caption="Framework of our project" numbered="true" >}}
 
 At the outset of algorithm execution, several pieces of information pertaining to the target area are initialized. Subsequently, the algorithm enters a loop to determine whether the task is completed. As long as the task remains incomplete, it executes a region-based coverage path planning algorithm while simultaneously employing a dynamic task allocation algorithm. The agent cluster collaboratively covers the area, thereby enhancing task efficiency. Throughout the entire task process, an obstacle avoidance/collision avoidance algorithm runs in real-time to ensure safety.
+
+### Obstacle Avoidance
+
+在项目开始阶段，智能体只需要和targets进行避障，因此我们选用最简单的避障控制方法，人工势场法。由于主办方没有提供智能体动力学模型，我们使用最简单的二阶模型和pid控制算法，保证不超过主办方提供的最高速度即可。对于规划层，我们只需要通过智能体和环境的信息，设计并输出无碰撞的路径点即可。对于每一个智能体，我需要首先判断它是否需要避障，为此，我设计了need_doa方法进行判断：
+
+```python
+def need_doa(self):
+    # 判断是否需要进行智能体间避撞
+    list_doa_agent = []
+    for i in range(self.num_agents):
+        for j in range(i + 1, self.num_agents):
+            if self.agents[i].check_collision_agent(self.agents[j]):
+                list_doa_agent.append([i, j])
+
+    # 判断是否需要进行智能体和障碍物避障
+    list_doa_target = []
+    for i in range(self.num_agents):
+        for target_idx in range(self.num_targets):
+            distance = np.linalg.norm(
+                np.array([self.agents[i].position])
+                - np.array([self.targets[target_idx].coord])
+            )
+
+            if distance < self.obstacle_dist:
+                if self.list_doa_target_key[target_idx] == 0:
+                    self.list_doa_target_key[target_idx] = 1
+                else:
+                    list_doa_target.append([i, target_idx])
+
+    if len(list_doa_agent) > 0 or len(list_doa_target):
+        return True, list_doa_agent, list_doa_target
+    else:
+        return False, list_doa_agent, list_doa_target
+
+```
+
+
+
