@@ -6,8 +6,8 @@
 # Appearance
 
 appearance:
-  theme_day: Forest
-  theme_night: Forest
+  theme_day: BUAA
+  theme_night: BUAA
   font: minimal
   font_size: M
 
