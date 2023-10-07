@@ -277,6 +277,6 @@ class AStarPathPlanner:
         return []
 ```
 
-结果如下：
+用本比赛提供的测试地图进行测试，结果如下：
 
 {{< figure src="album/A_star.jpg" caption="A* algorithm" numbered="true" >}}
