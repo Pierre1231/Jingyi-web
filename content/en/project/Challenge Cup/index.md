@@ -280,3 +280,7 @@ class AStarPathPlanner:
 用本比赛提供的测试地图进行测试，结果如下：
 
 {{< figure src="album/A_star.jpg" caption="A* algorithm" numbered="true" >}}
+
+##### 完整避障frame
+
+我更新了need_doa的逻辑，计算智能体现在的位置和目标位置连成的线段，如果线段没有经过规避区或者target，我就不用进行避障。如果线段经过了，根据是规避区还是target选择通过A*还是人工势场法进行避障。我这里依然保留了人工势场法有两个原因：人工势场法的计算相对简单，可以加快仿真速度；尽量减少代码的改动，防止与覆盖任务、check任务出现冲突。
