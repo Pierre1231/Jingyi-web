@@ -84,4 +84,8 @@ Built and debugged the cluster simulation platform -- Potato. For more infomatio
 
 ---
 
+Our algorithm consists of four algorithmic modules for executing subtasks and a cluster simulation platform for algorithm validation. The algorithmic modules for executing subtasks include the obstacle avoidance/collision avoidance module, the area coverage trajectory planning module, the target exploration module, and the task allocation module for multi-agent cooperation. The cluster simulation platform is built using Python, the OpenCV engine, and the Cesium engine.
+
 {{< figure src="album/framework.png" caption="Framework of our project" numbered="true" >}}
+
+At the outset of algorithm execution, several pieces of information pertaining to the target area are initialized. Subsequently, the algorithm enters a loop to determine whether the task is completed. As long as the task remains incomplete, it executes a region-based coverage path planning algorithm while simultaneously employing a dynamic task allocation algorithm. The agent cluster collaboratively covers the area, thereby enhancing task efficiency. Throughout the entire task process, an obstacle avoidance/collision avoidance algorithm runs in real-time to ensure safety.
