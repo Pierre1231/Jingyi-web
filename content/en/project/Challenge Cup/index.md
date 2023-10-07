@@ -180,3 +180,252 @@ def shortest_distance_to_polygon(point, polygon_vertices):
 但是经过我的多次测试，发现如果目标点和智能体的位置，均处于规避区某一条边两端点垂线所夹区域内，会出现一个convergent point，无法实现有效的避障。
 
 {{< figure src="album/converge_point.jpg" caption="Convergent point" numbered="true" >}}
+
+##### 后期-A*算法
+
+我意识到，人工势场法无法解决现在的问题，因此我开始寻求更加通用的解法。我使用A*算法作为规划算法，在仿真过程中实时计算智能体到目标点的无碰撞路径。在进行覆盖路径规划的时候已经将地图进行栅格化，我可以直接利用栅格化地图进行规划。代码如下：
+
+```python
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+"""
+Author: HUANG Jingyi
+File: A_star.py
+Date: 2023/9/8 11:28
+Email: pierrehuang1998@gmail.com
+Description: 
+"""
+
+import heapq
+import matplotlib.pyplot as plt
+import json
+import pyproj
+import constants
+import numpy as np
+from Env import Env
+
+
+
+
+class AStarPathPlanner:
+    def __init__(self, grid_map):
+        self.grid_map = grid_map
+        self.rows = len(grid_map)
+        self.cols = len(grid_map[0])
+
+    def heuristic(self, current, goal):
+        return abs(current[0] - goal[0]) + abs(current[1] - goal[1])
+
+    def find_path(self, start, end):
+        start = tuple(start)
+        end = tuple(end)
+        if start == end:
+            return [[start[0], start[1]]]
+
+        open_list = [(0, start)]
+        came_from = {}
+
+        g_score = {cell: float('inf') for row in self.grid_map for cell in row}
+        g_score[start] = 0
+
+        f_score = {cell: float('inf') for row in self.grid_map for cell in row}
+        f_score[start] = self.heuristic(start, end)
+
+        while open_list:
+            _, current = heapq.heappop(open_list)
+
+            if current == end:
+                path = [current]
+                while current in came_from:
+                    current = came_from[current]
+                    path.append(current)
+                path.reverse()
+                path_list = []
+                for tpl in path:
+
+                    path_list.append([tpl[0], tpl[1]])
+
+                # 将path修改为list类型
+
+                return path_list
+
+            add = [
+                (0, 1), (0, -1),
+                (1, 0), (-1, 0),
+                (1, 1), (1, -1),
+                (-1, 1), (-1, -1)
+            ]
+
+            for dr, dc in add:
+                neighbor = (current[0] + dr, current[1] + dc)
+
+                if (
+                    0 <= neighbor[0] < self.rows
+                    and 0 <= neighbor[1] < self.cols
+                    and self.grid_map[neighbor[0]][neighbor[1]] != 1
+                ):
+                    tentative_g_score = g_score[current] + 1
+
+                    if tentative_g_score < g_score.get(neighbor, float('inf')):
+                        came_from[neighbor] = current
+                        g_score[neighbor] = tentative_g_score
+                        f_score[neighbor] = (
+                            tentative_g_score + self.heuristic(neighbor, end)
+                        )
+                        heapq.heappush(open_list, (f_score[neighbor], neighbor))
+
+        return []
+
+    def visualize_path_animation(self, path):
+        map_with_path = np.zeros((self.rows, self.cols, 3), dtype=np.uint8)
+
+        for i in range(self.rows):
+            for j in range(self.cols):
+                if self.grid_map[i][j] == 1:
+                    map_with_path[i, j] = [0, 0, 0]  # Black for obstacles
+                else:
+                    map_with_path[i, j] = [255, 255, 255]  # White for open space
+
+        for node in path:
+            map_with_path[node[0], node[1]] = [0, 255, 0]  # Green for path
+
+        # Create visualization figure
+        fig, ax = plt.subplots()
+        ax.imshow(map_with_path)
+
+        plt.show()
+
+if __name__ == "__main__":
+
+    # 智能体的数量，待探查目标的数量
+    num_agents, num_targets = 8, 31
+    # 定义投影坐标系的参数
+    proj_params = {'proj': 'aea', 'lat_1': 38, 'lat_2': 39, 'lat_0': 38.5,
+                   'lon_0': 121.5, 'x_0': 0, 'y_0': 0, 'ellps': 'WGS84', 'units': 'm'}
+    # 创建投影坐标系对象
+    p = pyproj.Proj(proj_params)
+    # 读入challenge-zc-init.json初始化文件
+    with open('challenge-zc-init.json', 'r') as f:
+        data = json.load(f)
+    # 包含所有初始化信息的变量
+    meta_args = data['content']['arguments']
+    # 任务区域变量（二维列表）
+    taskArea = meta_args['taskArea']
+    taskArea_new = []
+    for _point in taskArea:
+        taskArea_new.append(p(_point[0], _point[1]))
+    # 智能体初始位置 {"position1":[x, y],...}
+    vesPostion = meta_args['vesPosition']
+    vesPostion_new = vesPostion
+    for i in range(num_agents):
+        _point = vesPostion[i]['position']
+        vesPostion_new[i]['position'] = p(_point[0], _point[1])
+    # 待探查目标初始信息 [{"id": int, "coord": [x, y], "angle": int, "restCheck": int}, ...]
+    targets = meta_args['targets']
+    targets_new = targets
+    for i in range(num_targets):
+        _point = targets[i]['coord']
+        targets_new[i]['coord'] = p(_point[0], _point[1])
+    # 智能体的范围和速度信息
+    vesInfo = meta_args['vesInfo']
+    # 待探查目标的范围信息
+    targetInfo = meta_args['targetInfo']
+    # 探查次数发生更改的信息
+    changeTargets = meta_args['changeTargets']
+    data_new = data
+    data_new['content']['arguments']['taskArea'] = taskArea_new
+    data_new['content']['arguments']['vesPostion'] = vesPostion_new
+    data_new['content']['arguments']['targets'] = targets_new
+    # 添加禁航区的信息
+    forbidArea = [
+        [
+            [
+                121.67473222,
+                38.84573388
+            ],
+            [
+                121.70089122,
+                38.84573388
+            ],
+            [
+                121.70940282,
+                38.82943606
+            ],
+            [
+                121.67572957,
+                38.82791887
+            ]
+        ],
+        [
+        ]
+    ]
+    forbidArea_new = forbidArea
+    for i in range(len(forbidArea)):
+        _forbid1area = forbidArea[i]
+        for j in range(len(_forbid1area)):
+            _point = _forbid1area[j]
+            forbidArea_new[i][j] = list(p(_point[0], _point[1]))
+    with open('challenge-zc.json', 'w') as f:
+        json.dump(data_new, f)
+
+    # 读入将经纬度坐标转换为直角坐标的challenge-zc.json初始化文件
+    with open("challenge-zc.json") as f:
+        data = json.load(f)
+    # 包含所有初始化信息的变量
+    meta_args = data["content"]["arguments"]
+    # 任务区域变量（二维列表）
+    taskArea = meta_args["taskArea"]
+    # 智能体初始位置 {"position1":[x, y],...}
+    vesPostion = meta_args["vesPostion"]
+    # 待探查目标初始信息 [{"id": int, "coord": [x, y], "angle": int, "restCheck": int}, ...]
+    targets = meta_args["targets"]
+    # 智能体的范围和速度信息
+    vesInfo = meta_args["vesInfo"]
+    # 待探查目标的范围信息
+    targetInfo = meta_args["targetInfo"]
+    # 探查次数发生更改的信息
+    changeTargets = meta_args["changeTargets"]
+
+    # 仿真的时间步（单位秒）
+    # 把TStep调大可以加快仿真速度
+    TStep = constants.TStep
+    # 任务是否结束
+    TaskIsEnd = False
+    # 覆盖是否结束
+    CoverageIsEnd = False
+    # 是否需要避障/避撞
+    NeedDoa = True
+    # 覆盖完成的时间
+    coverage_finish_time = None
+    # 整个任务的总耗时
+    task_finish_time = None
+
+    # 环境初始化
+    env = Env(taskArea, forbidArea_new, TStep, num_agents, num_targets, vesPostion, targets, vesInfo, targetInfo,
+              changeTargets)
+    env.reset()
+
+    # Create a 100x100 grid map with larger obstacles
+    grid_map = env.grid_map
+
+    # Create A* path planner object
+    path_planner = AStarPathPlanner(grid_map.tolist())  # Convert numpy array to list
+
+    # Define start and end points
+    start = [350, 30]
+    end = [100, 420]
+
+    # Find the path
+    path = path_planner.find_path(start, end)
+    # print("Path:", path)
+
+    # Visualize the path animation
+    if path:
+        path_planner.visualize_path_animation(path)
+    else:
+        print("Path not found")
+```
+
+结果如下：
+
+{{< figure src="album/A_star.jpg" caption="A* algorithm" numbered="true" >}}
