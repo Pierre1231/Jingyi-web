@@ -141,3 +141,42 @@ U_{rep}(q) = \left\{
 由于初期的场景设定比较简单，所以我们选择了比较简单的人工势场法作为避障策略。但是在比赛中期，主办方提出要在原场景中添加规避区，我们的智能体需要在不进入规避区的前提下完成区域覆盖任务。规避区为规定区域内的一个凸多边形区域。我寻找凸多边形距离智能体最近的点，把这个点为障碍物，通过同样的方法判断是否需要避障，并且用同样的方法计算斥力。这样，我就可以在不改变避障的整体框架下对规避区进行避障。
 
 {{< figure src="album/forbid_apf.jpg" caption="Calculate U_rep from the convex hull" numbered="true" >}}
+
+寻找规避区离智能体最近的点的方法如下：
+
+```python
+def distance_point_to_line(point, line_start, line_end):
+    # 计算点到线段的最短距离
+    line_start = np.array(line_start)
+    line_end = np.array(line_end)
+    line_vec = line_end - line_start
+    point_vec = point - line_start
+    t = np.dot(point_vec, line_vec) / np.dot(line_vec, line_vec)
+    t = max(0, min(1, t))  # 确保点在线段上
+    closest_point = line_start + t * line_vec
+    distance = np.linalg.norm(point - closest_point)
+    return distance, closest_point
+
+def shortest_distance_to_polygon(point, polygon_vertices):
+    min_distance = float('inf')
+    closest_point = None
+
+    # 遍历多边形的边
+    for i in range(len(polygon_vertices)):
+        start_point = polygon_vertices[i]
+        end_point = polygon_vertices[(i + 1) % len(polygon_vertices)]
+        distance, closest = distance_point_to_line(point, start_point, end_point)
+
+        # 如果找到更短的距离，更新最小距离和最近点的坐标
+        if distance < min_distance:
+            min_distance = distance
+            closest_point = closest
+
+    return min_distance, closest_point
+```
+
+
+
+但是经过我的多次测试，发现如果目标点和智能体的位置，均处于规避区某一条边两端点垂线所夹区域内，会出现一个convergent point，无法实现有效的避障。
+
+{{< figure src="album/converge_point.jpg" caption="Convergent point" numbered="true" >}}
