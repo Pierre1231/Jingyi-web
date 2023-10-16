@@ -29,7 +29,7 @@ interests:
 # Education to show in About widget
 education:
   courses:
-    - course: BSc in Applied Mathematics
+    - course: Bachelor of Information and Computer Science
       institution: Beihang University
       year: 2020
 
