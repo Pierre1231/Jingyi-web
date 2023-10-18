@@ -63,4 +63,4 @@ Bonjour! I am a master student in ECPKn ([école Centrale de Pékin](http://ecpk
 My research includes formation control of Unmanned Aerial Vehicles (UAVs), path planning problems, and artificial intelligence applications in UAVs' decision-making and planning.
 
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "CV_Jingyi_HUANG.pdf" "newtab" >}}resumé{{< /staticref >}}.
