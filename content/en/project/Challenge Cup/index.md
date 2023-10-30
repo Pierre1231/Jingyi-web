@@ -286,3 +286,4 @@ I conducted tests using the test maps provided for this competition, and the res
 ##### The whole frame
 
 I have updated the logic for **need_doa** as follows: I now calculate the line segment formed by the current position of the agent and the target position. If this line segment does not intersect with the avoidance zone or the target, there is no need for obstacle avoidance. However, if it does intersect, I have implemented a choice between using A* or the artificial potential field method for obstacle avoidance based on whether the intersection occurs with the avoidance zone or the target. I have retained the artificial potential field method for two reasons: it offers relatively simple calculations, which can expedite simulation, and it helps minimize code modifications to prevent conflicts with the coverage and check tasks.
+{style="text-align: justify;"}
