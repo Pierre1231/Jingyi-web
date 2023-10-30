@@ -92,7 +92,7 @@ At the outset of algorithm execution, several pieces of information pertaining t
 
 ### Obstacle Avoidance
 
-在项目开始阶段，智能体只需要和targets进行避障，因此我们选用最简单的避障控制方法，人工势场法。由于主办方没有提供智能体动力学模型，我们使用最简单的二阶模型和pid控制算法，保证不超过主办方提供的最高速度即可。对于规划层，我们只需要通过智能体和环境的信息，设计并输出无碰撞的路径点即可。对于每一个智能体，我需要首先判断它是否需要避障，为此，我设计了need_doa方法进行判断：
+In the initial stages of the project, the agent only needs to avoid obstacles when interacting with targets. Therefore, we opted for the simplest obstacle avoidance control method, the artificial potential field method. Since the organizer did not provide a dynamic model for the agent, we used the simplest second-order model and PID control algorithm to ensure that it does not exceed the maximum speed provided by the organizer. At the planning level, all we need to do is design and output collision-free waypoints based on the information from the agent and the environment. For each agent, I need to first determine whether it needs obstacle avoidance. To do this, I have designed the 'need_doa' method for this purpose.
 
 ```python
 def need_doa(self):
