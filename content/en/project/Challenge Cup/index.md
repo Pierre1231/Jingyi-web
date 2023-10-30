@@ -92,7 +92,7 @@ At the outset of algorithm execution, several pieces of information pertaining t
 
 ### Obstacle Avoidance
 
-In the initial stages of the project, the agent only needs to avoid obstacles when interacting with targets. Therefore, we opted for the simplest obstacle avoidance control method, the artificial potential field method. Since the organizer did not provide a dynamic model for the agent, we used the simplest second-order model and PID control algorithm to ensure that it does not exceed the maximum speed provided by the organizer. At the planning level, all we need to do is design and output collision-free waypoints based on the information from the agent and the environment. For each agent, I need to first determine whether it needs obstacle avoidance. To do this, I have designed the 'need_doa' method for this purpose.
+In the initial stages of the project, the agent only needs to avoid targets. Therefore, we opted for the simplest obstacle avoidance control method, the artificial potential field method. Since the organizer did not provide a dynamic model for the agent, we used the simplest second-order model and PID control algorithm to ensure that it does not exceed the maximum speed provided by the organizer. At the planning level, all we need to do is design and output collision-free waypoints based on the information from the agent and the environment. For each agent, I need to first determine whether it needs obstacle avoidance. To do this, I have designed the 'need_doa' method:
 
 ```python
 def need_doa(self):
