@@ -92,6 +92,8 @@ At the outset of algorithm execution, several pieces of information pertaining t
 
 ### Obstacle Avoidance
 
+##### Early stage - Artificial Potential Fields
+
 In the initial stages of the project, the agent only needs to avoid targets. Therefore, we opted for the simplest obstacle avoidance control method, the artificial potential field method. Since the organizer did not provide a dynamic model for the agent, we used the simplest second-order model and PID control algorithm to ensure that it does not exceed the maximum speed provided by the organizer. At the planning level, all we need to do is design and output collision-free waypoints based on the information from the agent and the environment. For each agent, I need to first determine whether it needs obstacle avoidance. To do this, I have designed the 'need_doa' method:
 
 ```python
@@ -138,13 +140,13 @@ U_{rep}(q) = \left\{
 
 Here K_rep represents the repulsion gain constant, D(q) signifies the distance between the agent and the target, and Q* denotes the critical distance used in the calculation of the repulsive force. We compute the repulsive force for all targets and aggregate them. Subsequently, we calculate the attractive force exerted by the goal on the agent. These repulsive and attractive force vectors are then combined to obtain the resultant force. Finally, we incorporate path points determined based on the resultant force into the navigation process.
 
-##### 中期-添加规避区的人工势场法
+##### Mid-term - Artificial Potential Fields with Avoiding Restricted Zones
 
-由于初期的场景设定比较简单，所以我们选择了比较简单的人工势场法作为避障策略。但是在比赛中期，主办方提出要在原场景中添加规避区，我们的智能体需要在不进入规避区的前提下完成区域覆盖任务。规避区为规定区域内的一个凸多边形区域。我寻找凸多边形距离智能体最近的点，把这个点为障碍物，通过同样的方法判断是否需要避障，并且用同样的方法计算斥力。这样，我就可以在不改变避障的整体框架下对规避区进行避障。
+Due to the initial simplicity of our scenario, we initially employed a basic artificial potential field method for obstacle avoidance. However, midway through the competition, the organizers introduced avoidance zones, requiring our agent to avoid these predefined convex polygonal areas while completing the area coverage task. To address this, we identified the closest point on the convex polygon to the agent and treated it as an obstacle. We then applied our existing obstacle avoidance framework to navigate around these zones without major modifications.
 
 {{< figure src="album/forbid_apf.jpg" caption="Calculate U_rep from the convex hull" numbered="true" >}}
 
-寻找规避区离智能体最近的点的方法如下：
+The method for finding the point on the avoidance zone closest to the agent is as follows:
 
 ```python
 def distance_point_to_line(point, line_start, line_end):
@@ -177,15 +179,13 @@ def shortest_distance_to_polygon(point, polygon_vertices):
     return min_distance, closest_point
 ```
 
-
-
-但是经过我的多次测试，发现如果目标点和智能体的位置，均处于规避区某一条边两端点垂线所夹区域内，会出现一个convergent point，无法实现有效的避障。
+However, through several rounds of testing, I have found that if both the target point and the intelligent agent's position are located within the region enclosed by the perpendicular lines drawn from the two endpoints of a particular edge of the avoidance zone, a convergence point issue arises, preventing effective obstacle avoidance.
 
 {{< figure src="album/converge_point.jpg" caption="Convergent point" numbered="true" >}}
 
-##### 后期-A*算法
+##### Late stage - A* algorithm
 
-我意识到，人工势场法无法解决现在的问题，因此我开始寻求更加通用的解法。我使用A*算法作为规划算法，在仿真过程中实时计算智能体到目标点的无碰撞路径。在进行覆盖路径规划的时候已经将地图进行栅格化，我可以直接利用栅格化地图进行规划。代码如下：
+I realized that the artificial potential field method was inadequate for solving the current issue. Therefore, I started seeking a more general solution. I adopted the A* algorithm as the planning algorithm and computed real-time collision-free paths for the agent to reach the target point during simulation. The map had already been gridified for coverage path planning, allowing me to utilize the gridified map directly. The code is as follows:
 
 ```python
 #!/usr/bin/env python
@@ -279,10 +279,10 @@ class AStarPathPlanner:
         return []
 ```
 
-用本比赛提供的测试地图进行测试，结果如下：
+I conducted tests using the test maps provided for this competition, and the results are as follows:
 
 {{< figure src="album/A_star.jpg" caption="A* algorithm" numbered="true" >}}
 
-##### 完整避障frame
+##### The whole frame
 
-我更新了need_doa的逻辑，计算智能体现在的位置和目标位置连成的线段，如果线段没有经过规避区或者target，我就不用进行避障。如果线段经过了，根据是规避区还是target选择通过A*还是人工势场法进行避障。我这里依然保留了人工势场法有两个原因：人工势场法的计算相对简单，可以加快仿真速度；尽量减少代码的改动，防止与覆盖任务、check任务出现冲突。
+I have updated the logic for `need_doa` as follows: I now calculate the line segment formed by the current position of the agent and the target position. If this line segment does not intersect with the avoidance zone or the target, there is no need for obstacle avoidance. However, if it does intersect, I have implemented a choice between using A* or the artificial potential field method for obstacle avoidance based on whether the intersection occurs with the avoidance zone or the target. I have retained the artificial potential field method for two reasons: it offers relatively simple calculations, which can expedite simulation, and it helps minimize code modifications to prevent conflicts with the coverage and check tasks.
