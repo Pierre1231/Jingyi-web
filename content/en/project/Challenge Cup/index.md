@@ -135,7 +135,8 @@ U_{rep}(q) = \left\{
 \end{array}
 \right.
 {{< /math >}}$$
-其中{{< math >}}$k\_rep${{< /math >}}是斥力增益常量，{{< math >}}$D(q)${{< /math >}}是智能体距离target的距离，{{< math >}}$Q^*${{< /math >}}是计算斥力的临界距离。我们计算出所有target对智能体的斥力矢量并加和，计算出goal对智能体的吸引力，将斥力和吸引力矢量相加获得合力。然后添加基于合力计算出来的路径点。
+
+Here K_rep represents the repulsion gain constant, D(q) signifies the distance between the agent and the target, and Q* denotes the critical distance used in the calculation of the repulsive force. We compute the repulsive force for all targets and aggregate them. Subsequently, we calculate the attractive force exerted by the goal on the agent. These repulsive and attractive force vectors are then combined to obtain the resultant force. Finally, we incorporate path points determined based on the resultant force into the navigation process.
 
 ##### 中期-添加规避区的人工势场法
 
