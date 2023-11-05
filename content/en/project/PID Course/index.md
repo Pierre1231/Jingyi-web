@@ -32,15 +32,15 @@ This course is designed to give students an intuitive understanding of PID contr
 
 ## Course content
 ---
-## 1. PID controller
+### 1. PID controller
 
 The PID controller is a control algorithm that is widely used in industrial control. It is a feedback controller that can be used to control the output of a system to a desired value. The PID controller is composed of three parts: proportional, integral, and derivative. The output of the PID controller is the sum of the three parts. The PID controller is widely used in industrial control because of its simple structure and good control effect. 
 
-## 2. PID controller in simulation platform
+### 2. PID controller in simulation platform
 
 We created a PID class in the simulation platform, and the class has three parameters: Kp, Ki, Kd. The PID class has one function: update. The update function is used to calculate the output of the PID controller.
 
-### Teaching Content of the Code:
+#### Teaching Content of the Code:
 
 1. **PID Controller Principles**: Students can learn how a PID controller works through the implementation of the `PidControl` class. The comments and structured design in the code help students understand how the proportional, integral, and derivative components are calculated independently and combined to form a control signal.
 
@@ -52,7 +52,7 @@ We created a PID class in the simulation platform, and the class has three param
 
 5. **Data Visualization**: Through plotting, students can visually comprehend the controller's performance, such as the comparison between the actual and target trajectories, and the error over time.
 
-### Student Activities:
+#### Student Activities:
 
 1. **Understanding the Code**: Initially, students need to read and comprehend each part of the code, including how the PID controller operates, system dynamics, target trajectory setting, and the simulation loop.
 
