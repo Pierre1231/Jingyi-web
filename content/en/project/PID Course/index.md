@@ -28,7 +28,7 @@ url_video: ''
 
 ## Overall introduction
 ---
-This course is designed to give students an intuitive understanding of PID controllers by conducting experiments on a simulation platform. We have designed a simple PID controller in the simulation platform, and through parameter tuning of this controller, students can gain an intuitive understanding of the principles of PID controllers. We have also designed a simple second-order dynamics model for drones in the simulation platform. By controlling the drone to follow a set path, students can verify the control effect of the controller.
+This course is designed to give students an intuitive understanding of PID controllers by conducting experiments on a simulation platform. We have designed a simple PID controller in the simulation platform, and through parameter tuning of this controller, students can gain an intuitive understanding of the principles of PID controllers. We have also designed a simple second-order dynamics model for quadrotors in the simulation platform. By controlling the quadrotor to follow a set path, students can verify the control effect of the controller.
 {style="text-align: justify; margin: 0px;"}
 
 ## Course content
@@ -48,8 +48,12 @@ This course is designed to give students an intuitive understanding of PID contr
 4. **Real-time Simulation**: The main loop simulates the operation of a real-time control system, where students can observe how the controller responds to errors and updates control inputs at each time step.
 {style="text-align: justify;"}
 
+{{< figure src="album/run.png" caption="Real-time Simulation" numbered="true" >}}
+
 5. **Data Visualization**: Through plotting, students can visually comprehend the controller's performance, such as the comparison between the actual and target trajectories, and the error over time.
 {style="text-align: justify;"}
+
+{{< figure src="album/plot.png" caption="Data Visualization" numbered="true" >}}
 
 ### Student Activities
 
@@ -59,11 +63,16 @@ This course is designed to give students an intuitive understanding of PID contr
 2. **Modifying Parameters**: Students can alter the `kp`, `ki`, `kd` parameters in the `PidControl` to see changes in the controller's performance. This helps them understand the impact of these parameters on system behavior.
 {style="text-align: justify;"}
 
-3. **Experimenting and Observing**: Students can run the code and observe the drone's flight path and behavior under different PID parameters. By comparing the actual trajectory to the target trajectory, they can learn how to adjust PID parameters to improve system performance.
+3. **Experimenting and Observing**: Students can run the code and observe the quadrotor's flight path and behavior under different PID parameters. By comparing the actual trajectory to the target trajectory, they can learn how to adjust PID parameters to improve system performance.
 {style="text-align: justify;"}
 
 4. **Adjusting the Target Trajectory**: Students can modify the `desired_trace` function to try different target trajectories and observe how the PID controller performs with various paths.
 {style="text-align: justify;"}
 
-5. **Problem-Solving**: If issues arise during the simulation, such as the drone deviating from the target trajectory, students are expected to analyze the cause of the problem and attempt to solve it, which helps develop their problem-solving skills.
+5. **Problem-Solving**: If issues arise during the simulation, such as the quadrotor deviating from the target trajectory, students are expected to analyze the cause of the problem and attempt to solve it, which helps develop their problem-solving skills.
 {style="text-align: justify;"}
+
+## Results
+---
+
+The students conducted the simulation and saw the motion of the quadrotor. They got a better understanding of the PID controller and the quadrotor's dynamics. They also learned how to tune the PID parameters to improve the controller's performance. The students were able to complete the course and achieve the expected learning outcomes.
