@@ -48,7 +48,7 @@ This course is designed to give students an intuitive understanding of PID contr
 4. **Real-time Simulation**: The main loop simulates the operation of a real-time control system, where students can observe how the controller responds to errors and updates control inputs at each time step.
 {style="text-align: justify;"}
 
-{{< figure src="album/run.png" caption="Real-time Simulation" numbered="true" style="width: 100px; height: auto;" >}}
+{{< figure src="album/run.png" caption="Real-time Simulation" numbered="true" width="100px" >}}
 
 5. **Data Visualization**: Through plotting, students can visually comprehend the controller's performance, such as the comparison between the actual and target trajectories, and the error over time.
 {style="text-align: justify;"}
