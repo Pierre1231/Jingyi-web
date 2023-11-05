@@ -22,7 +22,6 @@ bio: My research interests include AI in robotics, multi-agents formation contro
 
 # Interests to show in About widget
 interests:
-  - Artificial Intelligence
   - Consensus based formation control
   - Path planning
 
