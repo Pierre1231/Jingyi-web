@@ -57,3 +57,4 @@ This course is designed to give students an intuitive understanding of PID contr
 
 5. **Problem-Solving**: If issues arise during the simulation, such as the drone deviating from the target trajectory, students are expected to analyze the cause of the problem and attempt to solve it, which helps develop their problem-solving skills.
 
+{style="text-align: justify;"}
