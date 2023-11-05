@@ -29,6 +29,7 @@ url_video: ''
 ## Overall introduction
 ---
 This course is designed to give students an intuitive understanding of PID controllers by conducting experiments on a simulation platform. We have designed a simple PID controller in the simulation platform, and through parameter tuning of this controller, students can gain an intuitive understanding of the principles of PID controllers. We have also designed a simple second-order dynamics model for drones in the simulation platform. By controlling the drone to follow a set path, students can verify the control effect of the controller.
+{style="text-align: justify;"}
 
 ## Course content
 ---
