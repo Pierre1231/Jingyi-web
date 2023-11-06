@@ -40,3 +40,5 @@ design:
   #   4 = Citation (publication only)
   view: 2
 ---
+
+2023.05 - Literature Sharing - [[slides](./content/en/talks/20230508/20230508组会.pdf)]
