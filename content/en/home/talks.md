@@ -46,7 +46,12 @@ design:
 A self-rotating, single-actuated UAV with extended sensor field of view for autonomous navigation, Science Robotics, 2023
 { style = "font-size: 0.8em;" }
 
-**2023.05 - Literature Sharing - [[slides](../talks/20230508组会.pdf)]**
+**2022.12 - Literature Sharing - [[slides](../talks/20221210组会.pdf)]**
 { style = "line-height: 0.5;" }
-A self-rotating, single-actuated UAV with extended sensor field of view for autonomous navigation, Science Robotics, 2023
+A Survey on Large-Population Systems and Scalable Multi-Agent Reinforcement Learning, arXiv preprint, 2022
+{ style = "font-size: 0.8em;" }
+
+**2022.05 - Literature Sharing - [[slides](../talks/20220514组会.pdf)]**
+{ style = "line-height: 0.5;" }
+Trajectory Planning for Autonomous Vehicles Using Hierarchical Reinforcement Learning, ITSC, 2021
 { style = "font-size: 0.8em;" }
