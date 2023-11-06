@@ -42,6 +42,6 @@ design:
 ---
 
 **2023.05 - Literature Sharing - [[slides](../talks/20230508组会.pdf)]**
-
+{ style = "line-height: 0.8;" }
 A self-rotating, single-actuated UAV with extended sensor field of view for autonomous navigation, Science Robotics, 2023
-{ style = "font-size: 0.8em;" }
+{ style = "font-size: 0.8em; line-height: 0.8;" }
