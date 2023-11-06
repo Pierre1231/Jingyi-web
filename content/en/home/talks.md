@@ -14,7 +14,7 @@ subtitle:
 
 content:
   # Page type to display. E.g. post, event, publication...
-  page_type: 
+  page_type: talks
   # Choose how many pages you would like to display (0 = all pages)
   count: 5
   # Filter on criteria
@@ -40,6 +40,3 @@ design:
   #   4 = Citation (publication only)
   view: 2
 ---
-
-
-content/en/talks/20230508/20230508组会.pdf
