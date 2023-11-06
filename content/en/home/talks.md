@@ -55,3 +55,8 @@ A Survey on Large-Population Systems and Scalable Multi-Agent Reinforcement Lear
 { style = "line-height: 0.5;" }
 Trajectory Planning for Autonomous Vehicles Using Hierarchical Reinforcement Learning, ITSC, 2021
 { style = "font-size: 0.8em;" }
+
+**2021.11 - Literature Sharing - [[slides](../talks/20211127组会.pdf)]**
+{ style = "line-height: 0.5;" }
+Fractal Trajectories for Online Non-Uniform Aerial Coverage, ICRA, 2015
+{ style = "font-size: 0.8em;" }
