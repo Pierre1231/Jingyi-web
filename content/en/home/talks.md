@@ -41,5 +41,6 @@ design:
   view: 2
 ---
 
-- **2023.05 - Literature Sharing - [[slides](../talks/20230508组会.pdf)]**
+**2023.05 - Literature Sharing - [[slides](../talks/20230508组会.pdf)]**
 > A self-rotating, single-actuated UAV with extended sensor field of view for autonomous navigation, Science Robotics, 2023
+{ style = "font-size: 0.8em;" }
