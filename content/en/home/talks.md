@@ -41,4 +41,4 @@ design:
   view: 2
 ---
 
-2023.05 - Literature Sharing - [[slides](./content/en/talks/20230508组会.pdf)]
+2023.05 - Literature Sharing - [[slides](../content/en/talks/20230508组会.pdf)]
