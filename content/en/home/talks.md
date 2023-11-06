@@ -12,6 +12,25 @@ weight: 50
 title: 'Recent & Upcoming Talks'
 subtitle:
 
+content:
+  # Page type to display. E.g. post, event, publication...
+  page_type: 
+  # Choose how many pages you would like to display (0 = all pages)
+  count: 5
+  # Filter on criteria
+  filters:
+    author: ''
+    category: ''
+    tag: ''
+    exclude_featured: false
+    exclude_future: false
+    exclude_past: false
+    publication_type: ''
+  # Choose how many pages you would like to offset by
+  offset: 0
+  # Page order: descending (desc) or ascending (asc) date.
+  order: desc
+
 design:
   columns: '2'
   # Choose a view for the listings:
@@ -22,4 +41,5 @@ design:
   view: 2
 ---
 
-2023.05 - Literature Sharing - [[slides](./en/talks/20230508/20230508组会.pdf)]
+
+content/en/talks/20230508/20230508组会.pdf
