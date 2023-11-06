@@ -1,5 +1,5 @@
 ---
-title: Literature Sharing
+title: 2023.05 - Literature Sharing
 
 event: 
 event_url: 
@@ -12,7 +12,7 @@ address:
   postcode: '100191'
   country: China
 
-summary: An example talk using Wowchemy's Markdown slides feature.
+summary: A self-rotating, single-actuated UAV with extended sensor field of view for autonomous navigation, Science Robotics, 2023
 abstract: ''
 
 # Talk start and end times.
