@@ -45,7 +45,7 @@ experience:
     company: Beihang University
     company_url: 'https://www.buaa.edu.cn/'
     company_logo: buaa
-    location: beijing, China
+    location: Beijing, China
     date_start: '2016-09-01'
     date_end: '2020-06-16'
     description: Learn algebra, geometry, mathematical analysis, Newtonian mechanics, thermodynamics, automatic control, etc. 
