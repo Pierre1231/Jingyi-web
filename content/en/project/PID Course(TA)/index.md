@@ -1,5 +1,5 @@
 ---
-title: PID Course
+title: PID Course(TA)
 summary: We have designed a simple PID demo using our lab's simulation platform to assist students in grasping the principles of PID control.
 tags:
   - course
