@@ -38,26 +38,17 @@ This course aims to provide students with a good understanding of the principles
 
 ### Theory part
 
-#### Control theory
-
-Assoc. Prof. HAN Liang explained linear systems, introduced modeling methods for first-order and second-order systems, discussed control principles based on feedback, and explained the principles of PID control, including how the proportional, integral, and derivative components each affect the system.
+1. **Control theory**: Assoc. Prof. HAN Liang explained linear systems, introduced modeling methods for first-order and second-order systems, discussed control principles based on feedback, and explained the principles of PID control, including how the proportional, integral, and derivative components each affect the system.
 {style="text-align: justify;"}
 
-#### Path planning theory
-
-Assoc. Prof. HAN Liang explained the problems that need to be addressed in   path planning, which involve finding a collision-free path from point A to point B on a given map. Additionally, the teacher discussed some graph-based path planning algorithms, such as A*.
+2. **Path planning theory**: Assoc. Prof. HAN Liang explained the problems that need to be addressed in   path planning, which involve finding a collision-free path from point A to point B on a given map. Additionally, the teacher discussed some graph-based path planning algorithms, such as A*.
 {style="text-align: justify;"}
 
-#### Basic hardware knowledge
-
-Assoc. Prof. HAN Liang explained the fundamental principles of multirotor drones and demonstrated using the DJI Robomaster TT(quadrotor) and its official app. The teacher explained how quadrotors can adjust their attitude by changing the rotational speed of their propellers.
-{style="text-align: justify;"}
-
-Assoc. Prof. HAN Liang introduced the principles of a Mecanum wheel robot, demonstrating with the DJI RoboMaster EP Mecanum wheel robot and its official app. The teacher explained to the students how Mecanum wheel robots can achieve motion in different directions by adjusting the wheel speeds. We chose Mecanum wheel robots because their dynamic model is relatively simpler when comparing to Ackermann steering vehicles, and they can be simplified to a first-order or second-order system.
+3. **Basic hardware knowledge**: Assoc. Prof. HAN Liang explained the fundamental principles of multirotor drones and demonstrated using the DJI Robomaster TT(quadrotor) and its official app. The teacher explained how quadrotors can adjust their attitude by changing the rotational speed of their propellers. Assoc. Prof. HAN Liang also introduced the principles of a Mecanum wheel robot, demonstrating with the DJI RoboMaster EP Mecanum wheel robot and its official app. The teacher explained to the students how Mecanum wheel robots can achieve motion in different directions by adjusting the wheel speeds. We chose Mecanum wheel robots because their dynamic model is relatively simpler when comparing to Ackermann steering vehicles, and they can be simplified to a first-order or second-order system.
 {style="text-align: justify;"}
 
 ### Simulation part
 
 ### Experiment part
 
-#### UWB device
+1. **UWB device**: 
