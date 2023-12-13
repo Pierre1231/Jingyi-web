@@ -45,7 +45,7 @@ Assoc. Prof. HAN Liang explained linear systems, introduced modeling methods for
 
 #### Path planning theory
 
-Assoc. Prof. HAN Liang mainly explained the problems that need to be addressed in   path planning, which involve finding a collision-free path from point A to point B on a given map. Additionally, the teacher discussed some graph-based path planning algorithms, such as A*.
+Assoc. Prof. HAN Liang explained the problems that need to be addressed in   path planning, which involve finding a collision-free path from point A to point B on a given map. Additionally, the teacher discussed some graph-based path planning algorithms, such as A*.
 {style="text-align: justify;"}
 
 #### Basic hardware knowledge
