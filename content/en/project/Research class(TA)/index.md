@@ -74,4 +74,28 @@ In Potato Central, there are three main components that students need to modify:
 
 ### Experiment part
 
-1. **UWB device**: .
+1. **UWB device**: We utilize the LinkTrack product developed by nooploop company for positioning unmanned aerial vehicles (UAVs) and unmanned ground vehicles (UGVs). The Ultra-Wideband (UWB) equipment used in this course requires the use of base stations, a console, and tags. The powered base stations are arranged in a specific pattern, with the powered tags placed in the middle of the base stations. The console is connected to the computer to receive information from the base stations and tags, thereby obtaining the position of the tags. We will use four base stations, labeled as A0, A1, A2, and A3. All UWB equipment needs to be powered for use, and the console must be connected to an antenna.
+{style="text-align: justify;"}
+
+{{< figure src="album/UWB_ui.jpg" caption="UWB positioning" numbered="true" width="500px" >}}
+
+2. **Robomaster TT**: We utilize the DJI Robomaster TT for our experiments. I set the drone to network mode, allowing it to connect to the router. Simultaneously, my computer also connects to the same WiFi network, enabling the transmission of information between the computer and the drone via the router. Based on prior map information, we can initially plan a collision-free path. Then, using UWB, we locate the drone's position, calculate the error between the drone's actual and desired positions, and compute the drone's control input through a control algorithm. Finally, we send the control input to the drone via WiFi, achieving control of the drone.
+{style="text-align: justify;"}
+
+3. **Robomaster EP**: Similarly, I set the EP to network mode, allowing it to connect to the router. At the same time, my computer also connects to the same WiFi network, enabling the transmission of information between the computer and the EP via the router. Based on prior map information, we can initially plan a collision-free path. Then, using UWB, we locate the EP's position, calculate the error between the EP's actual and desired positions, and compute the EP's control input through a control algorithm. Finally, we send the control input to the EP via WiFi, achieving control of the EP.
+{style="text-align: justify;"}
+
+4. **Map design**: I designed a 4m*3m map, which can be simulated in Potato and also verified in experiments (the size of the lab cannot support large indoor experiments). The map contains some random obstacles. The drone and the unmanned vehicle need to navigate around these obstacles to reach the target point.
+{style="text-align: justify;"}
+
+## Results
+
+---
+The students completed both the simulation and experiments, enhancing their hands-on and coding abilities, and deepening their understanding of control and planning algorithms.
+{style="text-align: justify;"}
+
+## My role
+
+---
+Initially, I completed all the simulation and experiments, and organized the related steps and knowledge into a document, which I then explained to the students in class. I was also responsible for the preparation of the course, including preparing hardware devices and course materials. Additionally, I was in charge of the course evaluation, which involved assessing the students' simulation and experiment results, as well as evaluating their course reports.
+{style="text-align: justify;"}
