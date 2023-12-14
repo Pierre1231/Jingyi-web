@@ -48,8 +48,15 @@ This course aims to provide students with a good understanding of the principles
 {style="text-align: justify;"}
 
 4. **Basic software knowledge**: I primarily introduced the why we use and how we use Anaconda, as well as how to utilize PyCharm for Python development. In the classroom, I guided students in establishing a virtual environment called 'Research Class' for the development of simulations and experiments. I also introduced and demonstrated the simulation platform developped by our lab, providing an explanation of the code responsible for control and planning. I explained how to execute the code for the experimental section and parts related to control and planning.
+{style="text-align: justify;"}
 
 ### Simulation part
+
+Potato is a large-scale cluster simulation platform developed by our lab. To meet the needs of this class, we have developed a minimal example using the simulation platform display end as the GUI - potato-mini. Students can design and develop agent dynamics, add task environments, and perform control/planning algorithm simulations in potato-mini. Potato-mini is mainly divided into two parts, one is the simulation platform display end, and the other is Potato central. First, download and unzip the display end file Potato-3.x.x.zip, find the Potato.exe in the root directory and double-click to open it, the interface is as shown in the figure below.
+
+{{< figure src="album/earth.jpg" caption="Potato display end" numbered="true" width="500px" >}}
+
+After opening the display end, open the Potato central part's code. Unzip the project file Potato-mini and open it with Pycharm (Open PyCharm, select "File" in the upper left corner, click "Open", open the potato-mini-master file, and you can open the potato-mini project). The development of the simulation part is mainly carried out in the main code of Potato-mini.
 
 ### Experiment part
 
