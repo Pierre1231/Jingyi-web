@@ -53,10 +53,24 @@ This course aims to provide students with a good understanding of the principles
 ### Simulation part
 
 Potato is a large-scale cluster simulation platform developed by our lab. To meet the needs of this class, we have developed a minimal example using the simulation platform display end as the GUI - potato-mini. Students can design and develop agent dynamics, add task environments, and perform control/planning algorithm simulations in potato-mini. Potato-mini is mainly divided into two parts, one is the simulation platform display end, and the other is Potato central. First, download and unzip the display end file Potato-3.x.x.zip, find the Potato.exe in the root directory and double-click to open it, the interface is as shown in the figure below.
+{style="text-align: justify;"}
 
 {{< figure src="album/earth.jpg" caption="Potato display end" numbered="true" width="500px" >}}
 
 After opening the display end, open the Potato central part's code. Unzip the project file Potato-mini and open it with Pycharm (Open PyCharm, select "File" in the upper left corner, click "Open", open the potato-mini-master file, and you can open the potato-mini project). The development of the simulation part is mainly carried out in the main code of Potato-mini.
+{style="text-align: justify;"}
+
+In Potato Central, there are three main components that students need to modify: path planning algorithm, path design, and control.
+{style="text-align: justify;"}
+
+1. **Path Planning Algorithm**: The path planning algorithm was developed by Chen Xuwen, mainly using the A* algorithm. Students need to modify and implement their own path planning algorithm. The main code is in `planning.py`. Students need to refer to the `AStar` class, design related methods, and replace the code for path planning.
+{style="text-align: justify;"}
+
+2. **Path Design**: I am responsible for the design of the planned path. In `central_demo.py`, based on the given waypoints, I connect them as a path. The agent needs to follow the existing path until the distance to the next waypoint is less than a threshold, then update the path until the destination is reached. Students need to modify and implement their own path design, such as writing the entire path as a function of time t.
+{style="text-align: justify;"}
+
+3. **Control**: I am responsible for the control part of the code. I designed a path tracking control algorithm based on vector field algorithm, mainly using a PID controller. The main part of the PID controller is in `controller.py`. Students need to modify the `SecondOrderController` class to design their own controller. Students can also modify the corresponding control parameters when instantiating the controller in `central_demo.py` to improve control effects.
+{style="text-align: justify;"}
 
 ### Experiment part
 
