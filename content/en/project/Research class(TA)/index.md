@@ -47,8 +47,10 @@ This course aims to provide students with a good understanding of the principles
 3. **Basic hardware knowledge**: Assoc. Prof. HAN Liang explained the fundamental principles of multirotor drones and demonstrated using the DJI Robomaster TT(quadrotor) and its official app. The teacher explained how quadrotors can adjust their attitude by changing the rotational speed of their propellers. Assoc. Prof. HAN Liang also introduced the principles of a Mecanum wheel robot, demonstrating with the DJI RoboMaster EP Mecanum wheel robot and its official app. The teacher explained to the students how Mecanum wheel robots can achieve motion in different directions by adjusting the wheel speeds. We chose Mecanum wheel robots because their dynamic model is relatively simpler when comparing to Ackermann steering vehicles, and they can be simplified to a first-order or second-order system.
 {style="text-align: justify;"}
 
+4. **Basic software knowledge**: I primarily introduced the why we use and how we use Anaconda, as well as how to utilize PyCharm for Python development. In the classroom, I guided students in establishing a virtual environment called 'Research Class' for the development of simulations and experiments. I also introduced and demonstrated the simulation platform developped by our lab, providing an explanation of the code responsible for control and planning. I explained how to execute the code for the experimental section and parts related to control and planning.
+
 ### Simulation part
 
 ### Experiment part
 
-1. **UWB device**: 
+1. **UWB device**: .
