@@ -88,6 +88,8 @@ In Potato Central, there are three main components that students need to modify:
 4. **Map design**: I designed a 4m*3m map, which can be simulated in Potato and also verified in experiments (the size of the lab cannot support large indoor experiments). The map contains some random obstacles. The drone and the unmanned vehicle need to navigate around these obstacles to reach the target point.
 {style="text-align: justify;"}
 
+{{< figure src="album/map.png" caption="Map with obstacles" numbered="true" width="500px" >}}
+
 ## Results
 
 ---
