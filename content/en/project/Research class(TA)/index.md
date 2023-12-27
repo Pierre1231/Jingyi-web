@@ -96,6 +96,11 @@ In Potato Central, there are three main components that students need to modify:
 The students completed both the simulation and experiments, enhancing their hands-on and coding abilities, and deepening their understanding of control and planning algorithms.
 {style="text-align: justify;"}
 
+The following video is the final planning and control experiment of RM EP, filmed by the students.
+{style="text-align: justify;"}
+
+{{< video src="videos/result.mp4" controls="yes" caption="Planning and control result by the students" >}}
+
 ## My role
 
 ---
