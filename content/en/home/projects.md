@@ -1,13 +1,3 @@
-<!--
- * @Author: HUANG Jingyi
- * @Date: 2022-09-30 11:32:23
- * @LastEditors: HUANG Jingyi
- * @LastEditTime: 2024-01-07 22:11:31
- * @FilePath: \Jingyi-web\content\en\home\projects.md
- * @Description: 
- * 
- * Copyright (c) 2024 by Pierre, All Rights Reserved. 
--->
 ---
 # An instance of the Portfolio widget.
 # Documentation: https://wowchemy.com/docs/page-builder/
