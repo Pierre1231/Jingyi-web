@@ -1,13 +1,3 @@
-<!--
- * @Author: HUANG Jingyi
- * @Date: 2024-01-07 22:40:15
- * @LastEditors: HUANG Jingyi
- * @LastEditTime: 2024-01-07 23:07:10
- * @FilePath: \Jingyi-web\content\en\project\SO\index.md
- * @Description: 
- * 
- * Copyright (c) 2024 by Pierre, All Rights Reserved. 
--->
 ---
 title: Simulation/Optimization
 summary: It'a a course project of Simulation and Optimization. I need to write a neural network for classification using python.
