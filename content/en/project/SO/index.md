@@ -2,8 +2,7 @@
 title: Simulation/Optimization
 summary: It'a a course project of Simulation and Optimization. I need to write a neural network for classification using python.
 tags:
-
-- non_scientific
+  - course
 date: '2023-11-27T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page)
@@ -21,7 +20,7 @@ url_code: ''
 url_pdf: ''
 url_slides: ''
 url_video: ''
-url_github: '<https://github.com/Pierre1231/SO_1>'
+url_github: 'https://github.com/Pierre1231/SO_1'
 
 # Slides (optional)
 
