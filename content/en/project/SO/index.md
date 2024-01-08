@@ -7,7 +7,7 @@ date: '2023-11-27T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page)
 
-external_link: 'https://github.com/Pierre1231/SO_1'
+external_link: ''
 
 # image
 
@@ -17,7 +17,7 @@ external_link: 'https://github.com/Pierre1231/SO_1'
 
 links:
 url_code: 'https://github.com/Pierre1231/SO_1'
-url_pdf: './file/Rapport HuangPierre.pdf'
+url_pdf: ''
 url_slides: ''
 url_video: ''
 
