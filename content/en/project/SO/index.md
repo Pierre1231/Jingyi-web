@@ -16,11 +16,10 @@ external_link: 'https://github.com/Pierre1231/SO_1'
 # focal_point: Smart
 
 links:
-url_code: ''
-url_pdf: ''
+url_code: 'https://github.com/Pierre1231/SO_1'
+url_pdf: '..\file\Rapport HuangPierre.pdf'
 url_slides: ''
 url_video: ''
-url_github: 'https://github.com/Pierre1231/SO_1'
 
 # Slides (optional)
 
