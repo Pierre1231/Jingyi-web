@@ -2,7 +2,7 @@
 title: Potato development
 summary: This is about developing our lab's simulation platform -- Potato.
 tags:
-  - simulation platform
+  - SP
 date: '2022-09-27T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
