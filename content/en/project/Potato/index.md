@@ -1,6 +1,6 @@
 ---
-title: Research class(TA)
-summary: This course is designed for sophomore students and utilizes DJI Education platform and a simulation platform developed by our lab, enabling students to complete unmanned aerial vehicle (UAV) and unmanned ground vehicle (UGV) planning and control experiments.
+title: Potato development
+summary: This is about developing our lab's simulation platform -- Potato.
 tags:
   - simulation platform
 date: '2022-09-27T00:00:00Z'

@@ -3,7 +3,7 @@ title: Research class(TA)
 summary: This course is designed for sophomore students and utilizes DJI Education platform and a simulation platform developed by our lab, enabling students to complete unmanned aerial vehicle (UAV) and unmanned ground vehicle (UGV) planning and control experiments.
 tags:
   - course
-date: '2016-04-27T00:00:00Z'
+date: '2023-11-01T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
 external_link: ''
