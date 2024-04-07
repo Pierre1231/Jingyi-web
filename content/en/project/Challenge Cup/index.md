@@ -218,7 +218,7 @@ class AStarPathPlanner:
         self.cols = len(grid_map[0])
 
     def heuristic(self, current, goal):
-        return abs(current[0] - goal[0]) + abs(current[1] - goal[1])
+        return np.sqrt((current[0] - goal[0])**2 + (current[1] - goal[1])**2)
 
     def find_path(self, start, end):
         start = tuple(start)
