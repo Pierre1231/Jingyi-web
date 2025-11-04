@@ -36,7 +36,6 @@ content:
 
 design:
   columns: '3'
-  spacing: 8
 ---
 
 
