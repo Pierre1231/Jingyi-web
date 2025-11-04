@@ -31,4 +31,29 @@ h1, h2, h3 {
   --bs-gutter-y: 1rem;
 }
 
+/* Projects card thumbnail ratio + subtle hover */
+.home-section#projects .card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.home-section#projects .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.home-section#projects .card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Gallery spacing and thumbnails */
+.home-section#gallery .gallery-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.home-section#gallery .isotope-item { margin-bottom: 0.75rem; }
+
 
