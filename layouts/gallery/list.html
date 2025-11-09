@@ -1,0 +1,118 @@
+{{ define "main" }}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>{{ .Title }}</h1>
+      {{ if .Content }}
+      <div class="gallery-description">
+        {{ .Content }}
+      </div>
+      {{ end }}
+      
+      <div class="gallery-grid">
+        {{ range .Pages }}
+          {{ $images := .Resources.ByType "image" }}
+          {{ if $images }}
+            {{ $cover := false }}
+            {{ range $images }}
+              {{ if or (in .Name "feature") (in .Name "cover") }}
+                {{ $cover = . }}
+                {{ break }}
+              {{ end }}
+            {{ end }}
+            {{ if not $cover }}
+              {{ $cover = index $images 0 }}
+            {{ end }}
+            
+            {{ if $cover }}
+              {{ $thumbnail := $cover.Fill "400x300" }}
+              <div class="gallery-item">
+                <a href="{{ .RelPermalink }}">
+                  <img src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}" loading="lazy" />
+                  <div class="gallery-item-overlay">
+                    <h3>{{ .Title }}</h3>
+                    {{ if .Description }}
+                    <p>{{ .Description }}</p>
+                    {{ end }}
+                  </div>
+                </a>
+              </div>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 4/3;
+  background: #f0f0f0;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  padding: 1.5rem 1rem 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+  transform: translateY(0);
+}
+
+.gallery-item-overlay h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.gallery-item-overlay p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.gallery-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+}
+</style>
+{{ end }}
+
