@@ -4,9 +4,9 @@ summary: Interests, travel notes, and photography picks
 type: page
 ---
 
-Badminton has been my passion for years. I also enjoy reading books on economics and social sciences, and learning languages like English and French. I've traveled to several European countries including France, Germany, Spain, Belgium, Italy, Switzerland, and Malta.
+Badminton has been a longstanding interest of mine. I am also an avid reader of economics and social sciences literature, and I am proficient in [English](/misc/ielts_JingyiHUANG.pdf) and [French](/misc/tcf.pdf). I have had the opportunity to travel extensively across Europe, visiting France, Germany, Spain, Belgium, Italy, Switzerland, and Malta.
 
-Traveling inspired me to become a photographer. I enjoy capturing the essence of different places, people, and moments through my camera. Below are some of my works. For more, follow my [Instagram account](https://www.instagram.com/jingyi.huang_98/).
+My travels have inspired my passion for photography. I am drawn to capturing the essence of diverse places, people, and moments through my lens. A selection of my photographic work is presented below. For additional works, please visit my [Instagram account](https://www.instagram.com/jingyi.huang_98/).
 
 {{< photo_wall images="photography" >}}
 
