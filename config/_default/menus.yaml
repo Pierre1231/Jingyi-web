@@ -20,7 +20,7 @@ main:
     url: '#talks'
     weight: 40
   - name: Misc.
-    url: '#misc'
+    url: 'misc/'
     weight: 48
 
 # Link to a PDF of your resume/CV from the menu.
