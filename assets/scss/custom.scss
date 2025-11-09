@@ -140,5 +140,46 @@ article,
   text-align: center;
 }
 
+/* Expand page content width to 90% for single pages */
+/* Target main article containers */
+article[itemscope],
+.wg-page article,
+.page-content article,
+article.page-content,
+.wg-page .article-container,
+.page-content .article-container {
+  max-width: 90% !important;
+  width: 90% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Expand common page containers */
+.wg-page .container,
+.page-content .container,
+article .container,
+.wg-container:not(.home-section) {
+  max-width: 90% !important;
+  width: 90% !important;
+}
+
+/* For Wowchemy page layout */
+body[class*="page"] article,
+body[class*="page"] .article-container,
+body[class*="page"] .article-style,
+body[class*="page"] .container {
+  max-width: 90% !important;
+  width: 90% !important;
+}
+
+/* Target page content wrapper */
+.page-content,
+.wg-page-content {
+  max-width: 90% !important;
+  width: 90% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 
 
