@@ -140,45 +140,52 @@ article,
   text-align: center;
 }
 
-/* Expand page content width to 90% for single pages */
-/* Target main article containers */
-article[itemscope],
-.wg-page article,
-.page-content article,
-article.page-content,
-.wg-page .article-container,
-.page-content .article-container {
-  max-width: 90% !important;
-  width: 90% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* Expand common page containers */
-.wg-page .container,
-.page-content .container,
-article .container,
-.wg-container:not(.home-section) {
-  max-width: 90% !important;
-  width: 90% !important;
-}
-
-/* For Wowchemy page layout */
+/* Expand page content width to 90% for single pages - Comprehensive fix */
+/* Target all possible page containers and ensure centering */
+body[class*="page"] .container,
 body[class*="page"] article,
 body[class*="page"] .article-container,
 body[class*="page"] .article-style,
-body[class*="page"] .container {
-  max-width: 90% !important;
-  width: 90% !important;
-}
-
-/* Target page content wrapper */
-.page-content,
-.wg-page-content {
+.wg-page .container,
+.wg-page article,
+.wg-page .article-container,
+.page-content .container,
+.page-content article,
+.page-content .article-container,
+article[itemscope],
+article.page-content,
+.wg-container:not(.home-section):not(.navbar):not(.footer):not(.header),
+article .container {
   max-width: 90% !important;
   width: 90% !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure page wrapper doesn't limit width */
+.wg-page,
+.page-content,
+.page-wrapper,
+.wg-page-content {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Fix left alignment - ensure content is centered */
+body[class*="page"] {
+  text-align: left;
+}
+
+body[class*="page"] .container,
+body[class*="page"] article,
+body[class*="page"] .article-container {
+  text-align: left;
+  display: block !important;
 }
 
 
