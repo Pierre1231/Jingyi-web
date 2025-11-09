@@ -4,12 +4,9 @@
 <div class="photo-wall-container">
   <div class="photo-wall-grid">
     {{- range $photoFiles -}}
-      {{- $imgName := . -}}
-      {{- $imgPath := printf "/media/albums/%s/%s" $album $imgName -}}
+      {{- $imgPath := printf "/media/albums/%s/%s" $album . -}}
       <div class="photo-item">
-        <a href="{{ $imgPath }}" class="glightbox" data-glightbox="title: Photography; description: ">
-          <img src="{{ $imgPath }}" alt="Photography" loading="lazy" />
-        </a>
+        <img src="{{ $imgPath }}" alt="Photography" loading="lazy" />
       </div>
     {{- end -}}
   </div>
