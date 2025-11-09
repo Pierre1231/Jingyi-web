@@ -6,7 +6,7 @@
     {{- range $photoFiles -}}
       {{- $imgPath := printf "/media/albums/%s/%s" $album . -}}
       <div class="jg-item">
-        <img src="{{ $imgPath }}" alt="Photography" loading="lazy" data-src="{{ $imgPath }}" />
+        <img src="{{ $imgPath }}" alt="Photography" loading="lazy" />
       </div>
     {{- end -}}
   </div>
@@ -16,158 +16,156 @@
 (function() {
   'use strict';
   
-  function initJustifiedGallery() {
+  function layoutJustifiedGallery() {
     const gallery = document.getElementById('justifiedGallery');
     if (!gallery) return;
     
     const items = Array.from(gallery.querySelectorAll('.jg-item'));
     if (items.length === 0) return;
     
-    // Adjust row height based on screen size
-    const isMobile = window.innerWidth < 768;
-    const rowHeight = isMobile ? 200 : 280; // Target row height in pixels
-    const margin = isMobile ? 6 : 8; // Margin between images
     const containerWidth = gallery.offsetWidth;
-    
     if (containerWidth <= 0) return;
     
-    // Reset all items
-    items.forEach(item => {
-      const img = item.querySelector('img');
-      item.style.width = '';
-      item.style.height = '';
-      item.style.margin = '';
-      img.style.width = '';
-      img.style.height = '';
-      img.style.objectFit = '';
-    });
+    const isMobile = window.innerWidth < 768;
+    const targetRowHeight = isMobile ? 200 : 280;
+    const margin = isMobile ? 6 : 8;
     
-    // Check if all images are loaded
+    // Wait for all images to have dimensions
     const images = items.map(item => item.querySelector('img'));
-    const allLoaded = images.every(img => img.complete && img.naturalWidth > 0);
-    
-    if (!allLoaded) {
-      // Wait for all images to load
-      let loadedCount = 0;
-      images.forEach((img, index) => {
-        if (img.complete && img.naturalWidth > 0) {
-          loadedCount++;
-          if (loadedCount === images.length) {
-            layoutImages();
-          }
-        } else {
-          img.onload = function() {
-            loadedCount++;
-            if (loadedCount === images.length) {
-              layoutImages();
-            }
-          };
-          img.onerror = function() {
-            loadedCount++;
-            if (loadedCount === images.length) {
-              layoutImages();
-            }
-          };
-        }
+    const checkImages = () => {
+      const allReady = images.every(img => {
+        return img.complete && img.naturalWidth > 0 && img.naturalHeight > 0;
       });
-    } else {
-      layoutImages();
-    }
+      
+      if (allReady) {
+        doLayout();
+      } else {
+        // Set up load handlers
+        let loaded = 0;
+        images.forEach(img => {
+          if (img.complete && img.naturalWidth > 0) {
+            loaded++;
+          } else {
+            const onLoad = () => {
+              loaded++;
+              if (loaded === images.length) {
+                doLayout();
+              }
+            };
+            img.addEventListener('load', onLoad, { once: true });
+            img.addEventListener('error', onLoad, { once: true });
+          }
+        });
+        
+        if (loaded === images.length) {
+          doLayout();
+        }
+      }
+    };
     
-    function layoutImages() {
+    function doLayout() {
+      // Reset styles
+      items.forEach(item => {
+        item.style.cssText = '';
+        const img = item.querySelector('img');
+        img.style.cssText = '';
+      });
+      
       const rows = [];
       let currentRow = [];
       let currentRowWidth = 0;
       
       items.forEach((item, index) => {
         const img = item.querySelector('img');
-        if (!img.naturalWidth || !img.naturalHeight) return;
+        if (!img.naturalWidth || !img.naturalHeight) {
+          // Skip invalid images
+          if (index === items.length - 1 && currentRow.length > 0) {
+            rows.push(currentRow);
+          }
+          return;
+        }
         
         const aspectRatio = img.naturalWidth / img.naturalHeight;
-        const itemWidth = rowHeight * aspectRatio;
+        const itemWidth = targetRowHeight * aspectRatio;
         const spacing = currentRow.length > 0 ? margin : 0;
         const newRowWidth = currentRowWidth + itemWidth + spacing;
         
         if (newRowWidth > containerWidth && currentRow.length > 0) {
-          // Current row is full, save it and start a new row
           rows.push([...currentRow]);
           currentRow = [item];
           currentRowWidth = itemWidth;
         } else {
-          // Add to current row
           currentRow.push(item);
           currentRowWidth = newRowWidth;
         }
         
-        // If this is the last item, save the current row
         if (index === items.length - 1 && currentRow.length > 0) {
           rows.push(currentRow);
         }
       });
       
-      // Layout each row
+      // Apply layout to each row
       rows.forEach((row, rowIndex) => {
-        // Calculate aspect ratio sum for the row
         const aspectRatioSum = row.reduce((sum, item) => {
           const img = item.querySelector('img');
-          if (img.naturalWidth && img.naturalHeight) {
-            return sum + (img.naturalWidth / img.naturalHeight);
-          }
-          return sum;
+          return sum + (img.naturalWidth / img.naturalHeight);
         }, 0);
         
         if (aspectRatioSum === 0) return;
         
-        // Calculate available width (subtract margins)
         const availableWidth = containerWidth - (row.length - 1) * margin;
         
-        // Layout each item in the row
         row.forEach((item, itemIndex) => {
           const img = item.querySelector('img');
-          if (!img.naturalWidth || !img.naturalHeight) return;
-          
           const aspectRatio = img.naturalWidth / img.naturalHeight;
           const width = Math.floor((aspectRatio / aspectRatioSum) * availableWidth);
-          const height = rowHeight;
           
-          item.style.width = width + 'px';
-          item.style.height = height + 'px';
-          item.style.marginRight = itemIndex < row.length - 1 ? margin + 'px' : '0';
-          item.style.marginBottom = rowIndex < rows.length - 1 ? margin + 'px' : '0';
-          item.style.display = 'inline-block';
-          item.style.verticalAlign = 'top';
-          item.style.overflow = 'hidden';
+          item.style.cssText = `
+            width: ${width}px;
+            height: ${targetRowHeight}px;
+            margin-right: ${itemIndex < row.length - 1 ? margin : 0}px;
+            margin-bottom: ${rowIndex < rows.length - 1 ? margin : 0}px;
+            display: inline-block;
+            vertical-align: top;
+            overflow: hidden;
+          `;
           
-          img.style.width = '100%';
-          img.style.height = '100%';
-          img.style.objectFit = 'cover';
-          img.style.display = 'block';
+          img.style.cssText = `
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+          `;
         });
       });
     }
+    
+    checkImages();
   }
   
   // Initialize
-  function startInit() {
-    setTimeout(initJustifiedGallery, 50);
+  function init() {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(layoutJustifiedGallery, 100);
+      });
+    } else {
+      setTimeout(layoutJustifiedGallery, 100);
+    }
   }
   
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startInit);
-  } else {
-    startInit();
-  }
+  init();
   
-  // Reinitialize on resize (throttled)
+  // Handle resize
   let resizeTimer;
-  window.addEventListener('resize', function() {
+  window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(initJustifiedGallery, 300);
+    resizeTimer = setTimeout(layoutJustifiedGallery, 300);
   });
   
-  // Reinitialize when all images are loaded
-  window.addEventListener('load', function() {
-    setTimeout(initJustifiedGallery, 100);
+  // Re-layout when all images loaded
+  window.addEventListener('load', () => {
+    setTimeout(layoutJustifiedGallery, 200);
   });
 })();
 </script>
