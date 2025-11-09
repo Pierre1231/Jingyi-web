@@ -1,0 +1,57 @@
+{{- $contact := .Site.Params.contact | default dict -}}
+{{- $author := .Site.Params.author | default dict -}}
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="site-footer-inner">
+          {{- if $contact.email -}}
+          <div class="footer-contact" style="margin-bottom: 1rem;">
+            <p style="margin-bottom: 0.5rem;">
+              <strong>Contact:</strong>
+              <a href="mailto:{{ $contact.email }}">{{ $contact.email }}</a>
+              {{- if $contact.phone -}}
+              <span style="margin: 0 0.5rem;">|</span>
+              <a href="tel:{{ $contact.phone }}">{{ $contact.phone }}</a>
+              {{- end -}}
+            </p>
+            {{- if $contact.address -}}
+            <p style="margin-bottom: 0;">
+              {{- if $contact.address.street -}}{{ $contact.address.street }}, {{ end -}}
+              {{- if $contact.address.city -}}{{ $contact.address.city }}{{ end -}}
+              {{- if $contact.address.postcode -}} {{ $contact.address.postcode }}{{ end -}}
+              {{- if $contact.address.country -}}, {{ $contact.address.country }}{{ end -}}
+            </p>
+            {{- end -}}
+          </div>
+          {{- end -}}
+          
+          {{- if .Site.Params.footer.copyright -}}
+          <div class="footer-copyright">
+            {{- $copyright := .Site.Params.footer.copyright.notice | default (printf "© %d %s" now.Year .Site.Title) -}}
+            {{- $copyright = replace $copyright "{year}" (string now.Year) -}}
+            {{- if .Site.Params.footer.copyright.license.enable -}}
+              {{- $license := "CC BY 4.0" -}}
+              {{- if .Site.Params.footer.copyright.license.allow_derivatives -}}
+                {{- if .Site.Params.footer.copyright.license.share_alike -}}
+                  {{- $license = "CC BY-SA 4.0" -}}
+                {{- else -}}
+                  {{- $license = "CC BY 4.0" -}}
+                {{- end -}}
+              {{- else -}}
+                {{- $license = "CC BY-ND 4.0" -}}
+              {{- end -}}
+              {{- $copyright = replace $copyright "{license}" $license -}}
+            {{- else -}}
+              {{- $copyright = replace $copyright "{license}" "" -}}
+            {{- end -}}
+            <p style="margin-bottom: 0;">{{ $copyright | markdownify }}</p>
+          </div>
+          {{- end -}}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+

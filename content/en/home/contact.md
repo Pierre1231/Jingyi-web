@@ -8,6 +8,9 @@ headless: true
 # Order that this section appears on the page.
 weight: 130
 
+# Disable this widget (contact info now in footer)
+active: false
+
 title: Contact
 subtitle:
 

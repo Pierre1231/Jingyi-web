@@ -39,6 +39,18 @@ header:
     show_search: true
     highlight_active_link: true
 
+# Contact information (displayed in footer)
+
+contact:
+  email: pierrehuang1998@gmail.com
+  phone: +86 13269995855
+  address:
+    street: Zhichun road 29
+    city: Beijing
+    postcode: '100191'
+    country: China
+    country_code: CN
+
 # Site footer
 
 footer:
