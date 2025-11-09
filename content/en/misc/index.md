@@ -13,53 +13,5 @@ type: page
   </p>
 </div>
 
-<div class="photo-wall-container">
-  <div class="photo-wall-grid">
-    <div class="photo-item">
-      <a href="/media/albums/photography/1.JPG" class="glightbox" data-glightbox="title: Photography; description: ">
-        <img src="/media/albums/photography/1.JPG" alt="Photography" loading="lazy" />
-      </a>
-    </div>
-    <div class="photo-item">
-      <a href="/media/albums/photography/2.jpg" class="glightbox" data-glightbox="title: Photography; description: ">
-        <img src="/media/albums/photography/2.jpg" alt="Photography" loading="lazy" />
-      </a>
-    </div>
-    <div class="photo-item">
-      <a href="/media/albums/photography/3.jpg" class="glightbox" data-glightbox="title: Photography; description: ">
-        <img src="/media/albums/photography/3.jpg" alt="Photography" loading="lazy" />
-      </a>
-    </div>
-    <div class="photo-item">
-      <a href="/media/albums/photography/4.jpg" class="glightbox" data-glightbox="title: Photography; description: ">
-        <img src="/media/albums/photography/4.jpg" alt="Photography" loading="lazy" />
-      </a>
-    </div>
-    <div class="photo-item">
-      <a href="/media/albums/photography/5.jpg" class="glightbox" data-glightbox="title: Photography; description: ">
-        <img src="/media/albums/photography/5.jpg" alt="Photography" loading="lazy" />
-      </a>
-    </div>
-    <div class="photo-item">
-      <a href="/media/albums/photography/6.jpg" class="glightbox" data-glightbox="title: Photography; description: ">
-        <img src="/media/albums/photography/6.jpg" alt="Photography" loading="lazy" />
-      </a>
-    </div>
-    <div class="photo-item">
-      <a href="/media/albums/photography/7.jpg" class="glightbox" data-glightbox="title: Photography; description: ">
-        <img src="/media/albums/photography/7.jpg" alt="Photography" loading="lazy" />
-      </a>
-    </div>
-    <div class="photo-item">
-      <a href="/media/albums/photography/8.jpg" class="glightbox" data-glightbox="title: Photography; description: ">
-        <img src="/media/albums/photography/8.jpg" alt="Photography" loading="lazy" />
-      </a>
-    </div>
-    <div class="photo-item">
-      <a href="/media/albums/photography/9.jpg" class="glightbox" data-glightbox="title: Photography; description: ">
-        <img src="/media/albums/photography/9.jpg" alt="Photography" loading="lazy" />
-      </a>
-    </div>
-  </div>
-</div>
+{{< photo_wall images="photography" >}}
 

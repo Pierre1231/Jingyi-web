@@ -1,0 +1,17 @@
+{{- $album := .Get "images" | default "photography" -}}
+{{- $photoFiles := slice "1.JPG" "2.jpg" "3.jpg" "4.jpg" "5.jpg" "6.jpg" "7.jpg" "8.jpg" "9.jpg" -}}
+
+<div class="photo-wall-container">
+  <div class="photo-wall-grid">
+    {{- range $photoFiles -}}
+      {{- $imgName := . -}}
+      {{- $imgPath := printf "/media/albums/%s/%s" $album $imgName -}}
+      <div class="photo-item">
+        <a href="{{ $imgPath }}" class="glightbox" data-glightbox="title: Photography; description: ">
+          <img src="{{ $imgPath }}" alt="Photography" loading="lazy" />
+        </a>
+      </div>
+    {{- end -}}
+  </div>
+</div>
+
