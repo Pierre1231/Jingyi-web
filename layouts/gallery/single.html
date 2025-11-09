@@ -40,8 +40,12 @@
     const linkEl = e.item.element;
     if (linkEl) {
       e.itemData.src = linkEl.getAttribute('data-pswp-src') || linkEl.href;
-      e.itemData.width = parseInt(linkEl.getAttribute('data-pswp-width')) || 0;
-      e.itemData.height = parseInt(linkEl.getAttribute('data-pswp-height')) || 0;
+      const width = parseInt(linkEl.getAttribute('data-pswp-width'));
+      const height = parseInt(linkEl.getAttribute('data-pswp-height'));
+      if (width && height) {
+        e.itemData.width = width;
+        e.itemData.height = height;
+      }
       e.itemData.title = linkEl.getAttribute('title') || '';
     }
   });
@@ -92,7 +96,7 @@
 .gallery-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.3s ease;
 }
