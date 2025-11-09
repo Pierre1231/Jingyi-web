@@ -1,14 +1,174 @@
 {{- $album := .Get "images" | default "photography" -}}
 {{- $photoFiles := slice "1.JPG" "2.jpg" "3.jpg" "4.jpg" "5.jpg" "6.jpg" "7.jpg" "8.jpg" "9.jpg" -}}
 
-<div class="photo-wall-container">
-  <div class="photo-wall-grid">
+<div class="justified-gallery-container">
+  <div class="justified-gallery" id="justifiedGallery">
     {{- range $photoFiles -}}
       {{- $imgPath := printf "/media/albums/%s/%s" $album . -}}
-      <div class="photo-item">
-        <img src="{{ $imgPath }}" alt="Photography" loading="lazy" />
+      <div class="jg-item">
+        <img src="{{ $imgPath }}" alt="Photography" loading="lazy" data-src="{{ $imgPath }}" />
       </div>
     {{- end -}}
   </div>
 </div>
+
+<script>
+(function() {
+  'use strict';
+  
+  function initJustifiedGallery() {
+    const gallery = document.getElementById('justifiedGallery');
+    if (!gallery) return;
+    
+    const items = Array.from(gallery.querySelectorAll('.jg-item'));
+    if (items.length === 0) return;
+    
+    // Adjust row height based on screen size
+    const isMobile = window.innerWidth < 768;
+    const rowHeight = isMobile ? 200 : 280; // Target row height in pixels
+    const margin = isMobile ? 6 : 8; // Margin between images
+    const containerWidth = gallery.offsetWidth;
+    
+    if (containerWidth <= 0) return;
+    
+    // Reset all items
+    items.forEach(item => {
+      const img = item.querySelector('img');
+      item.style.width = '';
+      item.style.height = '';
+      item.style.margin = '';
+      img.style.width = '';
+      img.style.height = '';
+      img.style.objectFit = '';
+    });
+    
+    // Check if all images are loaded
+    const images = items.map(item => item.querySelector('img'));
+    const allLoaded = images.every(img => img.complete && img.naturalWidth > 0);
+    
+    if (!allLoaded) {
+      // Wait for all images to load
+      let loadedCount = 0;
+      images.forEach((img, index) => {
+        if (img.complete && img.naturalWidth > 0) {
+          loadedCount++;
+          if (loadedCount === images.length) {
+            layoutImages();
+          }
+        } else {
+          img.onload = function() {
+            loadedCount++;
+            if (loadedCount === images.length) {
+              layoutImages();
+            }
+          };
+          img.onerror = function() {
+            loadedCount++;
+            if (loadedCount === images.length) {
+              layoutImages();
+            }
+          };
+        }
+      });
+    } else {
+      layoutImages();
+    }
+    
+    function layoutImages() {
+      const rows = [];
+      let currentRow = [];
+      let currentRowWidth = 0;
+      
+      items.forEach((item, index) => {
+        const img = item.querySelector('img');
+        if (!img.naturalWidth || !img.naturalHeight) return;
+        
+        const aspectRatio = img.naturalWidth / img.naturalHeight;
+        const itemWidth = rowHeight * aspectRatio;
+        const spacing = currentRow.length > 0 ? margin : 0;
+        const newRowWidth = currentRowWidth + itemWidth + spacing;
+        
+        if (newRowWidth > containerWidth && currentRow.length > 0) {
+          // Current row is full, save it and start a new row
+          rows.push([...currentRow]);
+          currentRow = [item];
+          currentRowWidth = itemWidth;
+        } else {
+          // Add to current row
+          currentRow.push(item);
+          currentRowWidth = newRowWidth;
+        }
+        
+        // If this is the last item, save the current row
+        if (index === items.length - 1 && currentRow.length > 0) {
+          rows.push(currentRow);
+        }
+      });
+      
+      // Layout each row
+      rows.forEach((row, rowIndex) => {
+        // Calculate aspect ratio sum for the row
+        const aspectRatioSum = row.reduce((sum, item) => {
+          const img = item.querySelector('img');
+          if (img.naturalWidth && img.naturalHeight) {
+            return sum + (img.naturalWidth / img.naturalHeight);
+          }
+          return sum;
+        }, 0);
+        
+        if (aspectRatioSum === 0) return;
+        
+        // Calculate available width (subtract margins)
+        const availableWidth = containerWidth - (row.length - 1) * margin;
+        
+        // Layout each item in the row
+        row.forEach((item, itemIndex) => {
+          const img = item.querySelector('img');
+          if (!img.naturalWidth || !img.naturalHeight) return;
+          
+          const aspectRatio = img.naturalWidth / img.naturalHeight;
+          const width = Math.floor((aspectRatio / aspectRatioSum) * availableWidth);
+          const height = rowHeight;
+          
+          item.style.width = width + 'px';
+          item.style.height = height + 'px';
+          item.style.marginRight = itemIndex < row.length - 1 ? margin + 'px' : '0';
+          item.style.marginBottom = rowIndex < rows.length - 1 ? margin + 'px' : '0';
+          item.style.display = 'inline-block';
+          item.style.verticalAlign = 'top';
+          item.style.overflow = 'hidden';
+          
+          img.style.width = '100%';
+          img.style.height = '100%';
+          img.style.objectFit = 'cover';
+          img.style.display = 'block';
+        });
+      });
+    }
+  }
+  
+  // Initialize
+  function startInit() {
+    setTimeout(initJustifiedGallery, 50);
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startInit);
+  } else {
+    startInit();
+  }
+  
+  // Reinitialize on resize (throttled)
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(initJustifiedGallery, 300);
+  });
+  
+  // Reinitialize when all images are loaded
+  window.addEventListener('load', function() {
+    setTimeout(initJustifiedGallery, 100);
+  });
+})();
+</script>
 
