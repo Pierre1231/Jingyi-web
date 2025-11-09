@@ -56,4 +56,90 @@ h1, h2, h3 {
 
 .home-section#gallery .isotope-item { margin-bottom: 0.75rem; }
 
+/* Photo Wall for Misc page - Similar to Sean Tucker's style */
+.photo-wall-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+}
+
+.photo-wall-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .photo-wall-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .photo-wall-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.photo-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.photo-item:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.photo-item a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: transparent;
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+  background: #f8f8f8;
+}
+
+.photo-item:hover img {
+  transform: scale(1.02);
+}
+
+/* Lightbox styling support */
+.glightbox {
+  cursor: zoom-in;
+}
+
+/* Misc intro styling */
+.misc-intro {
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .photo-wall-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .photo-wall-container {
+    padding: 0 0.5rem 3rem;
+  }
+}
+
 
