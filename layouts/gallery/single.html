@@ -9,67 +9,96 @@
       </div>
       {{ end }}
       
-      <div class="gallery-images">
-        {{ $images := .Resources.ByType "image" }}
-        {{ range $images }}
-          {{ $resized := .Fill "1200x800" }}
-          {{ $thumbnail := .Fill "400x300" }}
-          <div class="gallery-image-item">
-            <a href="{{ $resized.RelPermalink }}" data-lightbox="gallery" data-title="{{ .Title | default .Name }}">
-              <img src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title | default .Name }}" loading="lazy" />
-            </a>
-          </div>
-        {{ end }}
-      </div>
+      {{ partial "gallery.html" . }}
     </div>
   </div>
 </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const lightbox = GLightbox({
-      selector: '[data-lightbox="gallery"]',
-      touchNavigation: true,
-      loop: true,
-      autoplayVideos: false
-    });
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.3.4/dist/photoswipe.css" />
+<script type="module">
+  import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.3.4/dist/photoswipe-lightbox.esm.js';
+  import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5.3.4/dist/photoswipe.esm.js';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery',
+    children: 'a.gallery-item',
+    pswpModule: PhotoSwipe,
+    showHideAnimationType: 'fade',
+    bgOpacity: 0.9
   });
+
+  lightbox.on('loadComplete', (e) => {
+    const { content } = e;
+    const item = content.data;
+    if (item.pswpWidth && item.pswpHeight) {
+      content.width = item.pswpWidth;
+      content.height = item.pswpHeight;
+    }
+  });
+
+  lightbox.on('itemData', (e) => {
+    const linkEl = e.item.element;
+    if (linkEl) {
+      e.itemData.src = linkEl.getAttribute('data-pswp-src') || linkEl.href;
+      e.itemData.width = parseInt(linkEl.getAttribute('data-pswp-width')) || 0;
+      e.itemData.height = parseInt(linkEl.getAttribute('data-pswp-height')) || 0;
+      e.itemData.title = linkEl.getAttribute('title') || '';
+    }
+  });
+
+  lightbox.init();
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" async></script>
+
 <style>
-.gallery-images {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
+.gallery {
   margin-top: 2rem;
 }
 
-.gallery-image-item {
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  visibility: visible !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.gallery-item {
+  display: block;
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  aspect-ratio: 4/3;
-  background: #f0f0f0;
   cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.gallery-image-item img {
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item figure {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.3s ease;
 }
 
-.gallery-image-item:hover img {
+.gallery-item:hover img {
   transform: scale(1.05);
-}
-
-.gallery-image-item a {
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 
 .gallery-description {
@@ -80,11 +109,17 @@
 }
 
 @media (max-width: 768px) {
-  .gallery-images {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  #gallery {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #gallery {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.5rem;
   }
 }
 </style>
 {{ end }}
-
