@@ -135,19 +135,6 @@ article,
   }
 }
 
-/* Misc page content styling */
-.content-en-misc article p {
-  max-width: 90%;
-  margin: 1.5rem auto;
-  text-align: center;
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
-
-.content-en-misc article p:first-of-type {
-  margin-top: 2rem;
-}
-
 /* Expand page content width to 90% for single pages - Comprehensive fix */
 /* Target all possible page containers and ensure centering */
 body[class*="page"] .container,
