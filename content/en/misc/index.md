@@ -13,5 +13,5 @@ type: page
   </p>
 </div>
 
-{{< photo_wall images="photography" >}}
+{{< photo_wall_masonry images="photography" >}}
 

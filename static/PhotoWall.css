@@ -1,0 +1,241 @@
+/* Photo Wall Container */
+.photo-wall-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+.photo-wall-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+.photo-wall-header h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.photo-wall-header p {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Photo Grid */
+.photo-wall-grid {
+  display: grid;
+  gap: 1rem;
+  padding: 0 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .photo-wall-grid {
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .photo-wall-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .photo-wall-grid {
+    gap: 1.75rem;
+  }
+}
+
+/* Photo Item */
+.photo-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+  break-inside: avoid;
+}
+
+.photo-item.loaded {
+  opacity: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.photo-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #f5f5f5;
+}
+
+.photo-item:hover img {
+  transform: scale(1.03);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  animation: fadeIn 0.3s;
+}
+
+.lightbox.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+  animation: zoomIn 0.3s;
+  position: relative;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  z-index: 10000;
+  line-height: 1;
+  padding: 10px;
+}
+
+.lightbox-close:hover {
+  opacity: 0.7;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  transition: background 0.3s;
+  z-index: 10000;
+  user-select: none;
+}
+
+.lightbox-nav:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .photo-wall-container {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .photo-wall-header h1 {
+    font-size: 2rem;
+  }
+
+  .photo-wall-header p {
+    font-size: 1rem;
+  }
+
+  .photo-wall-grid {
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .lightbox-nav {
+    font-size: 24px;
+    padding: 8px 12px;
+  }
+
+  .lightbox-close {
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+  }
+
+  .lightbox-prev {
+    left: 10px;
+  }
+
+  .lightbox-next {
+    right: 10px;
+  }
+}
+
