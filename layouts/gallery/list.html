@@ -52,7 +52,8 @@
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr)); /* 确保在大屏幕上固定3列并允许收缩 */
-  gap: 2rem;
+  column-gap: 2rem;
+  row-gap: 2.5rem;
   margin-top: 2rem;
   width: 100%;
 }
@@ -142,14 +143,16 @@
 @media (min-width: 992px) {
   .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    column-gap: 2rem;
+    row-gap: 2.5rem;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    column-gap: 1.5rem;
+    row-gap: 2rem;
   }
   
   .container {
@@ -161,7 +164,8 @@
 @media (max-width: 767px) {
   .gallery-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
   }
 }
 </style>
