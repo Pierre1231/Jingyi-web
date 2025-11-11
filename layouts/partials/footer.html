@@ -1,57 +1,163 @@
 {{- $contact := .Site.Params.contact | default dict -}}
 {{- $author := .Site.Params.author | default dict -}}
+{{- $footerParams := .Site.Params.footer | default dict -}}
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="site-footer-inner">
-          {{- if $contact.email -}}
-          <div class="footer-contact" style="margin-bottom: 1rem;">
-            <p style="margin-bottom: 0.5rem;">
-              <strong>Contact:</strong>
-              <a href="mailto:{{ $contact.email }}">{{ $contact.email }}</a>
-              {{- if $contact.phone -}}
-              <span style="margin: 0 0.5rem;">|</span>
-              <a href="tel:{{ $contact.phone }}">{{ $contact.phone }}</a>
-              {{- end -}}
-            </p>
-            {{- if $contact.address -}}
-            <p style="margin-bottom: 0;">
-              {{- if $contact.address.street -}}{{ $contact.address.street }}, {{ end -}}
-              {{- if $contact.address.city -}}{{ $contact.address.city }}{{ end -}}
-              {{- if $contact.address.postcode -}} {{ $contact.address.postcode }}{{ end -}}
-              {{- if $contact.address.country -}}, {{ $contact.address.country }}{{ end -}}
-            </p>
-            {{- end -}}
-          </div>
+  <div class="footer-container">
+    <div class="footer-contact">
+      <h2 class="footer-title">Contact</h2>
+      <ul class="footer-contact-list">
+        {{- if $contact.email -}}
+        <li>
+          <span class="label">Email</span>
+          <a href="mailto:{{ $contact.email }}">{{ $contact.email }}</a>
+        </li>
+        {{- end -}}
+        {{- if $contact.phone -}}
+        <li>
+          <span class="label">Phone</span>
+          <a href="tel:{{ $contact.phone }}">{{ $contact.phone }}</a>
+        </li>
+        {{- end -}}
+        {{- with $contact.address -}}
+          {{- $addressLine := slice -}}
+          {{- if .street -}}
+            {{- $addressLine = $addressLine | append .street -}}
           {{- end -}}
-          
-          {{- if .Site.Params.footer.copyright -}}
-          <div class="footer-copyright">
-            {{- $copyright := .Site.Params.footer.copyright.notice | default (printf "© %d %s" now.Year .Site.Title) -}}
-            {{- $copyright = replace $copyright "{year}" (string now.Year) -}}
-            {{- if .Site.Params.footer.copyright.license.enable -}}
-              {{- $license := "CC BY 4.0" -}}
-              {{- if .Site.Params.footer.copyright.license.allow_derivatives -}}
-                {{- if .Site.Params.footer.copyright.license.share_alike -}}
-                  {{- $license = "CC BY-SA 4.0" -}}
-                {{- else -}}
-                  {{- $license = "CC BY 4.0" -}}
-                {{- end -}}
-              {{- else -}}
-                {{- $license = "CC BY-ND 4.0" -}}
-              {{- end -}}
-              {{- $copyright = replace $copyright "{license}" $license -}}
-            {{- else -}}
-              {{- $copyright = replace $copyright "{license}" "" -}}
-            {{- end -}}
-            <p style="margin-bottom: 0;">{{ $copyright | markdownify }}</p>
-          </div>
+          {{- if .city -}}
+            {{- $addressLine = $addressLine | append .city -}}
           {{- end -}}
-        </div>
-      </div>
+          {{- if .postcode -}}
+            {{- $addressLine = $addressLine | append .postcode -}}
+          {{- end -}}
+          {{- if .country -}}
+            {{- $addressLine = $addressLine | append .country -}}
+          {{- end -}}
+          {{- if gt (len $addressLine) 0 -}}
+          <li>
+            <span class="label">Address</span>
+            <span>{{ delimit $addressLine ", " }}</span>
+          </li>
+          {{- end -}}
+        {{- end -}}
+      </ul>
     </div>
+
+    {{- if or $author.name .Site.Title -}}
+    <div class="footer-summary">
+      {{- if $author.name -}}
+      <p class="footer-author">{{ $author.name }}</p>
+      {{- end -}}
+      {{- if .Site.Title -}}
+      <p class="footer-site">{{ .Site.Title }}</p>
+      {{- end -}}
+    </div>
+    {{- end -}}
+
+    {{- with $footerParams.copyright -}}
+    <div class="footer-meta">
+      {{- $notice := .notice | default (printf "© %d %s" now.Year .Site.Title) -}}
+      {{- $notice = replace $notice "{year}" (string now.Year) -}}
+      {{- if .license.enable -}}
+        {{- $license := "CC BY 4.0" -}}
+        {{- if not .license.allow_derivatives -}}
+          {{- $license = "CC BY-ND 4.0" -}}
+        {{- else if .license.share_alike -}}
+          {{- $license = "CC BY-SA 4.0" -}}
+        {{- end -}}
+        {{- $notice = replace $notice "{license}" $license -}}
+      {{- else -}}
+        {{- $notice = replace $notice "{license}" "" -}}
+      {{- end -}}
+      <p>{{ $notice | markdownify }}</p>
+    </div>
+    {{- end -}}
   </div>
 </footer>
+
+<style>
+.site-footer {
+  background: #0b0d17;
+  color: #ffffff;
+  margin-top: 4rem;
+  padding: 3rem 1.5rem 2rem;
+}
+
+.footer-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.footer-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: #ffffff;
+}
+
+.footer-contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-contact-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.footer-contact-list .label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.site-footer a {
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+  color: #9ecfff;
+  border-color: rgba(158, 207, 255, 0.65);
+}
+
+.footer-summary p,
+.footer-meta p {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-author {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.footer-meta p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 2.5rem 1.25rem 1.75rem;
+  }
+
+  .footer-container {
+    gap: 1.5rem;
+  }
+}
+</style>
 
