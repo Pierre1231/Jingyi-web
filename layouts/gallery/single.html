@@ -25,7 +25,18 @@
     children: 'a.gallery-item',
     pswpModule: PhotoSwipe,
     showHideAnimationType: 'fade',
-    bgOpacity: 0.9
+    bgOpacity: 0.9,
+    // 确保关闭按钮和箭头显示
+    closeTitle: 'Close (Esc)',
+    zoomTitle: 'Zoom in/out',
+    arrowPrevTitle: 'Previous (arrow left)',
+    arrowNextTitle: 'Next (arrow right)',
+    // 允许键盘导航
+    returnFocus: true,
+    // 允许点击背景关闭
+    tapToClose: true,
+    // 允许滑动切换
+    swipeToClose: true
   });
 
   lightbox.on('loadComplete', (e) => {
@@ -119,6 +130,53 @@
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 0.5rem;
   }
+}
+
+/* PhotoSwipe 自定义样式 - 确保关闭按钮和箭头清晰可见 */
+.pswp__button--close {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  margin: 10px !important;
+  opacity: 0.9 !important;
+}
+
+.pswp__button--close:hover {
+  opacity: 1 !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.pswp__button--arrow--prev,
+.pswp__button--arrow--next {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  opacity: 0.9 !important;
+}
+
+.pswp__button--arrow--prev:hover,
+.pswp__button--arrow--next:hover {
+  opacity: 1 !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.pswp__button--arrow--prev {
+  left: 10px !important;
+}
+
+.pswp__button--arrow--next {
+  right: 10px !important;
+}
+
+/* 确保关闭按钮和箭头图标清晰可见 */
+.pswp__button--close svg,
+.pswp__button--arrow--prev svg,
+.pswp__button--arrow--next svg {
+  fill: white !important;
+  width: 24px !important;
+  height: 24px !important;
 }
 </style>
 {{ end }}
