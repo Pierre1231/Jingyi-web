@@ -62,9 +62,7 @@
 
 #gallery {
   position: relative;
-  visibility: visible !important;
-  height: auto !important;
-  overflow: visible !important;
+  min-height: 200px;
 }
 
 .gallery-item {
@@ -75,6 +73,7 @@
   text-decoration: none;
   transition: opacity 0.2s ease;
   opacity: 1;
+  visibility: visible;
 }
 
 .gallery-item:hover {
@@ -172,12 +171,25 @@
     function layoutMasonry() {
       const columns = getColumns();
       const gap = 2; // 2px gap
+      
+      // Make sure gallery is visible
+      gallery.style.visibility = 'visible';
+      gallery.style.height = 'auto';
+      gallery.style.overflow = 'visible';
+      
+      // Wait for gallery to have width
+      if (gallery.offsetWidth === 0) {
+        setTimeout(layoutMasonry, 50);
+        return;
+      }
+      
       const columnWidth = (gallery.offsetWidth - (gap * (columns - 1))) / columns;
       
       // Reset positions
       items.forEach(item => {
         item.style.width = columnWidth + 'px';
         item.style.position = 'absolute';
+        item.style.visibility = 'visible';
       });
 
       // Calculate column heights
@@ -201,7 +213,10 @@
       });
       
       // Set gallery height
-      gallery.style.height = Math.max(...columnHeights) + 'px';
+      const maxHeight = Math.max(...columnHeights);
+      if (maxHeight > 0) {
+        gallery.style.height = maxHeight + 'px';
+      }
     }
 
     // Function to handle image loading
@@ -236,10 +251,14 @@
     });
 
     // Initial layout (will be refined as images load)
-    setTimeout(layoutMasonry, 100);
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(function() {
+      setTimeout(layoutMasonry, 100);
+    });
     
-    // Re-layout after a delay to catch lazysizes loaded images
-    setTimeout(layoutMasonry, 500);
+    // Re-layout after images load
+    setTimeout(layoutMasonry, 300);
+    setTimeout(layoutMasonry, 800);
   }
 
   // Initialize when DOM is ready
