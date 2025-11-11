@@ -152,6 +152,16 @@
     max-width: 100%;
   }
 }
+
+/* 移动端或无悬停设备：文字常驻显示 */
+@media (hover: none), (pointer: coarse) {
+  .gallery-item-overlay {
+    transform: translateY(0);
+  }
+  .gallery-item:hover .gallery-item-overlay {
+    transform: translateY(0);
+  }
+}
 </style>
 {{ end }}
 
