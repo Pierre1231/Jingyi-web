@@ -21,11 +21,10 @@ main:
     weight: 40
   - name: Gallery
     url: 'gallery/'
-    weight: 48
-    parent: misc
+    weight: 56
   - name: Misc.
     url: 'misc/'
-    weight: 56
+    weight: 48
     identifier: misc
 
 # Link to a PDF of your resume/CV from the menu.
