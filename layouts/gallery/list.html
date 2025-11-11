@@ -157,6 +157,7 @@
 @media (hover: none), (pointer: coarse) {
   .gallery-item-overlay {
     transform: translateY(0);
+    pointer-events: none; /* 不影响点击跳转 */
   }
   .gallery-item:hover .gallery-item-overlay {
     transform: translateY(0);
