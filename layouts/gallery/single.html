@@ -62,7 +62,17 @@
       arrowNextTitle: 'Next (arrow right)',
       returnFocus: true,
       tapToClose: true,
-      swipeToClose: true
+      swipeToClose: true,
+      // 禁用缩放按钮
+      zoom: false,
+      // 调整过渡动画时长
+      initialZoomFactor: 1,
+      secondaryZoomLevel: 1,
+      maxZoomLevel: 1,
+      // 添加其他过渡效果参数，例如动画时长
+      speed: 300,
+      // 增加拖拽灵敏度，使切换更平滑
+      pinchToClose: false // 禁用双指缩放关闭，与放大镜禁用一致
     });
 
     // 初始化 lightbox
