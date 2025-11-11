@@ -46,13 +46,15 @@
 </div>
 
 <style>
+* {
+  box-sizing: border-box;
+}
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 确保在大屏幕上固定3列并允许收缩 */
   gap: 2rem;
   margin-top: 2rem;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .gallery-item {
@@ -63,8 +65,6 @@
   background: #f0f0f0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .gallery-item:hover {
@@ -78,6 +78,7 @@
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
+  image-orientation: from-image;
 }
 
 .gallery-item:hover img {
@@ -135,7 +136,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-  box-sizing: border-box;
 }
 
 /* 响应式设计 - 三个卡片一排 */
