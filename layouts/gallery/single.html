@@ -20,49 +20,63 @@
   import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.3.4/dist/photoswipe-lightbox.esm.js';
   import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5.3.4/dist/photoswipe.esm.js';
 
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '#gallery',
-    children: 'a.gallery-item',
-    pswpModule: PhotoSwipe,
-    showHideAnimationType: 'fade',
-    bgOpacity: 0.9,
-    // 确保关闭按钮和箭头显示
-    closeTitle: 'Close (Esc)',
-    zoomTitle: 'Zoom in/out',
-    arrowPrevTitle: 'Previous (arrow left)',
-    arrowNextTitle: 'Next (arrow right)',
-    // 允许键盘导航
-    returnFocus: true,
-    // 允许点击背景关闭
-    tapToClose: true,
-    // 允许滑动切换
-    swipeToClose: true
-  });
-
-  lightbox.on('loadComplete', (e) => {
-    const { content } = e;
-    const item = content.data;
-    if (item.pswpWidth && item.pswpHeight) {
-      content.width = item.pswpWidth;
-      content.height = item.pswpHeight;
+  function initPhotoSwipe() {
+    const gallery = document.getElementById('gallery');
+    if (!gallery) {
+      return;
     }
-  });
 
-  lightbox.on('itemData', (e) => {
-    const linkEl = e.item.element;
-    if (linkEl) {
-      e.itemData.src = linkEl.getAttribute('data-pswp-src') || linkEl.href;
-      const width = parseInt(linkEl.getAttribute('data-pswp-width'));
-      const height = parseInt(linkEl.getAttribute('data-pswp-height'));
-      if (width && height) {
-        e.itemData.width = width;
-        e.itemData.height = height;
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#gallery',
+      children: 'a.gallery-item',
+      pswpModule: PhotoSwipe,
+      showHideAnimationType: 'fade',
+      bgOpacity: 0.9,
+      closeTitle: 'Close (Esc)',
+      zoomTitle: 'Zoom in/out',
+      arrowPrevTitle: 'Previous (arrow left)',
+      arrowNextTitle: 'Next (arrow right)',
+      returnFocus: true,
+      tapToClose: true,
+      swipeToClose: true
+    });
+
+    // 处理 itemData 事件，从 data 属性中获取图片信息
+    lightbox.on('itemData', (e) => {
+      const linkEl = e.item.element;
+      if (linkEl) {
+        // 优先使用 data-pswp-src，否则使用 href
+        const src = linkEl.getAttribute('data-pswp-src') || linkEl.href;
+        e.itemData.src = src;
+        
+        const width = parseInt(linkEl.getAttribute('data-pswp-width'));
+        const height = parseInt(linkEl.getAttribute('data-pswp-height'));
+        if (width && height) {
+          e.itemData.width = width;
+          e.itemData.height = height;
+        } else {
+          // 如果没有提供尺寸，使用默认值
+          e.itemData.width = 1600;
+          e.itemData.height = 1200;
+        }
+        
+        const title = linkEl.getAttribute('title') || '';
+        if (title) {
+          e.itemData.title = title;
+        }
       }
-      e.itemData.title = linkEl.getAttribute('title') || '';
-    }
-  });
+    });
 
-  lightbox.init();
+    lightbox.init();
+  }
+
+  // 等待 DOM 加载完成
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPhotoSwipe);
+  } else {
+    // DOM 已经加载完成
+    initPhotoSwipe();
+  }
 </script>
 
 <style>
