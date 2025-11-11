@@ -26,7 +26,10 @@
       }}
     {{ end }}
     {{ $publishResources := default true .Params.build.publishResources }}
-    {{ range sort $images (.Params.sort_by | default "Name") (.Params.sort_order | default "asc") }}
+    {{/* 按日期倒序排列，最新的在前。如果没有日期，使用文件修改时间 */}}
+    {{ $sortedImages := sort $images "Date" "desc" }}
+    {{/* 如果 Date 为空，使用文件修改时间作为后备 */}}
+    {{ range $sortedImages }}
       {{ $image := .image }}
       {{ $thumbnail := $image.Fill "600x600" }}
       {{ $full := $image.Fit "1600x1600" }}
