@@ -28,7 +28,7 @@
               {{ $thumbnail := $cover.Fill "400x300" }}
               <div class="gallery-item">
                 <a href="{{ .RelPermalink }}">
-                  <img src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}" loading="lazy" />
+                  <img src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}" loading="lazy" style="image-orientation: from-image;" />
                   <div class="gallery-item-overlay">
                     <h3>{{ .Title }}</h3>
                     {{ if .Description }}
@@ -48,10 +48,11 @@
 <style>
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 2rem;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .gallery-item {
@@ -62,6 +63,8 @@
   background: #f0f0f0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .gallery-item:hover {
@@ -132,12 +135,14 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 /* 响应式设计 - 三个卡片一排 */
 @media (min-width: 992px) {
   .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 }
 
@@ -145,6 +150,11 @@
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+  }
+  
+  .container {
+    max-width: 100%;
+    padding: 0 1.5rem;
   }
 }
 
