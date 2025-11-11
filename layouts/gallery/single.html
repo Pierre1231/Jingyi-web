@@ -61,9 +61,7 @@
 }
 
 #gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
+  position: relative;
   visibility: visible !important;
   height: auto !important;
   overflow: visible !important;
@@ -71,38 +69,31 @@
 
 .gallery-item {
   display: block;
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
+  position: absolute;
+  width: calc(25% - 3px);
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: opacity 0.2s ease;
+  opacity: 1;
 }
 
 .gallery-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  opacity: 0.9;
 }
 
 .gallery-item figure {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
   position: relative;
   overflow: hidden;
 }
 
 .gallery-item img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
+  vertical-align: bottom;
 }
 
 .gallery-description {
@@ -112,18 +103,151 @@
   color: #666;
 }
 
-@media (max-width: 768px) {
-  #gallery {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 0.75rem;
+/* 5 columns on large screens */
+@media (min-width: 1400px) {
+  .gallery-item {
+    width: calc(20% - 3.2px);
   }
 }
 
-@media (max-width: 480px) {
-  #gallery {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 0.5rem;
+/* 4 columns on medium-large screens (default) */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .gallery-item {
+    width: calc(25% - 3px);
+  }
+}
+
+/* 3 columns on tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .gallery-item {
+    width: calc(33.333% - 2.67px);
+  }
+}
+
+/* 2 columns on small tablets */
+@media (min-width: 480px) and (max-width: 767px) {
+  .gallery-item {
+    width: calc(50% - 2px);
+  }
+}
+
+/* 1 column on mobile */
+@media (max-width: 479px) {
+  .gallery-item {
+    width: 100%;
   }
 }
 </style>
+
+<script>
+(function() {
+  function initMasonry() {
+    const gallery = document.getElementById('gallery');
+    if (!gallery) return;
+
+    const items = Array.from(gallery.querySelectorAll('.gallery-item'));
+    if (items.length === 0) return;
+
+    // Calculate number of columns based on screen width
+    function getColumns() {
+      const width = window.innerWidth;
+      if (width >= 1400) return 5;
+      if (width >= 1024) return 4;
+      if (width >= 768) return 3;
+      if (width >= 480) return 2;
+      return 1;
+    }
+
+    function getImageHeight(img, columnWidth) {
+      if (img.naturalWidth && img.naturalHeight) {
+        return (img.naturalHeight / img.naturalWidth) * columnWidth;
+      }
+      if (img.offsetHeight && img.offsetWidth) {
+        return (img.offsetHeight / img.offsetWidth) * columnWidth;
+      }
+      // Fallback: assume square
+      return columnWidth;
+    }
+
+    function layoutMasonry() {
+      const columns = getColumns();
+      const gap = 2; // 2px gap
+      const columnWidth = (gallery.offsetWidth - (gap * (columns - 1))) / columns;
+      
+      // Reset positions
+      items.forEach(item => {
+        item.style.width = columnWidth + 'px';
+        item.style.position = 'absolute';
+      });
+
+      // Calculate column heights
+      const columnHeights = new Array(columns).fill(0);
+      
+      items.forEach((item) => {
+        // Find the shortest column
+        const shortestColumnIndex = columnHeights.indexOf(Math.min(...columnHeights));
+        
+        // Position the item
+        const left = shortestColumnIndex * (columnWidth + gap);
+        const top = columnHeights[shortestColumnIndex];
+        
+        item.style.left = left + 'px';
+        item.style.top = top + 'px';
+        
+        // Update column height
+        const img = item.querySelector('img');
+        const itemHeight = getImageHeight(img, columnWidth);
+        columnHeights[shortestColumnIndex] += itemHeight + gap;
+      });
+      
+      // Set gallery height
+      gallery.style.height = Math.max(...columnHeights) + 'px';
+    }
+
+    // Function to handle image loading
+    function handleImageLoad() {
+      layoutMasonry();
+    }
+
+    // Wait for images to load and handle lazysizes
+    items.forEach(item => {
+      const img = item.querySelector('img');
+      
+      // If image is already loaded
+      if (img.complete && img.naturalWidth > 0) {
+        return;
+      }
+      
+      // Listen for lazysizes loaded event
+      img.addEventListener('lazyloaded', handleImageLoad);
+      
+      // Fallback: listen for regular load event
+      img.addEventListener('load', handleImageLoad);
+      
+      // Also listen for error
+      img.addEventListener('error', handleImageLoad);
+    });
+
+    // Layout on window resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(layoutMasonry, 250);
+    });
+
+    // Initial layout (will be refined as images load)
+    setTimeout(layoutMasonry, 100);
+    
+    // Re-layout after a delay to catch lazysizes loaded images
+    setTimeout(layoutMasonry, 500);
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMasonry);
+  } else {
+    initMasonry();
+  }
+})();
+</script>
 {{ end }}
