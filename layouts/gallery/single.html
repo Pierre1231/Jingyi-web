@@ -23,12 +23,36 @@
   function initPhotoSwipe() {
     const gallery = document.getElementById('gallery');
     if (!gallery) {
+      console.error('Gallery container not found');
       return;
     }
 
+    const galleryItems = gallery.querySelectorAll('a.gallery-item');
+    if (galleryItems.length === 0) {
+      console.error('No gallery items found');
+      return;
+    }
+
+    console.log('Initializing PhotoSwipe with', galleryItems.length, 'items');
+
+    // 构建图片数据数组
+    const items = Array.from(galleryItems).map(item => {
+      const src = item.getAttribute('data-pswp-src') || item.href;
+      const width = parseInt(item.getAttribute('data-pswp-width')) || 1600;
+      const height = parseInt(item.getAttribute('data-pswp-height')) || 1200;
+      const title = item.getAttribute('title') || '';
+      
+      return {
+        src: src,
+        width: width,
+        height: height,
+        title: title
+      };
+    });
+
+    // 创建 lightbox 实例
     const lightbox = new PhotoSwipeLightbox({
-      gallery: '#gallery',
-      children: 'a.gallery-item',
+      dataSource: items,
       pswpModule: PhotoSwipe,
       showHideAnimationType: 'fade',
       bgOpacity: 0.9,
@@ -41,41 +65,31 @@
       swipeToClose: true
     });
 
-    // 处理 itemData 事件，从 data 属性中获取图片信息
-    lightbox.on('itemData', (e) => {
-      const linkEl = e.item.element;
-      if (linkEl) {
-        // 优先使用 data-pswp-src，否则使用 href
-        const src = linkEl.getAttribute('data-pswp-src') || linkEl.href;
-        e.itemData.src = src;
-        
-        const width = parseInt(linkEl.getAttribute('data-pswp-width'));
-        const height = parseInt(linkEl.getAttribute('data-pswp-height'));
-        if (width && height) {
-          e.itemData.width = width;
-          e.itemData.height = height;
-        } else {
-          // 如果没有提供尺寸，使用默认值
-          e.itemData.width = 1600;
-          e.itemData.height = 1200;
-        }
-        
-        const title = linkEl.getAttribute('title') || '';
-        if (title) {
-          e.itemData.title = title;
-        }
-      }
+    // 初始化 lightbox
+    lightbox.init();
+
+    // 为每个图片链接绑定点击事件
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Opening photo at index:', index);
+        lightbox.loadAndOpen(index);
+        return false;
+      });
     });
 
-    lightbox.init();
+    console.log('PhotoSwipe initialized successfully');
   }
 
   // 等待 DOM 加载完成
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPhotoSwipe);
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(initPhotoSwipe, 100);
+    });
   } else {
-    // DOM 已经加载完成
-    initPhotoSwipe();
+    // DOM 已经加载完成，稍微延迟以确保所有元素都已渲染
+    setTimeout(initPhotoSwipe, 100);
   }
 </script>
 
