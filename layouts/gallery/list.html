@@ -1,15 +1,15 @@
 {{ define "main" }}
-<div class="gallery-index">
-  <header class="gallery-index-header">
-    <h1 class="gallery-index-title">{{ .Title }}</h1>
+<div class="gallery-container">
+  <header class="gallery-header">
+    <h1 class="gallery-title">{{ .Title }}</h1>
     {{ if .Content }}
-    <div class="gallery-index-desc">
+    <div class="gallery-description">
       {{ .Content }}
     </div>
     {{ end }}
   </header>
   
-  <div class="albums-list">
+  <div class="albums-grid">
     {{ range sort .Pages "Weight" }}
       {{ $page := . }}
       {{ $images := .Resources.ByType "image" }}
@@ -27,26 +27,30 @@
         {{ end }}
         
         {{ if $cover }}
-          {{ $thumbnail := $cover.Fit "1200x800" }}
-          <a href="{{ $page.RelPermalink }}" class="album-tile">
-            <div class="album-tile-image">
-              <img 
-                src="{{ $thumbnail.RelPermalink }}" 
-                alt="{{ $page.Title }}" 
-                loading="lazy"
-                style="image-orientation: from-image;"
-              />
-              <div class="album-tile-overlay">
-                <span class="album-tile-count">{{ $imageCount }} photos</span>
+          {{ $thumbnail := $cover.Fill "400x300" }}
+          <article class="album-card">
+            <a href="{{ $page.RelPermalink }}" class="album-link">
+              <div class="album-image-wrapper">
+                <img 
+                  src="{{ $thumbnail.RelPermalink }}" 
+                  alt="{{ $page.Title }}" 
+                  class="album-image"
+                  loading="lazy" 
+                  style="image-orientation: from-image;" 
+                />
+                <div class="album-overlay">
+                  <span class="album-count">{{ $imageCount }} photos</span>
+                  <span class="album-view">View Album →</span>
+                </div>
               </div>
-            </div>
-            <div class="album-tile-info">
-              <h2 class="album-tile-name">{{ $page.Title }}</h2>
-              {{ if $page.Description }}
-              <p class="album-tile-desc">{{ $page.Description }}</p>
-              {{ end }}
-            </div>
-          </a>
+              <div class="album-info">
+                <h3 class="album-name">{{ $page.Title }}</h3>
+                {{ if $page.Description }}
+                <p class="album-description">{{ $page.Description }}</p>
+                {{ end }}
+              </div>
+            </a>
+          </article>
         {{ end }}
       {{ end }}
     {{ end }}
@@ -54,161 +58,176 @@
 </div>
 
 <style>
-.gallery-index {
-  max-width: 1400px;
+.gallery-container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 2rem 1rem;
 }
 
-.gallery-index-header {
+.gallery-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
-.gallery-index-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  margin: 0 0 1rem 0;
-  color: var(--heading-color, #1a1a1a);
+.gallery-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--heading-color, #333);
 }
 
-.gallery-index-desc {
+.gallery-description {
   max-width: 600px;
   margin: 0 auto;
   font-size: 1.1rem;
-  line-height: 1.7;
+  line-height: 1.6;
   color: var(--text-color, #666);
 }
 
-/* Album tiles - large, cinematic */
-.albums-list {
+/* Albums Grid */
+.albums-grid {
   display: flex;
-  flex-direction: column;
-  gap: 4rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.album-tile {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.4s ease;
+.album-card {
+  flex: 1 1 calc(33.333% - 2rem);
+  max-width: calc(33.333% - 2rem);
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 4 / 3;
+  background: #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.album-tile:hover {
+.album-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   transform: translateY(-4px);
 }
 
-.album-tile-image {
-  position: relative;
-  overflow: hidden;
-  border-radius: 4px;
-  background: #1a1a1a;
-  aspect-ratio: 16 / 9;
+.album-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
-.album-tile-image img {
+.album-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.album-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.3s ease;
+  display: block;
+  transition: transform 0.3s ease;
+  image-orientation: from-image;
 }
 
-.album-tile:hover .album-tile-image img {
-  transform: scale(1.03);
+.album-card:hover .album-image {
+  transform: scale(1.05);
 }
 
-.album-tile-overlay {
+.album-overlay {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 1.5rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4), transparent);
+  color: white;
+  padding: 1.5rem 1rem 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
 }
 
-.album-tile:hover .album-tile-overlay {
-  opacity: 1;
+.album-card:hover .album-overlay {
+  transform: translateY(0);
 }
 
-.album-tile-count {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.album-count {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
 }
 
-.album-tile-info {
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-.album-tile-name {
-  font-size: 1.75rem;
-  font-weight: 400;
-  margin: 0 0 0.5rem 0;
-  color: var(--heading-color, #1a1a1a);
-  letter-spacing: -0.01em;
-}
-
-.album-tile-desc {
+.album-view {
   font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-color, #666);
+  font-weight: 600;
+}
+
+.album-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.album-card:hover .album-info {
+  transform: translateY(0);
+}
+
+.album-name {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.album-description {
   margin: 0;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .gallery-index {
-    padding: 2rem 1rem;
-  }
-  
-  .gallery-index-header {
-    margin-bottom: 3rem;
-  }
-  
-  .albums-list {
-    gap: 3rem;
-  }
-  
-  .album-tile-image {
-    aspect-ratio: 4 / 3;
-  }
-  
-  .album-tile-overlay {
-    opacity: 1;
-    background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 60%);
-  }
-  
-  .album-tile-name {
-    font-size: 1.5rem;
-  }
-  
-  .album-tile-info {
-    margin-top: 1rem;
+@media (max-width: 991px) {
+  .album-card {
+    flex: 1 1 calc(50% - 1.5rem);
+    max-width: calc(50% - 1.5rem);
   }
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  .album-tile-image {
-    background: #2a2a2a;
+@media (max-width: 767px) {
+  .album-card {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
   
-  .album-tile-name {
-    color: var(--heading-color-dark, #f0f0f0);
+  .album-overlay {
+    transform: translateY(0);
+    pointer-events: none;
   }
   
-  .album-tile-desc {
-    color: var(--text-color-dark, #aaa);
+  .album-info {
+    transform: translateY(0);
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .album-overlay {
+    transform: translateY(0);
+  }
+  .album-card:hover .album-overlay {
+    transform: translateY(0);
   }
 }
 </style>
