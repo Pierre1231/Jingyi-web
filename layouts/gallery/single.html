@@ -36,7 +36,7 @@
       return;
     }
 
-    const galleryItems = gallery.querySelectorAll('a.gallery-item');
+    const galleryItems = gallery.querySelectorAll('a.photo-item, a.gallery-item');
     if (galleryItems.length === 0) {
       console.error('No gallery items found');
       return;
@@ -44,58 +44,40 @@
 
     console.log('Initializing PhotoSwipe with', galleryItems.length, 'items');
 
-    // Build image data array with titles
+    // Build image data array
     const items = Array.from(galleryItems).map(item => {
       const src = item.getAttribute('data-pswp-src') || item.href;
       const width = parseInt(item.getAttribute('data-pswp-width')) || 1600;
       const height = parseInt(item.getAttribute('data-pswp-height')) || 1200;
-      const title = item.getAttribute('data-title') || '';
       
       return {
         src: src,
         width: width,
-        height: height,
-        title: title
+        height: height
       };
     });
 
-    // Create lightbox instance
+    // Create lightbox instance - clean, no captions
     const lightbox = new PhotoSwipeLightbox({
       dataSource: items,
       pswpModule: PhotoSwipe,
       showHideAnimationType: 'fade',
       bgOpacity: 0.95,
       closeTitle: 'Close (Esc)',
-      zoomTitle: 'Zoom in/out',
-      arrowPrevTitle: 'Previous (arrow left)',
-      arrowNextTitle: 'Next (arrow right)',
+      zoomTitle: 'Zoom',
+      arrowPrevTitle: 'Previous',
+      arrowNextTitle: 'Next',
       returnFocus: true,
       tapToClose: true,
       swipeToClose: true,
       zoom: false,
       initialZoomFactor: 1,
-      secondaryZoomLevel: 1,
       maxZoomLevel: 1,
       speed: 300,
-      pinchToClose: false,
-      // Add caption plugin
-      padding: { top: 20, bottom: 60, left: 20, right: 20 }
+      pinchToClose: false
     });
 
-    // Add caption rendering
-    lightbox.on('itemData', (e) => {
-      const { itemData } = e;
-      if (itemData.title) {
-        itemData.html = `
-          <div class="pswp__custom-content">
-            <img src="${itemData.src}" alt="${itemData.title}" style="max-width: 100%; max-height: 85vh; object-fit: contain;">
-            ${itemData.title ? `<div class="pswp__caption">${itemData.title}</div>` : ''}
-          </div>
-        `;
-      }
-    });
-
-    // Initialize lightbox
+    // Initialize
     lightbox.init();
 
     // Bind click events
@@ -103,7 +85,6 @@
       item.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        console.log('Opening photo at index:', index);
         lightbox.loadAndOpen(index);
         return false;
       });
@@ -112,7 +93,7 @@
     console.log('PhotoSwipe initialized successfully');
   }
 
-  // Wait for DOM to be ready
+  // Wait for DOM
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       setTimeout(initPhotoSwipe, 100);
@@ -180,30 +161,6 @@
   margin: 0 auto;
 }
 
-/* PhotoSwipe Custom Caption */
-.pswp__custom-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.pswp__caption {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  max-width: 80%;
-  text-align: center;
-  backdrop-filter: blur(4px);
-}
-
 /* Responsive */
 @media (max-width: 768px) {
   .gallery-single-container {
@@ -216,12 +173,6 @@
   
   .gallery-single-description {
     font-size: 1rem;
-  }
-  
-  .pswp__caption {
-    font-size: 0.85rem;
-    padding: 0.5rem 1rem;
-    max-width: 90%;
   }
 }
 </style>
