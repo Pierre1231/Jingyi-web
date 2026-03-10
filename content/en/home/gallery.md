@@ -1,5 +1,4 @@
 ---
-# Gallery preview section
 widget: blank
 headless: true
 active: true
@@ -11,4 +10,4 @@ design:
 
 {{< cta cta_text="View Gallery →" cta_link="gallery/" cta_new_tab="false" >}}
 
-A collection of my photographic works including architecture, street, and nature photography.
+Selected photography works across architecture, street, and nature.

@@ -1,8 +1,7 @@
 <section class="photo-gallery">
-  <div id="gallery" class="photo-grid">
+  <div id="gallery" class="masonry-grid">
     {{ $images := slice }}
     {{ range $image := where (.Resources.ByType "image") "Params.hidden" "ne" true }}
-      {{ $title := "" }}
       {{ $date := "" }}
       {{ with $image.Exif }}
         {{ $date = .Date }}
@@ -11,7 +10,6 @@
         {{ $date = time $image.Params.Date }}
       {{ end }}
       {{ $images = $images | append (dict
-        "Title" $title
         "Date" $date
         "image" $image
         )
@@ -23,25 +21,28 @@
     
     {{ range $sortedImages }}
       {{ $image := .image }}
-      {{ $thumbnail := $image.Fill "600x600" }}
-      {{ $full := $image.Fit "1600x1600" }}
+      {{ $thumbnail := $image.Fit "800x1200" }}
+      {{ $full := $image.Fit "2000x2000" }}
       {{ $aspectRatio := div (float $thumbnail.Width) $thumbnail.Height }}
       
-      <a class="photo-item" 
+      <a class="masonry-item" 
          href="{{ $full.RelPermalink }}" 
          data-pswp-src="{{ $full.RelPermalink }}" 
          data-pswp-width="{{ $full.Width }}" 
          data-pswp-height="{{ $full.Height }}"
          itemscope 
-         itemtype="https://schema.org/ImageObject">
+         itemtype="https://schema.org/ImageObject"
+         style="--ratio: {{ $aspectRatio }}">
         
-        <figure class="photo-figure" style="aspect-ratio: {{ $aspectRatio }}">
-          <img class="photo-img lazyload" 
+        <figure class="masonry-figure">
+          <img class="masonry-img lazyload" 
                data-src="{{ $thumbnail.RelPermalink }}" 
                src="{{ $thumbnail.RelPermalink }}" 
                alt="" 
                loading="lazy"
                style="image-orientation: from-image;" />
+          
+          <div class="masonry-overlay"></div>
         </figure>
         
         <meta itemprop="contentUrl" content="{{ if $publishResources }}{{ $image.RelPermalink }}{{ else }}{{ $full.RelPermalink }}{{ end }}" />
@@ -52,88 +53,120 @@
 
 <style>
 .photo-gallery {
-  margin-top: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
-/* Clean grid layout with proper gaps */
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+/* Masonry Layout - Pinterest-style cascade */
+.masonry-grid {
+  column-count: 3;
+  column-gap: 4px;
+  line-height: 0;
 }
 
-.photo-item {
+.masonry-item {
   display: block;
   position: relative;
   overflow: hidden;
   cursor: zoom-in;
   text-decoration: none;
-  border-radius: 8px;
-  background: #f0f0f0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 4px;
+  break-inside: avoid;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
-.photo-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-.photo-figure {
+.masonry-figure {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: auto;
+  position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  background: #1a1a1a;
 }
 
-.photo-img {
+.masonry-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease;
   image-orientation: from-image;
 }
 
-.photo-item:hover .photo-img {
-  transform: scale(1.05);
+/* Subtle overlay on hover */
+.masonry-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  pointer-events: none;
 }
 
-/* Loading state */
-.photo-img.lazyload {
+.masonry-item:hover .masonry-overlay {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.masonry-item:hover .masonry-img {
+  transform: scale(1.02);
+}
+
+/* Loading animation */
+.masonry-img.lazyload {
   opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
-.photo-img.lazyloaded {
+.masonry-img.lazyloading {
+  opacity: 0.5;
+  filter: blur(10px);
+}
+
+.masonry-img.lazyloaded {
   opacity: 1;
+  filter: blur(0);
+  transition: opacity 0.5s ease, filter 0.5s ease;
 }
 
-/* Tablet: 2 columns */
+/* Responsive columns */
+@media (max-width: 1200px) {
+  .masonry-grid {
+    column-count: 3;
+  }
+}
+
 @media (max-width: 900px) {
-  .photo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  .masonry-grid {
+    column-count: 2;
+    column-gap: 3px;
+  }
+  .masonry-item {
+    margin-bottom: 3px;
   }
 }
 
-/* Mobile: 1 column */
 @media (max-width: 600px) {
-  .photo-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .masonry-grid {
+    column-count: 2;
+    column-gap: 2px;
   }
-  
-  .photo-item:hover {
-    transform: none;
+  .masonry-item {
+    margin-bottom: 2px;
   }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .photo-item {
-    background: #3a3a3a;
+@media (max-width: 400px) {
+  .masonry-grid {
+    column-count: 1;
+    column-gap: 0;
+  }
+  .masonry-item {
+    margin-bottom: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .masonry-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }
 </style>

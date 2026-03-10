@@ -1,15 +1,15 @@
 {{ define "main" }}
-<div class="gallery-container">
-  <header class="gallery-header">
-    <h1 class="gallery-title">{{ .Title }}</h1>
+<div class="gallery-index">
+  <header class="gallery-index-header">
+    <h1 class="gallery-index-title">{{ .Title }}</h1>
     {{ if .Content }}
-    <div class="gallery-description">
+    <div class="gallery-index-desc">
       {{ .Content }}
     </div>
     {{ end }}
   </header>
   
-  <div class="albums-grid">
+  <div class="albums-list">
     {{ range sort .Pages "Weight" }}
       {{ $page := . }}
       {{ $images := .Resources.ByType "image" }}
@@ -27,30 +27,26 @@
         {{ end }}
         
         {{ if $cover }}
-          {{ $thumbnail := $cover.Fill "600x400" }}
-          <article class="album-card">
-            <a href="{{ $page.RelPermalink }}" class="album-link">
-              <div class="album-image-wrapper">
-                <img 
-                  src="{{ $thumbnail.RelPermalink }}" 
-                  alt="{{ $page.Title }}" 
-                  class="album-image"
-                  loading="lazy" 
-                  style="image-orientation: from-image;" 
-                />
-                <div class="album-overlay">
-                  <span class="album-count">{{ $imageCount }} photos</span>
-                  <span class="album-view">View Album →</span>
-                </div>
+          {{ $thumbnail := $cover.Fit "1200x800" }}
+          <a href="{{ $page.RelPermalink }}" class="album-tile">
+            <div class="album-tile-image">
+              <img 
+                src="{{ $thumbnail.RelPermalink }}" 
+                alt="{{ $page.Title }}" 
+                loading="lazy"
+                style="image-orientation: from-image;"
+              />
+              <div class="album-tile-overlay">
+                <span class="album-tile-count">{{ $imageCount }} photos</span>
               </div>
-              <div class="album-info">
-                <h3 class="album-name">{{ $page.Title }}</h3>
-                {{ if $page.Description }}
-                <p class="album-description">{{ $page.Description }}</p>
-                {{ end }}
-              </div>
-            </a>
-          </article>
+            </div>
+            <div class="album-tile-info">
+              <h2 class="album-tile-name">{{ $page.Title }}</h2>
+              {{ if $page.Description }}
+              <p class="album-tile-desc">{{ $page.Description }}</p>
+              {{ end }}
+            </div>
+          </a>
         {{ end }}
       {{ end }}
     {{ end }}
@@ -58,158 +54,160 @@
 </div>
 
 <style>
-.gallery-container {
-  max-width: 1200px;
+.gallery-index {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 3rem 2rem;
 }
 
-.gallery-header {
+.gallery-index-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
-.gallery-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--heading-color, #333);
+.gallery-index-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
+  color: var(--heading-color, #1a1a1a);
 }
 
-.gallery-description {
+.gallery-index-desc {
   max-width: 600px;
   margin: 0 auto;
   font-size: 1.1rem;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text-color, #666);
 }
 
-/* Albums Grid - Masonry-like layout */
-.albums-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
+/* Album tiles - large, cinematic */
+.albums-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
 
-.album-card {
-  background: var(--card-bg, #fff);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.album-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-}
-
-.album-link {
+.album-tile {
   display: block;
   text-decoration: none;
   color: inherit;
+  transition: transform 0.4s ease;
 }
 
-.album-image-wrapper {
+.album-tile:hover {
+  transform: translateY(-4px);
+}
+
+.album-tile-image {
   position: relative;
-  aspect-ratio: 3 / 2;
   overflow: hidden;
-  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  border-radius: 4px;
+  background: #1a1a1a;
+  aspect-ratio: 16 / 9;
 }
 
-.album-image {
+.album-tile-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.3s ease;
 }
 
-.album-card:hover .album-image {
-  transform: scale(1.08);
+.album-tile:hover .album-tile-image img {
+  transform: scale(1.03);
 }
 
-.album-overlay {
+.album-tile-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;
   justify-content: flex-end;
   padding: 1.5rem;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.album-card:hover .album-overlay {
+.album-tile:hover .album-tile-overlay {
   opacity: 1;
 }
 
-.album-count {
+.album-tile-count {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.album-view {
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
+.album-tile-info {
+  margin-top: 1.5rem;
+  text-align: center;
 }
 
-.album-info {
-  padding: 1.5rem;
-}
-
-.album-name {
-  font-size: 1.25rem;
-  font-weight: 600;
+.album-tile-name {
+  font-size: 1.75rem;
+  font-weight: 400;
   margin: 0 0 0.5rem 0;
-  color: var(--heading-color, #333);
+  color: var(--heading-color, #1a1a1a);
+  letter-spacing: -0.01em;
 }
 
-.album-description {
-  font-size: 0.95rem;
-  line-height: 1.5;
+.album-tile-desc {
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--text-color, #666);
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Mobile optimizations */
+/* Responsive */
 @media (max-width: 768px) {
-  .gallery-container {
-    padding: 1rem;
+  .gallery-index {
+    padding: 2rem 1rem;
   }
   
-  .gallery-title {
-    font-size: 2rem;
+  .gallery-index-header {
+    margin-bottom: 3rem;
   }
   
-  .albums-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .albums-list {
+    gap: 3rem;
   }
   
-  .album-overlay {
+  .album-tile-image {
+    aspect-ratio: 4 / 3;
+  }
+  
+  .album-tile-overlay {
     opacity: 1;
-    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+    background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 60%);
+  }
+  
+  .album-tile-name {
+    font-size: 1.5rem;
+  }
+  
+  .album-tile-info {
+    margin-top: 1rem;
   }
 }
 
-/* Dark mode support */
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
-  .album-card {
-    background: var(--card-bg-dark, #2a2a2a);
+  .album-tile-image {
+    background: #2a2a2a;
   }
   
-  .album-name {
+  .album-tile-name {
     color: var(--heading-color-dark, #f0f0f0);
   }
   
-  .album-description {
+  .album-tile-desc {
     color: var(--text-color-dark, #aaa);
   }
 }
