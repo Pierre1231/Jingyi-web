@@ -11,6 +11,7 @@
       
       <div class="gallery-grid">
         {{ range sort .Pages "Weight" }}
+          {{ $page := . }}
           {{ $images := .Resources.ByType "image" }}
           {{ if $images }}
             {{ $cover := false }}
@@ -27,12 +28,12 @@
             {{ if $cover }}
               {{ $thumbnail := $cover.Fill "400x300" }}
               <div class="gallery-item">
-                <a href="{{ .RelPermalink }}">
-                  <img src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}" loading="lazy" style="image-orientation: from-image;" />
+                <a href="{{ $page.RelPermalink }}">
+                  <img src="{{ $thumbnail.RelPermalink }}" alt="{{ $page.Title }}" loading="lazy" style="image-orientation: from-image;" />
                   <div class="gallery-item-overlay">
-                    <h3>{{ .Title }}</h3>
-                    {{ if .Description }}
-                    <p>{{ .Description }}</p>
+                    <h3>{{ $page.Title }}</h3>
+                    {{ if $page.Description }}
+                    <p>{{ $page.Description }}</p>
                     {{ end }}
                   </div>
                 </a>

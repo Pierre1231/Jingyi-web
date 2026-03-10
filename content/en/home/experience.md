@@ -22,14 +22,23 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
+  - title: Research Assistant
+    company: Beihang University (Hangzhou Campus)
+    company_url: 'https://www.buaa.edu.cn/'
+    company_logo: buaa
+    location: Hangzhou, China
+    date_start: '2026-01-01'
+    date_end: ''
+    description: Continue research on multi-agents formation control, artificial intelligence in robotics, and simulation development.
+
   - title: Master student
     company: Beihang University
     company_url: 'https://www.buaa.edu.cn/'
     company_logo: buaa
     location: Beijing, China
     date_start: '2020-09-01'
-    date_end: ''
-    description: Do researches including multi-agents formation control, artificial intelligent in robotics, simulation development, etc.
+    date_end: '2024-06-01'
+    description: Conducted research on multi-agents formation control, artificial intelligent in robotics, simulation development, etc.
 
 
   - title: Exchange Student
