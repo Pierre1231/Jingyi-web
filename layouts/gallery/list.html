@@ -1,170 +1,217 @@
 {{ define "main" }}
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h1>{{ .Title }}</h1>
-      {{ if .Content }}
-      <div class="gallery-description">
-        {{ .Content }}
-      </div>
-      {{ end }}
-      
-      <div class="gallery-grid">
-        {{ range sort .Pages "Weight" }}
-          {{ $page := . }}
-          {{ $images := .Resources.ByType "image" }}
-          {{ if $images }}
-            {{ $cover := false }}
-            {{ range $images }}
-              {{ if or (in .Name "feature") (in .Name "cover") }}
-                {{ $cover = . }}
-                {{ break }}
-              {{ end }}
-            {{ end }}
-            {{ if not $cover }}
-              {{ $cover = index $images 0 }}
-            {{ end }}
-            
-            {{ if $cover }}
-              {{ $thumbnail := $cover.Fill "400x300" }}
-              <div class="gallery-item">
-                <a href="{{ $page.RelPermalink }}">
-                  <img src="{{ $thumbnail.RelPermalink }}" alt="{{ $page.Title }}" loading="lazy" style="image-orientation: from-image;" />
-                  <div class="gallery-item-overlay">
-                    <h3>{{ $page.Title }}</h3>
-                    {{ if $page.Description }}
-                    <p>{{ $page.Description }}</p>
-                    {{ end }}
-                  </div>
-                </a>
-              </div>
-            {{ end }}
+<div class="gallery-container">
+  <header class="gallery-header">
+    <h1 class="gallery-title">{{ .Title }}</h1>
+    {{ if .Content }}
+    <div class="gallery-description">
+      {{ .Content }}
+    </div>
+    {{ end }}
+  </header>
+  
+  <div class="albums-grid">
+    {{ range sort .Pages "Weight" }}
+      {{ $page := . }}
+      {{ $images := .Resources.ByType "image" }}
+      {{ $imageCount := len $images }}
+      {{ if $images }}
+        {{ $cover := false }}
+        {{ range $images }}
+          {{ if or (in .Name "feature") (in .Name "cover") }}
+            {{ $cover = . }}
+            {{ break }}
           {{ end }}
         {{ end }}
-      </div>
-    </div>
+        {{ if not $cover }}
+          {{ $cover = index $images 0 }}
+        {{ end }}
+        
+        {{ if $cover }}
+          {{ $thumbnail := $cover.Fill "600x400" }}
+          <article class="album-card">
+            <a href="{{ $page.RelPermalink }}" class="album-link">
+              <div class="album-image-wrapper">
+                <img 
+                  src="{{ $thumbnail.RelPermalink }}" 
+                  alt="{{ $page.Title }}" 
+                  class="album-image"
+                  loading="lazy" 
+                  style="image-orientation: from-image;" 
+                />
+                <div class="album-overlay">
+                  <span class="album-count">{{ $imageCount }} photos</span>
+                  <span class="album-view">View Album →</span>
+                </div>
+              </div>
+              <div class="album-info">
+                <h3 class="album-name">{{ $page.Title }}</h3>
+                {{ if $page.Description }}
+                <p class="album-description">{{ $page.Description }}</p>
+                {{ end }}
+              </div>
+            </a>
+          </article>
+        {{ end }}
+      {{ end }}
+    {{ end }}
   </div>
 </div>
 
 <style>
-* {
-  box-sizing: border-box;
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
-.gallery-grid {
-  display: flex;
-  flex-wrap: wrap;
+.gallery-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.gallery-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--heading-color, #333);
+}
+
+.gallery-description {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color, #666);
+}
+
+/* Albums Grid - Masonry-like layout */
+.albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
 }
 
-.gallery-item {
-  flex: 1 1 calc(33.333% - 2rem);
-  max-width: calc(33.333% - 2rem);
-  position: relative;
+.album-card {
+  background: var(--card-bg, #fff);
+  border-radius: 12px;
   overflow: hidden;
-  border-radius: 8px;
-  aspect-ratio: 4 / 3;
-  background: #f0f0f0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.gallery-item:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  transform: translateY(-4px);
+.album-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.album-link {
   display: block;
-  transition: transform 0.3s ease;
-  image-orientation: from-image;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
-
-.gallery-item-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4), transparent);
-  color: white;
-  padding: 1.5rem 1rem 1rem;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover .gallery-item-overlay {
-  transform: translateY(0);
-}
-
-.gallery-item-overlay h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: white !important;
-}
-
-.gallery-item-overlay p {
-  margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.95;
-  line-height: 1.4;
-  color: white !important;
-}
-
-.gallery-item a {
-  display: block;
-  width: 100%;
-  height: 100%;
   text-decoration: none;
   color: inherit;
 }
 
-.gallery-description {
-  margin-bottom: 1rem;
-  color: #666;
+.album-image-wrapper {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+}
+
+.album-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.album-card:hover .album-image {
+  transform: scale(1.08);
+}
+
+.album-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.album-card:hover .album-overlay {
+  opacity: 1;
+}
+
+.album-count {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.album-view {
+  color: #fff;
   font-size: 1rem;
-  line-height: 1.6;
+  font-weight: 600;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+.album-info {
+  padding: 1.5rem;
 }
 
-@media (max-width: 991px) {
-  .gallery-item {
-    flex: 1 1 calc(50% - 1.5rem);
-    max-width: calc(50% - 1.5rem);
+.album-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--heading-color, #333);
+}
+
+.album-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-color, #666);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .gallery-container {
+    padding: 1rem;
+  }
+  
+  .gallery-title {
+    font-size: 2rem;
+  }
+  
+  .albums-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .album-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
   }
 }
 
-@media (max-width: 767px) {
-  .gallery-item {
-    flex: 1 1 100%;
-    max-width: 100%;
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .album-card {
+    background: var(--card-bg-dark, #2a2a2a);
   }
-}
-
-/* 移动端或无悬停设备：文字常驻显示 */
-@media (hover: none), (pointer: coarse) {
-  .gallery-item-overlay {
-    transform: translateY(0);
-    pointer-events: none; /* 不影响点击跳转 */
+  
+  .album-name {
+    color: var(--heading-color-dark, #f0f0f0);
   }
-  .gallery-item:hover .gallery-item-overlay {
-    transform: translateY(0);
+  
+  .album-description {
+    color: var(--text-color-dark, #aaa);
   }
 }
 </style>
 {{ end }}
-
-

@@ -1,19 +1,28 @@
 {{ define "main" }}
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h1>{{ .Title }}</h1>
-      {{ if .Description }}
-      <div class="gallery-description">
-        <p>{{ .Description }}</p>
-      </div>
-      {{ end }}
-      
-      {{ partial "gallery.html" . }}
-    </div>
-  </div>
+<div class="gallery-single-container">
+  <!-- Back Button -->
+  <nav class="gallery-nav">
+    <a href="{{ .Parent.RelPermalink }}" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Gallery
+    </a>
+  </nav>
+
+  <!-- Header -->
+  <header class="gallery-single-header">
+    <h1 class="gallery-single-title">{{ .Title }}</h1>
+    {{ if .Description }}
+    <p class="gallery-single-description">{{ .Description }}</p>
+    {{ end }}
+  </header>
+
+  <!-- Photo Grid -->
+  {{ partial "gallery.html" . }}
 </div>
 
+<!-- PhotoSwipe -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.3.4/dist/photoswipe.css" />
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" async></script>
 <script type="module">
@@ -35,12 +44,12 @@
 
     console.log('Initializing PhotoSwipe with', galleryItems.length, 'items');
 
-    // 构建图片数据数组
+    // Build image data array with titles
     const items = Array.from(galleryItems).map(item => {
       const src = item.getAttribute('data-pswp-src') || item.href;
       const width = parseInt(item.getAttribute('data-pswp-width')) || 1600;
       const height = parseInt(item.getAttribute('data-pswp-height')) || 1200;
-      const title = item.getAttribute('title') || '';
+      const title = item.getAttribute('data-title') || '';
       
       return {
         src: src,
@@ -50,12 +59,12 @@
       };
     });
 
-    // 创建 lightbox 实例
+    // Create lightbox instance
     const lightbox = new PhotoSwipeLightbox({
       dataSource: items,
       pswpModule: PhotoSwipe,
       showHideAnimationType: 'fade',
-      bgOpacity: 0.9,
+      bgOpacity: 0.95,
       closeTitle: 'Close (Esc)',
       zoomTitle: 'Zoom in/out',
       arrowPrevTitle: 'Previous (arrow left)',
@@ -63,22 +72,33 @@
       returnFocus: true,
       tapToClose: true,
       swipeToClose: true,
-      // 禁用缩放按钮
       zoom: false,
-      // 调整过渡动画时长
       initialZoomFactor: 1,
       secondaryZoomLevel: 1,
       maxZoomLevel: 1,
-      // 添加其他过渡效果参数，例如动画时长
       speed: 300,
-      // 增加拖拽灵敏度，使切换更平滑
-      pinchToClose: false // 禁用双指缩放关闭，与放大镜禁用一致
+      pinchToClose: false,
+      // Add caption plugin
+      padding: { top: 20, bottom: 60, left: 20, right: 20 }
     });
 
-    // 初始化 lightbox
+    // Add caption rendering
+    lightbox.on('itemData', (e) => {
+      const { itemData } = e;
+      if (itemData.title) {
+        itemData.html = `
+          <div class="pswp__custom-content">
+            <img src="${itemData.src}" alt="${itemData.title}" style="max-width: 100%; max-height: 85vh; object-fit: contain;">
+            ${itemData.title ? `<div class="pswp__caption">${itemData.title}</div>` : ''}
+          </div>
+        `;
+      }
+    });
+
+    // Initialize lightbox
     lightbox.init();
 
-    // 为每个图片链接绑定点击事件
+    // Bind click events
     galleryItems.forEach((item, index) => {
       item.addEventListener('click', function(e) {
         e.preventDefault();
@@ -92,84 +112,117 @@
     console.log('PhotoSwipe initialized successfully');
   }
 
-  // 等待 DOM 加载完成
+  // Wait for DOM to be ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       setTimeout(initPhotoSwipe, 100);
     });
   } else {
-    // DOM 已经加载完成，稍微延迟以确保所有元素都已渲染
     setTimeout(initPhotoSwipe, 100);
   }
 </script>
 
 <style>
-.gallery {
-  margin-top: 2rem;
+.gallery-single-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem;
 }
 
-#gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
+/* Navigation */
+.gallery-nav {
+  margin-bottom: 1.5rem;
 }
 
-.gallery-item {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--link-color, #1565c0);
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: color 0.2s ease;
 }
 
-.gallery-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+.back-link:hover {
+  color: var(--link-hover-color, #0d47a1);
 }
 
-.gallery-item figure {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
+.back-link svg {
+  transition: transform 0.2s ease;
 }
 
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-  image-orientation: from-image;
+.back-link:hover svg {
+  transform: translateX(-4px);
 }
 
-.gallery-item:hover img {
-  transform: scale(1.05);
+/* Header */
+.gallery-single-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
 }
 
-.gallery-description {
-  margin: 1rem 0 2rem 0;
+.gallery-single-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  color: var(--heading-color, #333);
+}
+
+.gallery-single-description {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #666;
+  color: var(--text-color, #666);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
+/* PhotoSwipe Custom Caption */
+.pswp__custom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.pswp__caption {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  max-width: 80%;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  #gallery {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 0.75rem;
+  .gallery-single-container {
+    padding: 1rem;
+  }
+  
+  .gallery-single-title {
+    font-size: 1.5rem;
+  }
+  
+  .gallery-single-description {
+    font-size: 1rem;
+  }
+  
+  .pswp__caption {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    max-width: 90%;
   }
 }
-
-@media (max-width: 480px) {
-  #gallery {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 0.5rem;
-  }
-}
-
 </style>
 {{ end }}

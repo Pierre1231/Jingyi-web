@@ -1,5 +1,5 @@
-<section class="gallery">
-  <div id="gallery">
+<section class="photo-gallery">
+  <div id="gallery" class="photo-grid">
     {{ $images := slice }}
     {{ range $image := where (.Resources.ByType "image") "Params.hidden" "ne" true }}
       {{ $title := "" }}
@@ -25,30 +25,200 @@
         )
       }}
     {{ end }}
+    
     {{ $publishResources := default true .Params.build.publishResources }}
-    {{/* 按日期倒序排列，最新的在前。如果没有日期，使用文件修改时间 */}}
+    {{/* Sort by date descending */}}
     {{ $sortedImages := sort $images "Date" "desc" }}
-    {{/* 如果 Date 为空，使用文件修改时间作为后备 */}}
+    
     {{ range $sortedImages }}
       {{ $image := .image }}
-      {{ $thumbnail := $image.Fill "600x600" }}
-      {{ $full := $image.Fit "1600x1600" }}
-      {{ $color := "#f0f0f0" }}
-      {{ if $thumbnail }}
-        {{ $aspectRatio := div (float $thumbnail.Width) $thumbnail.Height }}
-        <a class="gallery-item" href="{{ $full.RelPermalink }}" data-pswp-src="{{ $full.RelPermalink }}" data-pswp-width="{{ $full.Width }}" data-pswp-height="{{ $full.Height }}" itemscope itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ $aspectRatio }}">
-          <figure style="background-color: {{ $color }}; aspect-ratio: {{ $aspectRatio }}">
-            <img class="lazyload" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" data-src="{{ $thumbnail.RelPermalink }}" src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}" style="image-orientation: from-image;" />
-          </figure>
-          <meta itemprop="contentUrl" content="{{ if $publishResources }}{{ $image.RelPermalink }}{{ else }}{{ $full.RelPermalink }}{{ end }}" />
-          {{ with site.Params.Author }}
-            <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
-              <meta itemprop="name" content="{{ site.Params.Author.name }}" />
-            </span>
+      {{ $thumbnail := $image.Fill "800x800" }}
+      {{ $full := $image.Fit "2000x2000" }}
+      {{ $aspectRatio := div (float $thumbnail.Width) $thumbnail.Height }}
+      
+      <a class="photo-item" 
+         href="{{ $full.RelPermalink }}" 
+         data-pswp-src="{{ $full.RelPermalink }}" 
+         data-pswp-width="{{ $full.Width }}" 
+         data-pswp-height="{{ $full.Height }}"
+         data-title="{{ .Title }}"
+         itemscope 
+         itemtype="https://schema.org/ImageObject"
+         style="--aspect-ratio: {{ $aspectRatio }}">
+        
+        <figure class="photo-figure">
+          <img class="photo-img lazyload" 
+               width="{{ $thumbnail.Width }}" 
+               height="{{ $thumbnail.Height }}" 
+               data-src="{{ $thumbnail.RelPermalink }}" 
+               src="{{ $thumbnail.RelPermalink }}" 
+               alt="{{ .Title }}" 
+               loading="lazy"
+               style="image-orientation: from-image;" />
+          
+          {{ if .Title }}
+          <figcaption class="photo-caption">
+            <span class="photo-title">{{ .Title }}</span>
+          </figcaption>
           {{ end }}
-        </a>
-      {{ end }}
+        </figure>
+        
+        <meta itemprop="contentUrl" content="{{ if $publishResources }}{{ $image.RelPermalink }}{{ else }}{{ $full.RelPermalink }}{{ end }}" />
+        {{ with site.Params.Author }}
+          <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
+            <meta itemprop="name" content="{{ site.Params.Author.name }}" />
+          </span>
+        {{ end }}
+      </a>
     {{ end }}
   </div>
 </section>
 
+<style>
+/* Photo Gallery Grid - Masonry Layout */
+.photo-gallery {
+  margin-top: 2rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 10px;
+  gap: 0;
+}
+
+.photo-item {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+  text-decoration: none;
+  border-radius: 8px;
+  margin: 0.5rem;
+  /* Calculate row span based on aspect ratio */
+  grid-row: span calc(var(--aspect-ratio) * 20);
+  min-height: 200px;
+}
+
+.photo-figure {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border-radius: 8px;
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, filter 0.3s ease;
+  image-orientation: from-image;
+}
+
+.photo-item:hover .photo-img {
+  transform: scale(1.05);
+}
+
+/* Caption Overlay */
+.photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1rem 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+}
+
+.photo-item:hover .photo-caption {
+  opacity: 1;
+}
+
+.photo-title {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Loading Animation */
+.photo-img.lazyload {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo-img.lazyloaded {
+  opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .photo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .photo-item {
+    grid-row: span calc(var(--aspect-ratio) * 18);
+  }
+}
+
+@media (max-width: 768px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .photo-item {
+    margin: 0;
+    grid-row: span calc(var(--aspect-ratio) * 15);
+    min-height: 150px;
+  }
+  
+  .photo-caption {
+    opacity: 1;
+    padding: 1.5rem 0.75rem 0.75rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+  }
+  
+  .photo-title {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .photo-item {
+    grid-row: span calc(var(--aspect-ratio) * 25);
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .photo-figure {
+    background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .photo-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+</style>
