@@ -6,8 +6,12 @@ weight: 45
 title: Photography
 design:
   columns: '1'
+  background:
+    color: '#0a0a0a'
+  spacing:
+    padding: ['4rem', '0', '5rem', '0']
 ---
 
-{{< cta cta_text="View Gallery →" cta_link="gallery/" cta_new_tab="false" >}}
+A curated collection exploring architecture, street life, and the natural world.
 
-Selected photography works across architecture, street, and nature.
+{{< gallery_preview count="6" >}}

@@ -7,6 +7,7 @@
       {{ .Content }}
     </div>
     {{ end }}
+    <div class="gallery-divider"></div>
   </header>
   
   <div class="albums-grid">
@@ -27,7 +28,7 @@
         {{ end }}
         
         {{ if $cover }}
-          {{ $thumbnail := $cover.Fill "400x300" }}
+          {{ $thumbnail := $cover.Fit "600x900" }}
           <article class="album-card">
             <a href="{{ $page.RelPermalink }}" class="album-link">
               <div class="album-image-wrapper">
@@ -39,8 +40,15 @@
                   style="image-orientation: from-image;" 
                 />
                 <div class="album-overlay">
-                  <span class="album-count">{{ $imageCount }} photos</span>
-                  <span class="album-view">View Album →</span>
+                  <div class="overlay-content">
+                    <span class="album-count">{{ $imageCount }} <span class="count-label">Photos</span></span>
+                    <span class="album-view">
+                      <span class="view-text">View Collection</span>
+                      <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </span>
+                  </div>
                 </div>
               </div>
               <div class="album-info">
@@ -59,60 +67,66 @@
 
 <style>
 .gallery-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 3rem 1.5rem;
+  background: #0a0a0a;
+  min-height: 100vh;
 }
 
 .gallery-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .gallery-title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   margin-bottom: 1rem;
-  color: var(--heading-color, #333);
+  color: #ffffff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 .gallery-description {
   max-width: 600px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--text-color, #666);
+  margin: 0 auto 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #888;
+  font-weight: 300;
 }
 
-/* Albums Grid */
+.gallery-divider {
+  width: 60px;
+  height: 1px;
+  background: #333;
+  margin: 0 auto;
+}
+
+/* Albums Grid - Photographer Style */
 .albums-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .album-card {
-  flex: 1 1 calc(33.333% - 2rem);
-  max-width: calc(33.333% - 2rem);
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
-  aspect-ratio: 4 / 3;
-  background: #f0f0f0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background: #111;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .album-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  transform: translateY(-4px);
+  transform: translateY(-8px);
 }
 
 .album-link {
   display: block;
   width: 100%;
-  height: 100%;
   text-decoration: none;
   color: inherit;
 }
@@ -120,8 +134,9 @@
 .album-image-wrapper {
   position: relative;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
+  background: #1a1a1a;
 }
 
 .album-image {
@@ -129,104 +144,134 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
   image-orientation: from-image;
+  filter: brightness(0.95);
 }
 
 .album-card:hover .album-image {
   transform: scale(1.05);
+  filter: brightness(1);
 }
 
 .album-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4), transparent);
-  color: white;
-  padding: 1.5rem 1rem 1rem;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
 }
 
 .album-card:hover .album-overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  color: white;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.album-card:hover .overlay-content {
   transform: translateY(0);
 }
 
 .album-count {
   display: block;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  opacity: 0.9;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.count-label {
+  font-size: 0.75rem;
+  opacity: 0.7;
 }
 
 .album-view {
-  font-size: 1rem;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
 }
 
-.album-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.95);
-  transform: translateY(100%);
+.arrow-icon {
   transition: transform 0.3s ease;
 }
 
-.album-card:hover .album-info {
-  transform: translateY(0);
+.album-view:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+.album-info {
+  padding: 1.5rem;
+  background: #111;
 }
 
 .album-name {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #333;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 .album-description {
   margin: 0;
   font-size: 0.9rem;
-  color: #666;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  color: #777;
+  line-height: 1.6;
+  font-weight: 300;
 }
 
-@media (max-width: 991px) {
-  .album-card {
-    flex: 1 1 calc(50% - 1.5rem);
-    max-width: calc(50% - 1.5rem);
+/* Responsive */
+@media (max-width: 1200px) {
+  .albums-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
   }
 }
 
-@media (max-width: 767px) {
-  .album-card {
-    flex: 1 1 100%;
-    max-width: 100%;
+@media (max-width: 768px) {
+  .gallery-container {
+    padding: 2rem 1rem;
+  }
+  
+  .gallery-title {
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .albums-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
   
   .album-overlay {
-    transform: translateY(0);
-    pointer-events: none;
+    opacity: 1;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
   }
   
-  .album-info {
+  .overlay-content {
     transform: translateY(0);
-    background: rgba(255, 255, 255, 0.9);
   }
 }
 
 @media (hover: none), (pointer: coarse) {
   .album-overlay {
-    transform: translateY(0);
+    opacity: 1;
   }
-  .album-card:hover .album-overlay {
+  .overlay-content {
     transform: translateY(0);
   }
 }
