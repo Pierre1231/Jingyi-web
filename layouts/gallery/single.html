@@ -186,5 +186,68 @@
     font-size: 0.9rem;
   }
 }
+
+/* PhotoSwipe Custom Styles - Make buttons visible on dark background */
+.pswp {
+  --pswp-icon-color: #fff;
+  --pswp-icon-color-secondary: #ccc;
+  --pswp-icon-stroke-color: #000;
+  --pswp-icon-stroke-width: 2px;
+}
+
+.pswp__button {
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.pswp__button:hover {
+  opacity: 1;
+}
+
+.pswp__button--close {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  margin: 10px;
+}
+
+.pswp__button--close:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Close button X icon */
+.pswp__button--close .pswp__icn {
+  fill: #fff;
+}
+
+/* Navigation arrows */
+.pswp__button--arrow {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.pswp__button--arrow:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.pswp__button--arrow .pswp__icn {
+  fill: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Counter */
+.pswp__counter {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+}
 </style>
 {{ end }}
