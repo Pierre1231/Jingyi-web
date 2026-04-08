@@ -231,29 +231,58 @@
   height: 24px;
 }
 
-/* Navigation arrows */
-.pswp__button--arrow {
+/* Navigation arrows - Previous */
+.pswp__button--arrow--prev {
   background: rgba(255, 255, 255, 0.15) !important;
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  margin-left: 15px;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
 
-.pswp__button--arrow:hover {
+.pswp__button--arrow--prev:hover {
   background: rgba(255, 255, 255, 0.3) !important;
 }
 
+/* Navigation arrows - Next */
+.pswp__button--arrow--next {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.pswp__button--arrow--next:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Arrow icons positioning */
 .pswp__button--arrow .pswp__icn {
   fill: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: -12px;
+  margin-left: -12px;
   width: 24px;
   height: 24px;
+}
+
+/* Left arrow - point left */
+.pswp__button--arrow--prev .pswp__icn {
+  transform: translateX(-2px);
+}
+
+/* Right arrow - point right */
+.pswp__button--arrow--next .pswp__icn {
+  transform: translateX(2px);
 }
 
 /* Counter */
