@@ -196,7 +196,7 @@
 }
 
 .pswp__button {
-  opacity: 0.8;
+  opacity: 0.9;
   transition: opacity 0.2s ease;
 }
 
@@ -204,41 +204,56 @@
   opacity: 1;
 }
 
+/* Close button */
 .pswp__button--close {
-  position: relative;
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
   border-radius: 50%;
   width: 44px;
   height: 44px;
   margin: 10px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .pswp__button--close:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Close button X icon */
+/* Close button icon positioning */
 .pswp__button--close .pswp__icn {
   fill: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
 }
 
 /* Navigation arrows */
 .pswp__button--arrow {
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .pswp__button--arrow:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.3) !important;
 }
 
 .pswp__button--arrow .pswp__icn {
   fill: #fff;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
 }
 
 /* Counter */

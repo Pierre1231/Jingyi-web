@@ -35,8 +35,7 @@
          style="--ratio: {{ $aspectRatio }}">
         
         <figure class="masonry-figure">
-          <img class="masonry-img lazyload" 
-               data-src="{{ $thumbnail.RelPermalink }}" 
+          <img class="masonry-img" 
                src="{{ $thumbnail.RelPermalink }}" 
                alt="" 
                loading="lazy"
@@ -136,24 +135,6 @@
 .masonry-item:hover .overlay-icon {
   opacity: 1;
   transform: scale(1);
-}
-
-/* Loading States */
-.masonry-img.lazyload {
-  opacity: 0;
-}
-
-.masonry-img.lazyloading {
-  opacity: 0.5;
-  filter: blur(10px) brightness(0.95) contrast(1.02);
-}
-
-.masonry-img.lazyloaded {
-  opacity: 1;
-  filter: blur(0) brightness(0.95) contrast(1.02);
-  transition: opacity 0.6s ease, 
-              filter 0.6s ease, 
-              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Responsive */
