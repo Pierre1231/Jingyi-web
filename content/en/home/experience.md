@@ -61,5 +61,9 @@ experience:
 
 
 design:
-  columns: '2'
+  columns: '1'
+  background:
+    color: '#fafbfc'
+  spacing:
+    padding: ['4rem', '0', '4rem', '0']
 ---

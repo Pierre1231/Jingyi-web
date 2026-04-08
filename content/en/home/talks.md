@@ -32,13 +32,17 @@ content:
   order: desc
 
 design:
-  columns: '2'
+  columns: '1'
   # Choose a view for the listings:
   #   1 = List
   #   2 = Compact
   #   3 = Card
   #   4 = Citation (publication only)
-  view: 2
+  view: 1
+  background:
+    color: '#ffffff'
+  spacing:
+    padding: ['4rem', '0', '4rem', '0']
 ---
 
 **2023.05 - Literature Sharing - [[slides](../talks/20230508组会.pdf)]**

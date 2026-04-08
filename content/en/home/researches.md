@@ -33,5 +33,9 @@ design:
   #   2 = Compact
   #   3 = Card
   #   4 = Citation (publication only)
-  view: 2
+  view: 4
+  background:
+    color: '#ffffff'
+  spacing:
+    padding: ['4rem', '0', '4rem', '0']
 ---
