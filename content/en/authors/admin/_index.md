@@ -60,10 +60,10 @@ social:
     link: /gallery/
     label: Photography
 
-# Link to a PDF of your resume/CV.
-- icon: cv
-  icon_pack: ai
-  link: uploads/CV_Jingyi_HUANG.pdf
+  # Link to a PDF of your resume/CV.
+  - icon: cv
+    icon_pack: ai
+    link: uploads/CV_Jingyi_HUANG.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: ''
