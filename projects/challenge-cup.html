@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge Cup — Jingyi HUANG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/jpg" href="../images/avatar.jpg">
+  <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/js/all.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+</head>
+<body>
+  <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" id="sidebar">
+      <img src="../images/avatar.jpg" alt="Jingyi Huang" class="sidebar-avatar">
+      <div class="sidebar-brand">Jingyi HUANG</div>
+      <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
+      <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
+
+      <ul class="sidebar-nav">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#news">News</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#talks">Talks</a></li>
+        <li><a href="../index.html#misc">Misc.</a></li>
+        <li><a href="../gallery/index.html">Gallery</a></li>
+      </ul>
+
+      <div class="sidebar-social">
+        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Pierre1231" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="../gallery/index.html" title="Photography"><i class="fas fa-camera"></i></a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <a href="../index.html#projects" class="detail-back">← Back to Projects</a>
+      <h1 class="detail-title">Challenge Cup <span style="font-size:0.7em; font-weight:400; color:#888;">(挑战杯)</span></h1>
+      <p class="detail-meta">Apr. 2023 – Sept. 2023 &nbsp;·&nbsp; <span class="tag">Competition</span></p>
+
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p>The "Challenge Cup" (挑战杯) is China's premier science and technology competition for university students. The 2023 edition in Guizhou featured 21 topics and over 2,000 participating projects. Our team was awarded the <strong style="color:#c62828">Grand Prize (特等奖)</strong> — the highest honor in the competition.</p>
+        <img src="../images/projects/challenge-cup/album/IMG_5724.JPG" alt="Attending the competition" class="detail-img-center">
+      </div>
+
+      <div class="detail-section">
+        <h3>Highlights</h3>
+        <div class="highlight-grid">
+          <div class="highlight-card">
+            <div class="highlight-value" style="color:#c62828;">Grand Prize</div>
+            <div class="highlight-label">Highest Award</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-value">99%</div>
+            <div class="highlight-label">Area Coverage</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-value">99%</div>
+            <div class="highlight-label">Detection Rate</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-value">61 min</div>
+            <div class="highlight-label">Avg. Task Time</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-value">8</div>
+            <div class="highlight-label">Agents</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-value">31</div>
+            <div class="highlight-label">Targets</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Problem & Requirements</h3>
+        <p>This project addresses the challenge of information gathering in unmanned maritime areas by presenting a <strong>multi-agent decision control model</strong> for collision-free area coverage and target exploration within a convex polygonal region:</p>
+        <ul>
+          <li>Complete coverage of the entire area;</li>
+          <li>For each target, perform multiple scans at fixed angles;</li>
+          <li>Avoid restricted zones and prevent collisions between agents.</li>
+        </ul>
+        <p>The final model was deployed to the organizer's simulation platform and validated using real ship dynamics. Results were evaluated on coverage ratio, collision avoidance failures, and total simulation time.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Team</h3>
+        <div class="team-grid">
+          <div class="team-member">
+            <strong>HAO Pengkun</strong> <span class="team-role">Team Leader</span>
+            <p class="team-desc">Framework design, simulation environment, coverage path planning, multi-agent decision logic, OpenCV simulation, system integration.</p>
+          </div>
+          <div class="team-member">
+            <strong>WANG Yue</strong>
+            <p class="team-desc">Collaborative exploration & task allocation algorithms, system integration.</p>
+          </div>
+          <div class="team-member">
+            <strong>HUANG Jingyi</strong>
+            <p class="team-desc">Artificial potential fields & A* obstacle avoidance, utility functions (convex hull, shortest distance, etc.).</p>
+          </div>
+          <div class="team-member">
+            <strong>LIN Yuheng</strong>
+            <p class="team-desc">Multi-agent collision avoidance based on RVO (Reciprocal Velocity Obstacles).</p>
+          </div>
+          <div class="team-member">
+            <strong>Additional Contributors</strong>
+            <p class="team-desc">Built and debugged the cluster simulation platform — <a href="https://arxiv.org/abs/2308.12698" target="_blank">Potato</a>.</p>
+          </div>
+        </div>
+        <p style="margin-top:16px; font-size:0.85rem; color:#888;"><strong>Instructors:</strong> <em>LI Xiaoduo, <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=gx0l_7cAAAAJ" target="_blank">HAN Liang</a>, <a href="https://ieeexplore.ieee.org/author/37418980100" target="_blank">REN Zhang</a></em></p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Our Approach</h3>
+        <p>Our algorithm consists of four algorithmic modules executing subtasks and a cluster simulation platform for validation:</p>
+        <ul>
+          <li><strong>Obstacle avoidance / collision avoidance</strong></li>
+          <li><strong>Area coverage trajectory planning</strong></li>
+          <li><strong>Target exploration</strong></li>
+          <li><strong>Dynamic task allocation</strong></li>
+        </ul>
+        <p>The simulation platform is built using Python, the OpenCV engine, and the Cesium engine.</p>
+        <img src="../images/projects/challenge-cup/album/framework.png" alt="Framework of our project" class="detail-img-center">
+        <p class="img-caption">System framework: four algorithmic modules + simulation platform.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Obstacle Avoidance</h3>
+        <p>Throughout the competition, our obstacle avoidance strategy evolved through three stages:</p>
+
+        <h4>Stage 1 — Artificial Potential Fields</h4>
+        <p>In the initial stage, agents only needed to avoid targets. We used the artificial potential field method with a second-order dynamics model and PID control. For each agent, the <code>need_doa</code> method determines whether obstacle avoidance is required:</p>
+
+        <div class="code-block">
+          <button class="code-toggle" onclick="toggleCode(this)">Show code</button>
+          <pre><code>def need_doa(self):
+    list_doa_agent = []
+    for i in range(self.num_agents):
+        for j in range(i + 1, self.num_agents):
+            if self.agents[i].check_collision_agent(self.agents[j]):
+                list_doa_agent.append([i, j])
+    list_doa_target = []
+    for i in range(self.num_agents):
+        for target_idx in range(self.num_targets):
+            distance = np.linalg.norm(
+                np.array([self.agents[i].position])
+                - np.array([self.targets[target_idx].coord])
+            )
+            if distance &lt; self.obstacle_dist:
+                if self.list_doa_target_key[target_idx] == 0:
+                    self.list_doa_target_key[target_idx] = 1
+                else:
+                    list_doa_target.append([i, target_idx])
+    if len(list_doa_agent) &gt; 0 or len(list_doa_target):
+        return True, list_doa_agent, list_doa_target
+    else:
+        return False, list_doa_agent, list_doa_target</code></pre>
+        </div>
+
+        <p>The resultant force of attraction (toward destination) and repulsion (from targets within 500m) determines the next waypoint. A constant repulsive force is applied within 50m to prevent excessive deflection.</p>
+
+        <h4>Stage 2 — Avoiding Restricted Zones</h4>
+        <p>When organizers introduced convex polygonal avoidance zones, we identified the closest point on the polygon to the agent and treated it as an obstacle:</p>
+
+        <div class="code-block">
+          <button class="code-toggle" onclick="toggleCode(this)">Show code</button>
+          <pre><code>def distance_point_to_line(point, line_start, line_end):
+    line_start = np.array(line_start)
+    line_end = np.array(line_end)
+    line_vec = line_end - line_start
+    point_vec = point - line_start
+    t = np.dot(point_vec, line_vec) / np.dot(line_vec, line_vec)
+    t = max(0, min(1, t))
+    closest_point = line_start + t * line_vec
+    distance = np.linalg.norm(point - closest_point)
+    return distance, closest_point
+
+def shortest_distance_to_polygon(point, polygon_vertices):
+    min_distance = float('inf')
+    closest_point = None
+    for i in range(len(polygon_vertices)):
+        start_point = polygon_vertices[i]
+        end_point = polygon_vertices[(i + 1) % len(polygon_vertices)]
+        distance, closest = distance_point_to_line(point, start_point, end_point)
+        if distance &lt; min_distance:
+            min_distance = distance
+            closest_point = closest
+    return min_distance, closest_point</code></pre>
+        </div>
+
+        <img src="../images/projects/challenge-cup/album/forbid_apf.jpg" alt="Calculate U_rep from the convex hull" class="detail-img-center">
+        <p class="img-caption">Repulsive force calculation from the convex hull of the avoidance zone.</p>
+
+        <p>However, a <strong>convergence point issue</strong> was discovered: when both the agent and target lie within the perpendicular region of an avoidance zone edge, the potential field fails.</p>
+        <img src="../images/projects/challenge-cup/album/converge_point.jpg" alt="Convergent point" class="detail-img-center">
+        <p class="img-caption">Convergence point issue: the agent gets trapped when both positions fall within the perpendicular region.</p>
+
+        <h4>Stage 3 — A* Algorithm</h4>
+        <p>To solve the convergence issue, we adopted the A* algorithm on the pre-gridified map for real-time collision-free path planning:</p>
+
+        <div class="code-block">
+          <button class="code-toggle" onclick="toggleCode(this)">Show code</button>
+          <pre><code>class AStarPathPlanner:
+    def __init__(self, grid_map):
+        self.grid_map = grid_map
+        self.rows = len(grid_map)
+        self.cols = len(grid_map[0])
+
+    def heuristic(self, current, goal):
+        return np.sqrt((current[0] - goal[0])**2 + (current[1] - goal[1])**2)
+
+    def find_path(self, start, end):
+        start = tuple(start)
+        end = tuple(end)
+        if start == end:
+            return [[start[0], start[1]]]
+        open_list = [(0, start)]
+        came_from = {}
+        g_score = {cell: float('inf') for row in self.grid_map for cell in row}
+        g_score[start] = 0
+        f_score = {cell: float('inf') for row in self.grid_map for cell in row}
+        f_score[start] = self.heuristic(start, end)
+        while open_list:
+            _, current = heapq.heappop(open_list)
+            if current == end:
+                path = [current]
+                while current in came_from:
+                    current = came_from[current]
+                    path.append(current)
+                path.reverse()
+                path_list = []
+                for tpl in path:
+                    path_list.append([tpl[0], tpl[1]])
+                return path_list
+            add = [(0,1),(0,-1),(1,0),(-1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
+            for dr, dc in add:
+                neighbor = (current[0] + dr, current[1] + dc)
+                if (0 &lt;= neighbor[0] &lt; self.rows and 0 &lt;= neighbor[1] &lt; self.cols
+                        and self.grid_map[neighbor[0]][neighbor[1]] != 1):
+                    tentative_g_score = g_score[current] + 1
+                    if tentative_g_score &lt; g_score.get(neighbor, float('inf')):
+                        came_from[neighbor] = current
+                        g_score[neighbor] = tentative_g_score
+                        f_score[neighbor] = tentative_g_score + self.heuristic(neighbor, end)
+                        heapq.heappush(open_list, (f_score[neighbor], neighbor))
+        return []</code></pre>
+        </div>
+
+        <img src="../images/projects/challenge-cup/album/A_star.jpg" alt="A* algorithm" class="detail-img-center">
+        <p class="img-caption">A* path planning result on the gridified map.</p>
+
+        <h4>Integrated Framework</h4>
+        <p>The final <code>need_doa</code> logic checks whether the line segment between an agent's current position and its target intersects with any avoidance zone or target. If an intersection is detected, A* is used for avoidance zones and the artificial potential field for targets. The potential field is retained for its computational simplicity and to minimize code changes that could conflict with coverage and target-checking tasks.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Simulation Results</h3>
+        <p>The following GIFs compare the algorithm performance before and after introducing online optimization:</p>
+        <div class="gif-compare">
+          <div class="gif-item">
+            <img src="../images/projects/challenge-cup/album/unoptimized.gif" alt="Before optimization">
+            <div class="gif-label">Before optimization — agents wander without coordination</div>
+          </div>
+          <div class="gif-item">
+            <img src="../images/projects/challenge-cup/album/optimized.gif" alt="After optimization">
+            <div class="gif-label">After optimization — coordinated coverage with task allocation</div>
+          </div>
+        </div>
+        <p>The GIF below demonstrates the coverage path planning before adding the target exploration module:</p>
+        <div class="gif-item" style="margin-top:12px;">
+          <img src="../images/projects/challenge-cup/album/uncovered.gif" alt="Coverage without target exploration" style="display:block; margin:0 auto; max-width:480px; width:100%; border-radius:6px; border:1px solid #e0e0e0;">
+          <div class="gif-label">Coverage path planning without target exploration</div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Final Video</h3>
+        <p>The following video showcases our final simulation results in the organizer's system:</p>
+        <video src="../images/projects/challenge-cup/videos/result.mp4" controls></video>
+      </div>
+
+      <p style="margin-top:20px;"><a href="../index.html#projects" class="detail-back">← Back to Projects</a></p>
+    </main>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    function toggleCode(btn) {
+      const pre = btn.nextElementSibling;
+      pre.classList.toggle('open');
+      const isOpen = pre.classList.contains('open');
+      btn.textContent = isOpen ? 'Hide code' : 'Show code';
+      btn.style.borderRadius = isOpen ? '6px 6px 0 0' : '6px';
+    }
+  </script>
+</body>
+</html>

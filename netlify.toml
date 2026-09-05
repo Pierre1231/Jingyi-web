@@ -1,21 +1,5 @@
+# 纯静态站点：无需构建，直接发布仓库根目录
+# 切换 Netlify 生产分支到此分支时，本文件会覆盖 UI 中的 Hugo 构建设置
 [build]
-  command = "hugo --gc --minify -b $URL"
-  publish = "public"
-
-[build.environment]
-  HUGO_VERSION = "0.97.3"
-  HUGO_ENABLEGITINFO = "true"
-
-[context.production.environment]
-  HUGO_ENV = "production"
-
-[context.deploy-preview]
-  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
-
-[context.branch-deploy]
-  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
-
-[[plugins]]
-  package = "netlify-plugin-hugo-cache-resources"
-  [plugins.inputs]
-    debug = true
+  command = "echo 'Static site: no build step required'"
+  publish = "."

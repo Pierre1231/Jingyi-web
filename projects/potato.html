@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Potato Platform — Jingyi HUANG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/jpg" href="../images/avatar.jpg">
+  <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/js/all.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+</head>
+<body>
+  <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" id="sidebar">
+      <img src="../images/avatar.jpg" alt="Jingyi Huang" class="sidebar-avatar">
+      <div class="sidebar-brand">Jingyi HUANG</div>
+      <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
+      <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
+      <ul class="sidebar-nav">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#news">News</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#talks">Talks</a></li>
+        <li><a href="../index.html#misc">Misc.</a></li>
+        <li><a href="../gallery/index.html">Gallery</a></li>
+      </ul>
+      <div class="sidebar-social">
+        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Pierre1231" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="../gallery/index.html" title="Photography"><i class="fas fa-camera"></i></a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <a href="../index.html#projects" class="detail-back">← Back to Projects</a>
+      <h1 class="detail-title">Potato Platform <span style="font-size:0.7em; font-weight:400; color:#888;">(大型异构集群仿真平台)</span></h1>
+      <p class="detail-meta">Sep. 2022 &nbsp;·&nbsp; <span class="tag">Simulation Platform</span></p>
+
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p><strong>Potato</strong> is a large-scale heterogeneous swarm simulation platform developed for the Ministry of Science and Technology project "Collaborative Confrontation Environment for Heterogeneous Unmanned Swarms." Unlike existing platforms that trade off between model fidelity and scale, Potato adopts a <strong>Data-Oriented Programming (DOP)</strong> paradigm with <strong>GPU parallel computing</strong> to achieve both realistic nonlinear dynamic models and large-scale simulations.</p>
+        <p>The platform has been validated with up to <strong>5,000 quadrotors</strong> while maintaining nearly constant computational speed. A preprint describing the platform is available on <a href="https://arxiv.org/abs/2308.12698" target="_blank">arXiv</a>.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Highlights</h3>
+        <div class="highlight-grid">
+          <div class="highlight-card">
+            <div class="highlight-value" style="color:#0066cc;">5,000+</div>
+            <div class="highlight-label">Agents (Quadrotors)</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-value">DOP</div>
+            <div class="highlight-label">GPU Parallel Computing</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-value">6+</div>
+            <div class="highlight-label">Agent Types</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-value">3</div>
+            <div class="highlight-label">Modular Components</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-value">Cesium</div>
+            <div class="highlight-label">3D Visualization</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-value">PyTorch</div>
+            <div class="highlight-label">Simulation Backend</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Architecture</h3>
+        <p>Potato follows a <strong>three-tier modular architecture</strong> that decouples visualization, simulation control, and algorithm development:</p>
+        <ul>
+          <li><strong>Viewer (Display Tier)</strong> — A Cesium-based 3D visualization client built with Electron, rendering agents on a real-world map. Communicates via socket on port 7777.</li>
+          <li><strong>Central (Control Tier)</strong> — Python-based middleware managing multi-process simulation. Spawns <code>viewer_process</code>, <code>main_process</code>, and <code>algorithm_process</code> with thread-level concurrency and queue-based inter-process communication (IPC).</li>
+          <li><strong>Algorithm (User Tier)</strong> — Python interface where researchers implement their algorithms. Connects to the Central tier on port 7000.</li>
+        </ul>
+        <img src="../images/projects/potato/architecture.jpg" alt="Potato platform architecture" class="detail-img-center">
+        <p class="img-caption">Multi-process architecture of the Potato platform.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Supported Agents</h3>
+        <p>Potato supports a wide range of heterogeneous agents with realistic 3D models and nonlinear dynamics:</p>
+        <ul class="agent-list">
+          <li><strong>Quadrotor</strong> — Nonlinear dynamics with GPU-batched simulation</li>
+          <li><strong>Fixed-wing UAV</strong> — Complete 6-DOF model with aerodynamics</li>
+          <li><strong>Ground Vehicle</strong> — Magic formula tire model, path following</li>
+          <li><strong>Missile</strong> — Air-to-air & air-to-ground variants</li>
+          <li><strong>Tilt-rotor</strong> — Transition-capable VTOL model</li>
+          <li><strong>Ship</strong> — Surface vessel dynamics</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h3>My Contribution — Ground Vehicle</h3>
+        <p>I was responsible for developing the <strong>ground vehicle dynamics model, path follower, and autopilot controller</strong> for the Potato platform — covering the full pipeline from physics simulation to closed-loop control. The dynamics model is adapted from ETH's AMZ racing team research, modified to integrate with Potato's multi-agent message-passing architecture.</p>
+
+        <h4>Dynamic Model</h4>
+        <p>The vehicle dynamics use a <strong>bicycle model with Pacejka magic formula tire forces</strong>, parameterized after the Hummer H2 (mass 3,000 kg, wheelbase 3.12 m). The state vector includes position, heading, body-frame velocities, and yaw rate. Control inputs are steering angle and normalized throttle.</p>
+
+        <div class="code-block">
+          <button class="code-toggle" onclick="toggleCode(this)">Show code</button>
+          <pre><code>class CarDynamics:
+    def __init__(self, ts):
+        self._ts_sim = ts
+        self._state = np.array([
+            [CAR.pos_x0],   # 0  world x
+            [CAR.pos_y0],   # 1  world y
+            [CAR.psi0],     # 2  heading angle
+            [CAR.v_x0],     # 3  body-x velocity
+            [CAR.v_y0],     # 4  body-y velocity
+            [CAR.r0],       # 5  yaw rate
+        ])
+
+    def _forces_moments(self, delta: MsgDelta):
+        v_x = self._state.item(3)
+        v_y = self._state.item(4)
+        r = self._state.item(5)
+
+        # Magic formula tire forces
+        if v_x == 0:
+            alpha_f = -delta.delta_sa
+            alpha_r = 0
+        else:
+            alpha_f = math.atan((v_y + CAR.l_f * r) / v_x) - delta.delta_sa
+            alpha_r = math.atan((v_y - CAR.l_r * r) / v_x)
+
+        ff_lat = CAR.D * math.sin(CAR.C * math.atan(CAR.B * alpha_f))
+        fr_lat = CAR.D * math.sin(CAR.C * math.atan(CAR.B * alpha_r))
+        f_lon = CAR.C_m1 * delta.Th - CAR.C_r2 * v_x**2
+
+        fx = f_lon - ff_lat * math.sin(delta.delta_sa)
+        fy = fr_lat + ff_lat * math.cos(delta.delta_sa)
+
+        r_target = delta.delta_sa * v_x / (CAR.l_f + CAR.l_r)
+        tau_tv = (r_target - r) * CAR.P_tv
+        Mz = (CAR.l_f * ff_lat * math.cos(delta.delta_sa)
+              - CAR.l_r * fr_lat + tau_tv)
+
+        return fx, fy, Mz</code></pre>
+        </div>
+
+        <h4>Path Following</h4>
+        <p>The path follower implements <strong>vector-field guidance</strong> for both straight-line and orbit (circular) paths. It computes the desired course angle based on the cross-track error and approach angle, then sends speed and course commands to the autopilot.</p>
+
+        <div class="code-block">
+          <button class="code-toggle" onclick="toggleCode(this)">Show code</button>
+          <pre><code>class PathFollower:
+    def __init__(self):
+        self.chi_inf = np.radians(75.0)
+        self.k_path = 0.05
+        self.k_orbit = 10.0
+
+    def _follow_straight_line(self, path, state):
+        q = path.line_direction
+        r = path.line_origin
+        pn, pe = state.north, state.east
+
+        self.autopilot_commands.speed_command = path.airspeed
+
+        chi_q = wrap(np.arctan2(q.item(1), q.item(0)), state.chi)
+        e_py = (-np.sin(chi_q) * (pn - r.item(0))
+                + np.cos(chi_q) * (pe - r.item(1)))
+        self.autopilot_commands.course_command = (
+            chi_q - self.chi_inf * (2.0 / np.pi) * np.arctan(self.k_path * e_py)
+        )
+
+    def _follow_orbit(self, path, state):
+        direction = 1.0 if path.orbit_direction == "CW" else -1.0
+        cn, ce = path.orbit_center.item(0), path.orbit_center.item(1)
+        pn, pe = state.north, state.east
+
+        d = np.sqrt((pn - cn)**2 + (pe - ce)**2)
+        phi_var = wrap(np.arctan2(pe - ce, pn - cn), state.chi)
+        orbit_error = (d - path.orbit_radius) / path.orbit_radius
+
+        self.autopilot_commands.speed_command = path.airspeed
+        self.autopilot_commands.course_command = (
+            phi_var + direction * (np.pi / 2.0 + np.arctan(self.k_orbit * orbit_error))
+        )</code></pre>
+        </div>
+
+        <h4>Autopilot — PID Control</h4>
+        <p>The autopilot uses two independent <strong>PID controllers</strong> with anti-windup: one for course tracking (steering) and one for speed tracking (throttle). A low-pass differentiator filter (time constant σ = 0.05 s) smooths the derivative term.</p>
+
+        <div class="code-block">
+          <button class="code-toggle" onclick="toggleCode(this)">Show code</button>
+          <pre><code>class Autopilot:
+    def __init__(self, ts_control):
+        self.course_from_steering = PIDControl(
+            kp=AP.course_kp, ki=AP.course_ki, kd=AP.course_kd,
+            Ts=ts_control, limit=np.radians(30)
+        )
+        self.speed_from_throttle = PIDControl(
+            kp=AP.speed_kp, ki=AP.speed_ki, kd=AP.speed_kd,
+            Ts=ts_control, limit=1
+        )
+
+    def update(self, cmd: MsgAutopilot, state: MsgState):
+        # Lateral: course → steering angle
+        chi_c = wrap(cmd.course_command, state.chi)
+        delta_sa = self.course_from_steering.update(chi_c, state.chi)
+
+        # Longitudinal: speed → throttle
+        delta_th = self.speed_from_throttle.update(cmd.speed_command, state.Vg)
+
+        return MsgDelta(delta_sa=delta_sa, Th=delta_th)</code></pre>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Platform Demo</h3>
+        <p>The Potato Viewer renders agents on a real-world map using the Cesium engine. Below are screenshots showing the 3D visualization of heterogeneous agents in simulation:</p>
+        <div class="gif-compare">
+          <div class="gif-item">
+            <img src="../images/projects/potato/viewer-demo-1.png" alt="Potato Viewer demo 1">
+            <div class="gif-label">3D visualization of agents on Cesium globe</div>
+          </div>
+          <div class="gif-item">
+            <img src="../images/projects/potato/viewer-demo-2.png" alt="Potato Viewer demo 2">
+            <div class="gif-label">Multi-agent simulation with real-time state tracking</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Platform Interface</h3>
+        <p>The Potato Viewer provides an intuitive configuration interface for customizing display settings, debug logging, and socket communication:</p>
+        <img src="../images/projects/potato/ui-settings.png" alt="Potato Viewer settings UI" class="detail-img-center">
+        <p class="img-caption">Potato Viewer configuration panel (v2.3+).</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Publication</h3>
+        <div class="pub-box">
+          <strong>Potato: A Data-Oriented Programming Approach to Large-Scale Swarm Robotic Simulation</strong>
+          <em>Jinjie Li, Liang Han, et al.</em>
+          <p style="font-size:0.82rem; color:#666; margin:6px 0 0;">arXiv:2308.12698, 2023</p>
+          <p style="font-size:0.82rem; color:#666; margin:4px 0 0;">Presented a DOP-based simulator using GPU parallel computing (PyTorch) for large-scale swarm robotic simulations with realistic nonlinear dynamic models.</p>
+          <p style="margin:8px 0 0;"><a href="https://arxiv.org/abs/2308.12698" target="_blank">[arXiv Abstract]</a> &nbsp; <a href="https://arxiv.org/pdf/2308.12698" target="_blank">[PDF]</a></p>
+        </div>
+      </div>
+
+      <p style="margin-top:20px;"><a href="../index.html#projects" class="detail-back">← Back to Projects</a></p>
+    </main>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    function toggleCode(btn) {
+      const pre = btn.nextElementSibling;
+      pre.classList.toggle('open');
+      const isOpen = pre.classList.contains('open');
+      btn.textContent = isOpen ? 'Hide code' : 'Show code';
+      btn.style.borderRadius = isOpen ? '6px 6px 0 0' : '6px';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PID Course (TA) — Jingyi HUANG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/jpg" href="../images/avatar.jpg">
+  <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/js/all.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+</head>
+<body>
+  <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" id="sidebar">
+      <img src="../images/avatar.jpg" alt="Jingyi Huang" class="sidebar-avatar">
+      <div class="sidebar-brand">Jingyi HUANG</div>
+      <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
+      <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
+      <ul class="sidebar-nav">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#news">News</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#talks">Talks</a></li>
+        <li><a href="../index.html#misc">Misc.</a></li>
+        <li><a href="../gallery/index.html">Gallery</a></li>
+      </ul>
+      <div class="sidebar-social">
+        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Pierre1231" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="../gallery/index.html" title="Photography"><i class="fas fa-camera"></i></a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <a href="../index.html#projects" class="detail-back">← Back to Projects</a>
+      <h1 class="detail-title">PID Course (Teaching Assistant)</h1>
+      <p class="detail-meta">Mar. 2023 &nbsp;·&nbsp; <span class="tag">Course</span></p>
+
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p>This course is designed to give students an intuitive understanding of PID controllers by conducting experiments on a simulation platform. We have designed a simple PID controller in the simulation platform, and through parameter tuning of this controller, students can gain an intuitive understanding of the principles of PID controllers. We have also designed a simple second-order dynamics model for quadrotors in the simulation platform. By controlling the quadrotor to follow a set path, students can verify the control effect of the controller.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Course Content</h3>
+        <ol>
+          <li><strong>PID Controller Principles</strong>: Students can learn how a PID controller works through the implementation of the <code>PidControl</code> class. The comments and structured design in the code help students understand how the proportional, integral, and derivative components are calculated independently and combined to form a control signal.</li>
+          <li><strong>Trajectory Tracking</strong>: The <code>desired_trace</code> function provides a target trajectory, showing students how to set target positions based on the change in time.</li>
+          <li><strong>Dynamic System Simulation</strong>: The <code>SecondOrderDynamics</code> class demonstrates a simplified dynamic system model, helping students understand the relationship between state updates and control inputs.</li>
+          <li><strong>Real-time Simulation</strong>: The main loop simulates the operation of a real-time control system, where students can observe how the controller responds to errors and updates control inputs at each time step.</li>
+          <li><strong>Data Visualization</strong>: Through plotting, students can visually comprehend the controller's performance, such as the comparison between the actual and target trajectories, and the error over time.</li>
+        </ol>
+        <img src="../images/projects/pid-course/album/run.png" alt="Real-time Simulation" class="detail-img-center">
+        <img src="../images/projects/pid-course/album/plot.png" alt="Data Visualization" class="detail-img-center">
+      </div>
+
+      <div class="detail-section">
+        <h3>Student Activities</h3>
+        <ol>
+          <li><strong>Understanding the Code</strong>: Initially, students need to read and comprehend each part of the code, including how the PID controller operates, system dynamics, target trajectory setting, and the simulation loop.</li>
+          <li><strong>Modifying Parameters</strong>: Students can alter the <code>kp</code>, <code>ki</code>, <code>kd</code> parameters in the <code>PidControl</code> to see changes in the controller's performance.</li>
+          <li><strong>Experimenting and Observing</strong>: Students can run the code and observe the quadrotor's flight path and behavior under different PID parameters.</li>
+          <li><strong>Adjusting the Target Trajectory</strong>: Students can modify the <code>desired_trace</code> function to try different target trajectories.</li>
+          <li><strong>Problem-Solving</strong>: If issues arise during the simulation, students are expected to analyze the cause of the problem and attempt to solve it.</li>
+        </ol>
+      </div>
+
+      <div class="detail-section">
+        <h3>Results</h3>
+        <p>The students conducted the simulation and saw the motion of the quadrotor. They got a better understanding of the PID controller and the quadrotor's dynamics. They also learned how to tune the PID parameters to improve the controller's performance. The students were able to complete the course and achieve the expected learning outcomes.</p>
+      </div>
+
+      <p style="margin-top:20px;"><a href="../index.html#projects" class="detail-back">← Back to Projects</a></p>
+    </main>
+  </div>
+
+  <script>function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');}</script>
+</body>
+</html>

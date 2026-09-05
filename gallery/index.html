@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Jingyi HUANG</title>
+  <meta name="description" content="Photography gallery of Jingyi Huang.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/jpg" href="../images/avatar.jpg">
+  <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/js/all.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+  <style>
+    .sidebar.gallery-sidebar { background: #111; border-right-color: #333; }
+    .sidebar.gallery-sidebar .sidebar-brand { color: #fff; }
+    .sidebar.gallery-sidebar .sidebar-role { color: #aaa; }
+    .sidebar.gallery-sidebar .sidebar-bio { color: #bbb; }
+    .sidebar.gallery-sidebar .sidebar-nav a { color: #bbb; }
+    .sidebar.gallery-sidebar .sidebar-nav a:hover,
+    .sidebar.gallery-sidebar .sidebar-nav a.active { color: #fff; border-left-color: #fff; }
+    .sidebar.gallery-sidebar .sidebar-social { border-top-color: #333; }
+    .sidebar.gallery-sidebar .sidebar-social a { color: #888; }
+    .sidebar.gallery-sidebar .sidebar-social a:hover { color: #fff; }
+    .gallery-body { background: #0a0a0a; }
+    .gallery-body .main-content { max-width: 1000px; }
+  </style>
+</head>
+<body class="gallery-body">
+  <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu" style="background:#1a1a1a; border-color:#444; color:#fff;">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div class="page-wrapper">
+    <aside class="sidebar gallery-sidebar" id="sidebar">
+      <img src="../images/avatar.jpg" alt="Jingyi Huang" class="sidebar-avatar">
+      <div class="sidebar-brand">Jingyi HUANG</div>
+      <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
+      <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
+
+      <ul class="sidebar-nav">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#news">News</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#talks">Talks</a></li>
+        <li><a href="../index.html#misc">Misc.</a></li>
+        <li><a href="./index.html" class="active">Gallery</a></li>
+      </ul>
+
+      <div class="sidebar-social">
+        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Pierre1231" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="./index.html" title="Photography"><i class="fas fa-camera"></i></a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="gallery-hero">
+        <h1>Photography</h1>
+        <p>Architecture, street, nature, and the spaces between.</p>
+      </div>
+
+      <div class="gallery-nav">
+        <a href="#architecture">Architecture</a>
+        <a href="#nature">Nature</a>
+        <a href="#street">Street</a>
+        <a href="#other">Other</a>
+      </div>
+
+      <section id="architecture" class="gallery-section">
+        <h2>Architecture</h2>
+        <p class="desc">Capturing the geometry, light, and scale of built environments.</p>
+        <div class="masonry-grid">
+          <div class="masonry-item" onclick="openLightbox(0, 'architecture')"><img src="../images/gallery/architecture/IMG_20191114_013314.jpg" alt="Architecture"></div>
+          <div class="masonry-item" onclick="openLightbox(1, 'architecture')"><img src="../images/gallery/architecture/L1210710-2.JPG" alt="Architecture"></div>
+          <div class="masonry-item" onclick="openLightbox(2, 'architecture')"><img src="../images/gallery/architecture/L1210713.JPG" alt="Architecture"></div>
+          <div class="masonry-item" onclick="openLightbox(3, 'architecture')"><img src="../images/gallery/architecture/P1040078.jpg" alt="Architecture"></div>
+          <div class="masonry-item" onclick="openLightbox(4, 'architecture')"><img src="../images/gallery/architecture/P1260816-1.jpg" alt="Architecture"></div>
+          <div class="masonry-item" onclick="openLightbox(5, 'architecture')"><img src="../images/gallery/architecture/P1330244-1.jpg" alt="Architecture"></div>
+          <div class="masonry-item" onclick="openLightbox(6, 'architecture')"><img src="../images/gallery/architecture/P1340364-1.jpg" alt="Architecture"></div>
+          <div class="masonry-item" onclick="openLightbox(7, 'architecture')"><img src="../images/gallery/architecture/P1350452-1.jpg" alt="Architecture"></div>
+          <div class="masonry-item" onclick="openLightbox(8, 'architecture')"><img src="../images/gallery/architecture/PB100740g.jpg" alt="Architecture"></div>
+          <div class="masonry-item" onclick="openLightbox(9, 'architecture')"><img src="../images/gallery/architecture/panorama.jpg" alt="Architecture"></div>
+        </div>
+      </section>
+
+      <section id="nature" class="gallery-section">
+        <h2>Nature</h2>
+        <p class="desc">Landscapes, flora, and natural light across seasons.</p>
+        <div class="masonry-grid">
+          <div class="masonry-item" onclick="openLightbox(0, 'nature')"><img src="../images/gallery/nature/IMG_3163.jpeg" alt="Nature"></div>
+          <div class="masonry-item" onclick="openLightbox(1, 'nature')"><img src="../images/gallery/nature/P1300641.JPG" alt="Nature"></div>
+          <div class="masonry-item" onclick="openLightbox(2, 'nature')"><img src="../images/gallery/nature/P1330106-1.jpg" alt="Nature"></div>
+          <div class="masonry-item" onclick="openLightbox(3, 'nature')"><img src="../images/gallery/nature/P1330143-1.jpg" alt="Nature"></div>
+          <div class="masonry-item" onclick="openLightbox(4, 'nature')"><img src="../images/gallery/nature/P1330207-1.jpg" alt="Nature"></div>
+          <div class="masonry-item" onclick="openLightbox(5, 'nature')"><img src="../images/gallery/nature/P1340712-1.jpg" alt="Nature"></div>
+        </div>
+      </section>
+
+      <section id="street" class="gallery-section">
+        <h2>Street</h2>
+        <p class="desc">The unfiltered rhythm of city life.</p>
+        <div class="masonry-grid">
+          <div class="masonry-item" onclick="openLightbox(0, 'street')"><img src="../images/gallery/street/L1210736.JPG" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(1, 'street')"><img src="../images/gallery/street/P1240686-1.jpg" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(2, 'street')"><img src="../images/gallery/street/P1260881-1.jpg" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(3, 'street')"><img src="../images/gallery/street/P1310497-1.jpg" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(4, 'street')"><img src="../images/gallery/street/P1320262-2.jpg" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(5, 'street')"><img src="../images/gallery/street/P1320522-1.jpg" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(6, 'street')"><img src="../images/gallery/street/P1330153-1.jpg" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(7, 'street')"><img src="../images/gallery/street/P1330154-1.jpg" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(8, 'street')"><img src="../images/gallery/street/P1340140.jpg" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(9, 'street')"><img src="../images/gallery/street/PA050327.JPG" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(10, 'street')"><img src="../images/gallery/street/PA270356.JPG" alt="Street"></div>
+          <div class="masonry-item" onclick="openLightbox(11, 'street')"><img src="../images/gallery/street/PA310669.JPG" alt="Street"></div>
+        </div>
+      </section>
+
+      <section id="other" class="gallery-section">
+        <h2>Other</h2>
+        <p class="desc">Moments that resist easy categorisation.</p>
+        <div class="masonry-grid">
+          <div class="masonry-item" onclick="openLightbox(0, 'other')"><img src="../images/gallery/other/20220101_16_12_58-3.jpg" alt="Other"></div>
+          <div class="masonry-item" onclick="openLightbox(1, 'other')"><img src="../images/gallery/other/P1320649-1.jpg" alt="Other"></div>
+          <div class="masonry-item" onclick="openLightbox(2, 'other')"><img src="../images/gallery/other/P1320664-1.jpg" alt="Other"></div>
+          <div class="masonry-item" onclick="openLightbox(3, 'other')"><img src="../images/gallery/other/P1330176-1.jpg" alt="Other"></div>
+          <div class="masonry-item" onclick="openLightbox(4, 'other')"><img src="../images/gallery/other/P1340818-1.jpg" alt="Other"></div>
+          <div class="masonry-item" onclick="openLightbox(5, 'other')"><img src="../images/gallery/other/P1340839-1.jpg" alt="Other"></div>
+          <div class="masonry-item" onclick="openLightbox(6, 'other')"><img src="../images/gallery/other/PA270318.JPG" alt="Other"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1, event)">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1, event)">&#8250;</button>
+    <img src="" alt="" id="lightboxImg">
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const start = window.scrollY;
+        const end = target.offsetTop - 80;
+        const distance = end - start;
+        const duration = 600;
+        let startTime = null;
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          const progress = Math.min((timestamp - startTime) / duration, 1);
+          const ease = progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+          window.scrollTo(0, start + distance * ease);
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    });
+
+    const galleryImages = {
+      architecture: [
+        '../images/gallery/architecture/IMG_20191114_013314.jpg',
+        '../images/gallery/architecture/L1210710-2.JPG',
+        '../images/gallery/architecture/L1210713.JPG',
+        '../images/gallery/architecture/P1040078.jpg',
+        '../images/gallery/architecture/P1260816-1.jpg',
+        '../images/gallery/architecture/P1330244-1.jpg',
+        '../images/gallery/architecture/P1340364-1.jpg',
+        '../images/gallery/architecture/P1350452-1.jpg',
+        '../images/gallery/architecture/PB100740g.jpg',
+        '../images/gallery/architecture/panorama.jpg'
+      ],
+      nature: [
+        '../images/gallery/nature/IMG_3163.jpeg',
+        '../images/gallery/nature/P1300641.JPG',
+        '../images/gallery/nature/P1330106-1.jpg',
+        '../images/gallery/nature/P1330143-1.jpg',
+        '../images/gallery/nature/P1330207-1.jpg',
+        '../images/gallery/nature/P1340712-1.jpg'
+      ],
+      street: [
+        '../images/gallery/street/L1210736.JPG',
+        '../images/gallery/street/P1240686-1.jpg',
+        '../images/gallery/street/P1260881-1.jpg',
+        '../images/gallery/street/P1310497-1.jpg',
+        '../images/gallery/street/P1320262-2.jpg',
+        '../images/gallery/street/P1320522-1.jpg',
+        '../images/gallery/street/P1330153-1.jpg',
+        '../images/gallery/street/P1330154-1.jpg',
+        '../images/gallery/street/P1340140.jpg',
+        '../images/gallery/street/PA050327.JPG',
+        '../images/gallery/street/PA270356.JPG',
+        '../images/gallery/street/PA310669.JPG'
+      ],
+      other: [
+        '../images/gallery/other/20220101_16_12_58-3.jpg',
+        '../images/gallery/other/P1320649-1.jpg',
+        '../images/gallery/other/P1320664-1.jpg',
+        '../images/gallery/other/P1330176-1.jpg',
+        '../images/gallery/other/P1340818-1.jpg',
+        '../images/gallery/other/P1340839-1.jpg',
+        '../images/gallery/other/PA270318.JPG'
+      ]
+    };
+
+    let currentCategory = '';
+    let currentIndex = 0;
+
+    function openLightbox(index, category) {
+      currentCategory = category;
+      currentIndex = index;
+      document.getElementById('lightboxImg').src = galleryImages[category][index];
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function navigateLightbox(direction, event) {
+      event.stopPropagation();
+      const images = galleryImages[currentCategory];
+      currentIndex = (currentIndex + direction + images.length) % images.length;
+      document.getElementById('lightboxImg').src = images[currentIndex];
+    }
+
+    document.addEventListener('keydown', function(e) {
+      const lightbox = document.getElementById('lightbox');
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+      else if (e.key === 'ArrowLeft') navigateLightbox(-1, { stopPropagation: () => {} });
+      else if (e.key === 'ArrowRight') navigateLightbox(1, { stopPropagation: () => {} });
+    });
+  </script>
+</body>
+</html>

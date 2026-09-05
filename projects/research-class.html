@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Class (TA) — Jingyi HUANG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/jpg" href="../images/avatar.jpg">
+  <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/js/all.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+</head>
+<body>
+  <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" id="sidebar">
+      <img src="../images/avatar.jpg" alt="Jingyi Huang" class="sidebar-avatar">
+      <div class="sidebar-brand">Jingyi HUANG</div>
+      <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
+      <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
+      <ul class="sidebar-nav">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#news">News</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#talks">Talks</a></li>
+        <li><a href="../index.html#misc">Misc.</a></li>
+        <li><a href="../gallery/index.html">Gallery</a></li>
+      </ul>
+      <div class="sidebar-social">
+        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Pierre1231" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="../gallery/index.html" title="Photography"><i class="fas fa-camera"></i></a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <a href="../index.html#projects" class="detail-back">← Back to Projects</a>
+      <h1 class="detail-title">Research Class (Teaching Assistant)</h1>
+      <p class="detail-meta">Nov. 2023 &nbsp;·&nbsp; <span class="tag">Course</span></p>
+
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p>This course aims to provide students with a good understanding of the principles and applications of robot path planning and control through simulations and experiments. Throughout the course, we utilize a laboratory-developed simulation platform for control and planning simulations. Subsequently, we conduct control and planning experiments using DJI's RoboMaster EP(UGV) and TT(UAV), along with indoor positioning using UWB devices from nooploop company. After students have learned the control and planning theories, they can deepen their understanding through simulations and physical experiments. The course consists of eight sessions: the first three sessions cover relevant theory presented by Assoc. Prof. HAN Liang, the following three sessions involve my instruction on simulation and physical experiments, and the final two sessions include the evaluation of simulation and experimental results.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Course Content</h3>
+        <h4>Theory Part</h4>
+        <ol>
+          <li><strong>Control theory</strong>: Assoc. Prof. HAN Liang explained linear systems, introduced modeling methods for first-order and second-order systems, discussed control principles based on feedback, and explained the principles of PID control.</li>
+          <li><strong>Path planning theory</strong>: Assoc. Prof. HAN Liang explained the problems that need to be addressed in path planning, which involve finding a collision-free path from point A to point B on a given map. Additionally, the teacher discussed some graph-based path planning algorithms, such as A*.</li>
+          <li><strong>Basic hardware knowledge</strong>: Assoc. Prof. HAN Liang explained the fundamental principles of multirotor drones and demonstrated using the DJI Robomaster TT(quadrotor) and its official app. The teacher explained how quadrotors can adjust their attitude by changing the rotational speed of their propellers. Assoc. Prof. HAN Liang also introduced the principles of a Mecanum wheel robot, demonstrating with the DJI RoboMaster EP Mecanum wheel robot and its official app.</li>
+          <li><strong>Basic software knowledge</strong>: I primarily introduced why we use and how we use Anaconda, as well as how to utilize PyCharm for Python development. In the classroom, I guided students in establishing a virtual environment called 'Research Class' for the development of simulations and experiments.</li>
+        </ol>
+
+        <h4>Simulation Part</h4>
+        <p>Potato is a large-scale cluster simulation platform developed by our lab. To meet the needs of this class, we have developed a minimal example using the simulation platform display end as the GUI — potato-mini. Students can design and develop agent dynamics, add task environments, and perform control/planning algorithm simulations in potato-mini.</p>
+        <img src="../images/projects/research-class/album/earth.jpg" alt="Potato display end" class="detail-img-center">
+        <p>In Potato Central, there are three main components that students need to modify:</p>
+        <ol>
+          <li><strong>Path Planning Algorithm</strong>: The path planning algorithm was developed by Chen Xuwen, mainly using the A* algorithm. Students need to modify and implement their own path planning algorithm. The main code is in <code>planning.py</code>.</li>
+          <li><strong>Path Design</strong>: I am responsible for the design of the planned path. In <code>central_demo.py</code>, based on the given waypoints, I connect them as a path. Students need to modify and implement their own path design.</li>
+          <li><strong>Control</strong>: I am responsible for the control part of the code. I designed a path tracking control algorithm based on vector field algorithm, mainly using a PID controller. The main part of the PID controller is in <code>controller.py</code>.</li>
+        </ol>
+
+        <h4>Experiment Part</h4>
+        <ol>
+          <li><strong>UWB device</strong>: We utilize the LinkTrack product developed by nooploop company for positioning unmanned aerial vehicles (UAVs) and unmanned ground vehicles (UGVs). The Ultra-Wideband (UWB) equipment used in this course requires the use of base stations, a console, and tags.</li>
+        </ol>
+        <img src="../images/projects/research-class/album/UWB_ui.jpg" alt="UWB positioning" class="detail-img-center">
+        <ol start="2">
+          <li><strong>Robomaster TT</strong>: We utilize the DJI Robomaster TT for our experiments. I set the drone to network mode, allowing it to connect to the router. Based on prior map information, we can initially plan a collision-free path. Then, using UWB, we locate the drone's position and compute the drone's control input through a control algorithm.</li>
+          <li><strong>Robomaster EP</strong>: Similarly, I set the EP to network mode. Based on prior map information, we can initially plan a collision-free path. Then, using UWB, we locate the EP's position and compute the EP's control input through a control algorithm.</li>
+          <li><strong>Map design</strong>: I designed a 4m×3m map, which can be simulated in Potato and also verified in experiments. The map contains some random obstacles. The drone and the unmanned vehicle need to navigate around these obstacles to reach the target point.</li>
+        </ol>
+        <img src="../images/projects/research-class/album/map.png" alt="Map with obstacles" class="detail-img-center">
+      </div>
+
+      <div class="detail-section">
+        <h3>Results</h3>
+        <p>The students completed both the simulation and experiments, enhancing their hands-on and coding abilities, and deepening their understanding of control and planning algorithms.</p>
+        <video src="../images/projects/research-class/videos/result.mp4" controls></video>
+      </div>
+
+      <div class="detail-section">
+        <h3>My Role</h3>
+        <p>Initially, I completed all the simulation and experiments, and organized the related steps and knowledge into a document, which I then explained to the students in class. I was also responsible for the preparation of the course, including preparing hardware devices and course materials. Additionally, I was in charge of the course evaluation, which involved assessing the students' simulation and experiment results, as well as evaluating their course reports.</p>
+        <p>[<a href="../pdfs/research-class/Research%20class.pdf" target="_blank">course material PDF</a>]</p>
+      </div>
+
+      <p style="margin-top:20px;"><a href="../index.html#projects" class="detail-back">← Back to Projects</a></p>
+    </main>
+  </div>
+
+  <script>function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');}</script>
+</body>
+</html>

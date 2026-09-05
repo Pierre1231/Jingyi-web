@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulation & Optimization — Jingyi HUANG</title>
+  <meta name="description" content="Neural network from scratch (Python/NumPy) with SGD and Newton's method. Graduate course project on machine learning optimization.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/jpg" href="../images/avatar.jpg">
+  <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/js/all.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+</head>
+<body>
+  <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" id="sidebar">
+      <img src="../images/avatar.jpg" alt="Jingyi Huang" class="sidebar-avatar">
+      <div class="sidebar-brand">Jingyi HUANG</div>
+      <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
+      <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
+      <ul class="sidebar-nav">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#news">News</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#talks">Talks</a></li>
+        <li><a href="../index.html#misc">Misc.</a></li>
+        <li><a href="../gallery/index.html">Gallery</a></li>
+      </ul>
+      <div class="sidebar-social">
+        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Pierre1231" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="../gallery/index.html" title="Photography"><i class="fas fa-camera"></i></a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <a href="../index.html#projects" class="detail-back">← Back to Projects</a>
+      <h1 class="detail-title">Simulation & Optimization</h1>
+      <p class="detail-meta">Nov. 2023 &nbsp;·&nbsp; <span class="tag">Course Project</span></p>
+
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p>This graduate course project focuses on <strong>machine learning optimization</strong> through hands-on implementation of neural networks from scratch, without relying on high-level frameworks like PyTorch or TensorFlow.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Projet 1 — Neural Network from Scratch</h3>
+        <p>I implemented a fully functional neural network classifier using only <strong>Python and NumPy</strong>, without any deep learning frameworks. The network uses a two-layer architecture (input → hidden → output) with configurable activation functions, weight initialization strategies, and optimization algorithms.</p>
+
+        <h4>Architecture</h4>
+        <ul>
+          <li>Input layer: 2 features</li>
+          <li>Hidden layer: 30 neurons (configurable)</li>
+          <li>Output layer: 3 classes (softmax)</li>
+          <li>Loss function: Cross-entropy</li>
+          <li>Optimizers: SGD (mini-batch) and Newton's method</li>
+        </ul>
+
+        <h4>SGD Implementation</h4>
+        <p>The core training loop implements mini-batch stochastic gradient descent with backpropagation:</p>
+
+        <div class="code-block">
+          <button class="code-toggle" onclick="toggleCode(this)">Show code</button>
+          <pre><code>while min(loss) > 10 and epoch < epochs:
+    for i in range(0, data_arr, batch_size):
+        x_train1 = data[i:i + batch_size]
+        y_train1 = y[i:i + batch_size]
+
+        # Forward pass
+        y_pred = self.call(x_train1)
+
+        # Cross-entropy loss
+        delta = 1e-7
+        loss[epoch] = -np.sum(y_train1 * np.log(y_pred + delta))
+
+        # Backpropagation
+        dz2 = self.s - y_train1
+        dw2 = self.hiden_layer1.T.dot(dz2)
+        da1 = dz2.dot(self.w2.T)
+        dz1 = (1 - self.hiden_layer1) * self.hiden_layer1 * da1
+        dw1 = x_train1.T.dot(dz1)
+
+        # Variable learning rate schedule
+        if method == 'variable':
+            learning_rate = initial_lr * (1 - epoch * 10 / epochs)
+
+        # Weight update
+        self.w1 -= learning_rate * dw1
+        self.w2 -= learning_rate * dw2
+        epoch += 1</code></pre>
+        </div>
+
+        <h4>Hyperparameter Study</h4>
+        <p>I systematically investigated the impact of key hyperparameters on convergence speed and final accuracy:</p>
+
+        <h5>Learning Rate</h5>
+        <p>Tested fixed learning rates from <code>1e-1</code> to <code>1e-4</code>. A learning rate of <strong>1e-1</strong> achieved the best convergence performance, while smaller values led to significantly slower training.</p>
+        <div class="gif-compare three-col">
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/lr-1e-1.png" alt="LR = 1e-1">
+            <div class="gif-label">LR = 1e-1 — fast convergence</div>
+          </div>
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/lr-1e-2.png" alt="LR = 1e-2">
+            <div class="gif-label">LR = 1e-2 — slower convergence</div>
+          </div>
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/lr-1e-3.png" alt="LR = 1e-3">
+            <div class="gif-label">LR = 1e-3 — very slow</div>
+          </div>
+        </div>
+
+        <h5>Weight Initialization</h5>
+        <p>Compared three initialization strategies: <strong>zeros, ones, and random</strong>. As expected, random initialization broke symmetry and enabled effective learning, while zero and one initializations failed to differentiate neurons.</p>
+        <div class="gif-compare three-col">
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/init-ones.png" alt="Ones initialization">
+            <div class="gif-label">Ones — poor convergence</div>
+          </div>
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/init-zeros.png" alt="Zeros initialization">
+            <div class="gif-label">Zeros — symmetry problem</div>
+          </div>
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/init-random.png" alt="Random initialization">
+            <div class="gif-label">Random — best performance</div>
+          </div>
+        </div>
+
+        <h5>Batch Size</h5>
+        <p>Tested batch sizes of <strong>32, 64, and 128</strong>. Larger batches led to slower convergence per epoch but smoother loss curves, while smaller batches introduced more noise but updated weights more frequently.</p>
+        <div class="gif-compare three-col">
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/batch-32.png" alt="Batch size 32">
+            <div class="gif-label">Batch = 32 — more noise</div>
+          </div>
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/batch-64.png" alt="Batch size 64">
+            <div class="gif-label">Batch = 64 — balanced</div>
+          </div>
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/batch-128.png" alt="Batch size 128">
+            <div class="gif-label">Batch = 128 — smoother</div>
+          </div>
+        </div>
+
+        <h5>Activation Functions</h5>
+        <p>Compared ReLU, Sigmoid, and Tanh. ReLU suffered from "dead neurons" due to negative input values in the dataset. <strong>Sigmoid outperformed Tanh</strong> for this classification task.</p>
+
+        <h5>Network Depth</h5>
+        <p>Extended the baseline 2-layer network to a <strong>6-layer deep network</strong> (NN_add_layer.py). The deeper architecture showed improved capacity for complex decision boundaries, though with increased risk of overfitting.</p>
+        <div class="gif-compare">
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/nn-sgd.png" alt="2-layer network">
+            <div class="gif-label">2-layer network (baseline)</div>
+          </div>
+          <div class="gif-item">
+            <img src="../images/projects/simulation-optimization/nn-deeper.png" alt="6-layer network">
+            <div class="gif-label">6-layer network (deeper)</div>
+          </div>
+        </div>
+
+        <h4>Newton's Method</h4>
+        <p>I also implemented <strong>Newton's method</strong> for weight updates, which uses second-order information (Hessian matrix) to accelerate convergence. While computationally more expensive per iteration, it demonstrates faster convergence in regions where the Hessian is well-conditioned.</p>
+
+        <div class="code-block">
+          <button class="code-toggle" onclick="toggleCode(this)">Show code</button>
+          <pre><code># Newton's method weight update
+dw1 = gradient_w1
+hessian1 = compute_hessian_w1()
+hessian_inv1 = np.linalg.inv(hessian1)
+self.w1 -= learning_rate * hessian_inv1.dot(dw1)
+
+dw2 = gradient_w2
+hessian2 = compute_hessian_w2()
+hessian_inv2 = np.linalg.inv(hessian2)
+self.w2 -= learning_rate * hessian_inv2.dot(dw2)</code></pre>
+        </div>
+
+        <img src="../images/projects/simulation-optimization/nn-newton.png" alt="Newton method loss curve" class="detail-img-center" style="max-width:360px;">
+        <p class="img-caption">Loss curve using Newton's method for optimization.</p>
+
+        <h4>3D Visualization</h4>
+        <p>To understand the learned decision function, I visualized the network output as a 3D surface plot over the 2D input feature space, revealing how the classifier partitions the data into three distinct regions.</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Code & Resources</h3>
+        <p>The neural network implementation is available on GitHub:</p>
+        <p><a href="https://github.com/Pierre1231/SO_1" target="_blank"><i class="fab fa-github"></i> github.com/Pierre1231/SO_1</a></p>
+        <p style="margin-top:12px;">The original course report (in French) is available here:</p>
+        <p><a href="../pdfs/simulation-optimization/rapport-huang-jingyi.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Rapport de Projet — HUANG Jingyi (PDF)</a></p>
+      </div>
+
+      <p style="margin-top:20px;"><a href="../index.html#projects" class="detail-back">← Back to Projects</a></p>
+    </main>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    function toggleCode(btn) {
+      const pre = btn.nextElementSibling;
+      pre.classList.toggle('open');
+      const isOpen = pre.classList.contains('open');
+      btn.textContent = isOpen ? 'Hide code' : 'Show code';
+      btn.style.borderRadius = isOpen ? '6px 6px 0 0' : '6px';
+    }
+  </script>
+</body>
+</html>
