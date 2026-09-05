@@ -9,8 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" type="image/png" href="../images/favicon.png">
-  <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/js/all.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+  <script src="../js/main.js" defer></script>
 </head>
 <body>
   <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">
@@ -295,18 +295,5 @@ def shortest_distance_to_polygon(point, polygon_vertices):
     </main>
   </div>
 
-  <script>
-    function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('open');
-    }
-
-    function toggleCode(btn) {
-      const pre = btn.nextElementSibling;
-      pre.classList.toggle('open');
-      const isOpen = pre.classList.contains('open');
-      btn.textContent = isOpen ? 'Hide code' : 'Show code';
-      btn.style.borderRadius = isOpen ? '6px 6px 0 0' : '6px';
-    }
-  </script>
 </body>
 </html>
