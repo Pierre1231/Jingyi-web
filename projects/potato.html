@@ -32,26 +32,26 @@
         <li><a href="../gallery/index.html">Gallery</a></li>
       </ul>
       <div class="sidebar-social">
-        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/Pierre1231" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="../gallery/index.html" title="Photography"><i class="fas fa-camera"></i></a>
+        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Pierre1231" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="../gallery/index.html" title="Photography" aria-label="Photography"><i class="fas fa-camera"></i></a>
       </div>
     </aside>
 
     <main class="main-content">
       <a href="../index.html#projects" class="detail-back">← Back to Projects</a>
-      <h1 class="detail-title">Potato Platform <span style="font-size:0.7em; font-weight:400; color:#888;">(大型异构集群仿真平台)</span></h1>
+      <h1 class="detail-title">Potato Platform <span style="font-size:0.7em; font-weight:400; color:#767676;">(<span lang="zh-Hans">大型异构集群仿真平台</span>)</span></h1>
       <p class="detail-meta">Sep. 2022 &nbsp;·&nbsp; <span class="tag">Simulation Platform</span></p>
 
       <div class="detail-section">
-        <h3>Overview</h3>
+        <h2>Overview</h2>
         <p><strong>Potato</strong> is a large-scale heterogeneous swarm simulation platform developed for the Ministry of Science and Technology project "Collaborative Confrontation Environment for Heterogeneous Unmanned Swarms." Unlike existing platforms that trade off between model fidelity and scale, Potato adopts a <strong>Data-Oriented Programming (DOP)</strong> paradigm with <strong>GPU parallel computing</strong> to achieve both realistic nonlinear dynamic models and large-scale simulations.</p>
-        <p>The platform has been validated with up to <strong>5,000 quadrotors</strong> while maintaining nearly constant computational speed. A preprint describing the platform is available on <a href="https://arxiv.org/abs/2308.12698" target="_blank">arXiv</a>.</p>
+        <p>The platform has been validated with up to <strong>5,000 quadrotors</strong> while maintaining nearly constant computational speed. A preprint describing the platform is available on <a href="https://arxiv.org/abs/2308.12698" target="_blank" rel="noopener">arXiv</a>.</p>
       </div>
 
       <div class="detail-section">
-        <h3>Highlights</h3>
+        <h2>Highlights</h2>
         <div class="highlight-grid">
           <div class="highlight-card">
             <div class="highlight-value" style="color:#0066cc;">5,000+</div>
@@ -81,7 +81,7 @@
       </div>
 
       <div class="detail-section">
-        <h3>Architecture</h3>
+        <h2>Architecture</h2>
         <p>Potato follows a <strong>three-tier modular architecture</strong> that decouples visualization, simulation control, and algorithm development:</p>
         <ul>
           <li><strong>Viewer (Display Tier)</strong> — A Cesium-based 3D visualization client built with Electron, rendering agents on a real-world map. Communicates via socket on port 7777.</li>
@@ -93,7 +93,7 @@
       </div>
 
       <div class="detail-section">
-        <h3>Supported Agents</h3>
+        <h2>Supported Agents</h2>
         <p>Potato supports a wide range of heterogeneous agents with realistic 3D models and nonlinear dynamics:</p>
         <ul class="agent-list">
           <li><strong>Quadrotor</strong> — Nonlinear dynamics with GPU-batched simulation</li>
@@ -106,7 +106,7 @@
       </div>
 
       <div class="detail-section">
-        <h3>My Contribution — Ground Vehicle</h3>
+        <h2>My Contribution — Ground Vehicle</h2>
         <p>I was responsible for developing the <strong>ground vehicle dynamics model, path follower, and autopilot controller</strong> for the Potato platform — covering the full pipeline from physics simulation to closed-loop control. The dynamics model is adapted from ETH's AMZ racing team research, modified to integrate with Potato's multi-agent message-passing architecture.</p>
 
         <h4>Dynamic Model</h4>
@@ -223,7 +223,7 @@
       </div>
 
       <div class="detail-section">
-        <h3>Platform Demo</h3>
+        <h2>Platform Demo</h2>
         <p>The Potato Viewer renders agents on a real-world map using the Cesium engine. Below are screenshots showing the 3D visualization of heterogeneous agents in simulation:</p>
         <div class="gif-compare">
           <div class="gif-item">
@@ -238,20 +238,20 @@
       </div>
 
       <div class="detail-section">
-        <h3>Platform Interface</h3>
+        <h2>Platform Interface</h2>
         <p>The Potato Viewer provides an intuitive configuration interface for customizing display settings, debug logging, and socket communication:</p>
         <img loading="lazy" decoding="async" src="../images/projects/potato/ui-settings.png" alt="Potato Viewer settings UI" class="detail-img-center"
         <p class="img-caption">Potato Viewer configuration panel (v2.3+).</p>
       </div>
 
       <div class="detail-section">
-        <h3>Publication</h3>
+        <h2>Publication</h2>
         <div class="pub-box">
           <strong>Potato: A Data-Oriented Programming Approach to Large-Scale Swarm Robotic Simulation</strong>
           <em>Jinjie Li, Liang Han, et al.</em>
           <p style="font-size:0.82rem; color:#666; margin:6px 0 0;">arXiv:2308.12698, 2023</p>
           <p style="font-size:0.82rem; color:#666; margin:4px 0 0;">Presented a DOP-based simulator using GPU parallel computing (PyTorch) for large-scale swarm robotic simulations with realistic nonlinear dynamic models.</p>
-          <p style="margin:8px 0 0;"><a href="https://arxiv.org/abs/2308.12698" target="_blank">[arXiv Abstract]</a> &nbsp; <a href="https://arxiv.org/pdf/2308.12698" target="_blank">[PDF]</a></p>
+          <p style="margin:8px 0 0;"><a href="https://arxiv.org/abs/2308.12698" target="_blank" rel="noopener">[arXiv Abstract]</a> &nbsp; <a href="https://arxiv.org/pdf/2308.12698" target="_blank" rel="noopener">[PDF]</a></p>
         </div>
       </div>
 

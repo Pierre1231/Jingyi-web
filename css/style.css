@@ -5,7 +5,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   color: #2d2d2d;
   background: #ffffff;
   line-height: 1.55;
@@ -22,7 +22,7 @@ a:hover { text-decoration: underline; }
 img { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', 'Times New Roman', serif;
   font-weight: 700;
   line-height: 1.25;
   color: #1a1a1a;
@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sidebar-brand {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
   font-size: 1.35rem;
   font-weight: 700;
   color: #1a1a1a;
@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sidebar-social a {
-  color: #777;
+  color: #6f6f6f;
   font-size: 1rem;
   transition: color 0.15s ease;
 }
@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 16px;
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
 }
 
 /* ===== About / Hero (in main) ===== */
@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-name {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
   font-size: 1.9rem;
   font-weight: 700;
   color: #1a1a1a;
@@ -239,13 +239,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .exp-date {
   font-size: 0.8rem;
-  color: #888;
+  color: #767676;
   white-space: nowrap;
 }
 
 .exp-meta {
   font-size: 0.82rem;
-  color: #777;
+  color: #6f6f6f;
   line-height: 1.45;
 }
 
@@ -283,7 +283,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .highlight-label {
   font-size: 0.78rem;
-  color: #888;
+  color: #767676;
   margin-top: 4px;
 }
 
@@ -309,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .team-role {
   font-size: 0.78rem;
-  color: #888;
+  color: #767676;
   margin-left: 4px;
 }
 
@@ -389,7 +389,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .gif-label {
   font-size: 0.8rem;
-  color: #888;
+  color: #767676;
   margin-top: 6px;
 }
 
@@ -442,7 +442,7 @@ h1, h2, h3, h4, h5, h6 {
 .img-caption {
   text-align: center;
   font-size: 0.8rem;
-  color: #999;
+  color: #767676;
   margin-top: 6px;
   margin-bottom: 16px;
 }
@@ -567,7 +567,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .proj-meta {
   font-size: 0.8rem;
-  color: #888;
+  color: #767676;
 }
 
 .proj-desc {
@@ -599,7 +599,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .talk-date {
   font-size: 0.78rem;
-  color: #999;
+  color: #767676;
   white-space: nowrap;
 }
 
@@ -638,7 +638,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-hero h1 {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -683,7 +683,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-section h2 {
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
   color: #fff;
   font-size: 1.2rem;
   font-weight: 700;
@@ -800,12 +800,12 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 4px;
-  font-family: 'Lora', Georgia, serif;
+  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
 }
 
 .detail-meta {
   font-size: 0.85rem;
-  color: #777;
+  color: #6f6f6f;
   margin-bottom: 16px;
 }
 
@@ -813,7 +813,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 32px;
 }
 
-.detail-section h3 {
+.detail-section h2 {
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 12px;

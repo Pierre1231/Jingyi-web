@@ -51,10 +51,10 @@
       </ul>
 
       <div class="sidebar-social">
-        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/Pierre1231" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="./index.html" title="Photography"><i class="fas fa-camera"></i></a>
+        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Pierre1231" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="./index.html" title="Photography" aria-label="Photography"><i class="fas fa-camera"></i></a>
       </div>
     </aside>
 
@@ -136,10 +136,10 @@
     </main>
   </div>
 
-  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
-    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1, event)">&#8249;</button>
-    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1, event)">&#8250;</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1, event)" aria-label="Previous photo">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1, event)" aria-label="Next photo">&#8250;</button>
     <img src="" alt="" id="lightboxImg">
   </div>
 
@@ -229,6 +229,7 @@
       document.getElementById('lightboxImg').src = galleryImages[category][index];
       document.getElementById('lightbox').classList.add('active');
       document.body.style.overflow = 'hidden';
+      document.querySelector('.lightbox-close').focus();
     }
 
     function closeLightbox(event) {

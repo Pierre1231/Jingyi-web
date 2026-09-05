@@ -36,26 +36,26 @@
       </ul>
 
       <div class="sidebar-social">
-        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/Pierre1231" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="../gallery/index.html" title="Photography"><i class="fas fa-camera"></i></a>
+        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Pierre1231" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="../gallery/index.html" title="Photography" aria-label="Photography"><i class="fas fa-camera"></i></a>
       </div>
     </aside>
 
     <main class="main-content">
       <a href="../index.html#projects" class="detail-back">← Back to Projects</a>
-      <h1 class="detail-title">Challenge Cup <span style="font-size:0.7em; font-weight:400; color:#888;">(挑战杯)</span></h1>
+      <h1 class="detail-title">Challenge Cup <span style="font-size:0.7em; font-weight:400; color:#767676;">(<span lang="zh-Hans">挑战杯</span>)</span></h1>
       <p class="detail-meta">Apr. 2023 – Sept. 2023 &nbsp;·&nbsp; <span class="tag">Competition</span></p>
 
       <div class="detail-section">
-        <h3>Overview</h3>
-        <p>The "Challenge Cup" (挑战杯) is China's premier science and technology competition for university students. The 2023 edition in Guizhou featured 21 topics and over 2,000 participating projects. Our team was awarded the <strong style="color:#c62828">Grand Prize (特等奖)</strong> — the highest honor in the competition.</p>
+        <h2>Overview</h2>
+        <p>The "Challenge Cup" (<span lang="zh-Hans">挑战杯</span>) is China's premier science and technology competition for university students. The 2023 edition in Guizhou featured 21 topics and over 2,000 participating projects. Our team was awarded the <strong style="color:#c62828">Grand Prize (<span lang="zh-Hans">特等奖</span>)</strong> — the highest honor in the competition.</p>
         <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/IMG_5724.JPG" alt="Attending the competition" class="detail-img-center"
       </div>
 
       <div class="detail-section">
-        <h3>Highlights</h3>
+        <h2>Highlights</h2>
         <div class="highlight-grid">
           <div class="highlight-card">
             <div class="highlight-value" style="color:#c62828;">Grand Prize</div>
@@ -85,7 +85,7 @@
       </div>
 
       <div class="detail-section">
-        <h3>Problem & Requirements</h3>
+        <h2>Problem & Requirements</h2>
         <p>This project addresses the challenge of information gathering in unmanned maritime areas by presenting a <strong>multi-agent decision control model</strong> for collision-free area coverage and target exploration within a convex polygonal region:</p>
         <ul>
           <li>Complete coverage of the entire area;</li>
@@ -96,7 +96,7 @@
       </div>
 
       <div class="detail-section">
-        <h3>Team</h3>
+        <h2>Team</h2>
         <div class="team-grid">
           <div class="team-member">
             <strong>HAO Pengkun</strong> <span class="team-role">Team Leader</span>
@@ -116,14 +116,14 @@
           </div>
           <div class="team-member">
             <strong>Additional Contributors</strong>
-            <p class="team-desc">Built and debugged the cluster simulation platform — <a href="https://arxiv.org/abs/2308.12698" target="_blank">Potato</a>.</p>
+            <p class="team-desc">Built and debugged the cluster simulation platform — <a href="https://arxiv.org/abs/2308.12698" target="_blank" rel="noopener">Potato</a>.</p>
           </div>
         </div>
-        <p style="margin-top:16px; font-size:0.85rem; color:#888;"><strong>Instructors:</strong> <em>LI Xiaoduo, <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=gx0l_7cAAAAJ" target="_blank">HAN Liang</a>, <a href="https://ieeexplore.ieee.org/author/37418980100" target="_blank">REN Zhang</a></em></p>
+        <p style="margin-top:16px; font-size:0.85rem; color:#767676;"><strong>Instructors:</strong> <em>LI Xiaoduo, <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=gx0l_7cAAAAJ" target="_blank" rel="noopener">HAN Liang</a>, <a href="https://ieeexplore.ieee.org/author/37418980100" target="_blank" rel="noopener">REN Zhang</a></em></p>
       </div>
 
       <div class="detail-section">
-        <h3>Our Approach</h3>
+        <h2>Our Approach</h2>
         <p>Our algorithm consists of four algorithmic modules executing subtasks and a cluster simulation platform for validation:</p>
         <ul>
           <li><strong>Obstacle avoidance / collision avoidance</strong></li>
@@ -137,7 +137,7 @@
       </div>
 
       <div class="detail-section">
-        <h3>Obstacle Avoidance</h3>
+        <h2>Obstacle Avoidance</h2>
         <p>Throughout the competition, our obstacle avoidance strategy evolved through three stages:</p>
 
         <h4>Stage 1 — Artificial Potential Fields</h4>
@@ -266,7 +266,7 @@ def shortest_distance_to_polygon(point, polygon_vertices):
       </div>
 
       <div class="detail-section">
-        <h3>Simulation Results</h3>
+        <h2>Simulation Results</h2>
         <p>The following GIFs compare the algorithm performance before and after introducing online optimization:</p>
         <div class="gif-compare">
           <div class="gif-item">
@@ -286,9 +286,9 @@ def shortest_distance_to_polygon(point, polygon_vertices):
       </div>
 
       <div class="detail-section">
-        <h3>Final Video</h3>
+        <h2>Final Video</h2>
         <p>The following video showcases our final simulation results in the organizer's system:</p>
-        <video src="../images/projects/challenge-cup/videos/result.mp4" controls></video>
+        <video src="../images/projects/challenge-cup/videos/result.mp4" controls preload="none" aria-label="Challenge Cup final run video"></video>
       </div>
 
       <p style="margin-top:20px;"><a href="../index.html#projects" class="detail-back">← Back to Projects</a></p>
