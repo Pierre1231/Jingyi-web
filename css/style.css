@@ -2,14 +2,14 @@
 
 /* ===== Reset ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 17px; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   color: #2d2d2d;
   background: #ffffff;
-  line-height: 1.55;
-  font-size: 15px;
+  line-height: 1.6;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -22,7 +22,7 @@ a:hover { text-decoration: underline; }
 img { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', 'Times New Roman', serif;
+  font-family: 'Poppins', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   font-weight: 700;
   line-height: 1.25;
   color: #1a1a1a;
@@ -32,6 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 .page-wrapper {
   display: flex;
   min-height: 100vh;
+  padding-left: 300px;
 }
 
 /* Sidebar */
@@ -39,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 260px;
+  width: 300px;
   height: 100vh;
   background: #fafafa;
   border-right: 1px solid #e8e8e8;
@@ -48,10 +49,11 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 100;
   display: flex;
   flex-direction: column;
+  text-align: right;
 }
 
 .sidebar-brand {
-  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
+  font-family: 'Poppins', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   font-size: 1.35rem;
   font-weight: 700;
   color: #1a1a1a;
@@ -70,6 +72,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
+  margin-left: auto;
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
@@ -92,25 +95,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .sidebar-nav a {
   display: block;
-  padding: 5px 0;
-  color: #444;
-  font-size: 0.88rem;
-  font-weight: 500;
-  border-left: 2px solid transparent;
-  padding-left: 10px;
-  margin-left: -12px;
-  transition: all 0.15s ease;
+  padding: 6px 0;
+  color: #9a9a9a;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: right;
+  transition: color 0.15s ease;
 }
 
 .sidebar-nav a:hover,
 .sidebar-nav a.active {
-  color: #0066cc;
-  border-left-color: #0066cc;
+  color: #1a1a1a;
   text-decoration: none;
 }
 
 .sidebar-social {
   display: flex;
+  justify-content: flex-end;
   gap: 14px;
   margin-top: auto;
   padding-top: 16px;
@@ -130,10 +131,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Main Content */
 .main-content {
-  margin-left: 260px;
+  margin: 0 auto;
   flex: 1;
-  max-width: 780px;
-  padding: 40px 48px 60px;
+  max-width: 1680px;
+  padding: 48px 56px 72px;
 }
 
 /* Mobile toggle */
@@ -155,42 +156,40 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== Sections ===== */
 .section {
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 64px;
+  padding-bottom: 0;
 }
 
 .section:last-child {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .section-title {
-  font-size: 1.25rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #1a1a1a;
-  margin-bottom: 16px;
-  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
+  margin-bottom: 24px;
+  font-family: 'Poppins', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
 /* ===== About / Hero (in main) ===== */
 .hero-section {
-  margin-bottom: 28px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 48px;
+  padding-bottom: 0;
 }
 
 .hero-name {
-  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
-  font-size: 1.9rem;
+  font-family: 'Poppins', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 2.3rem;
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 6px;
 }
 
 .hero-role {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #555;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .hero-bio {
@@ -224,10 +223,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .exp-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 4px 14px;
   margin-bottom: 1px;
 }
 
@@ -549,10 +548,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .proj-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 6px 14px;
   margin-bottom: 3px;
 }
 
@@ -591,9 +590,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .talk-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: baseline;
-  gap: 8px;
+  gap: 8px 14px;
   flex-wrap: wrap;
 }
 
@@ -623,7 +622,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-body .main-content {
-  max-width: 1100px;
+  margin: 0;
+  max-width: none;
   padding: 32px 40px;
 }
 
@@ -638,7 +638,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-hero h1 {
-  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
+  font-family: 'Poppins', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -683,9 +683,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-section h2 {
-  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
+  font-family: 'Poppins', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 8px;
 }
@@ -700,7 +700,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .masonry-grid {
-  column-count: 3;
+  column-count: 4;
   column-gap: 8px;
 }
 
@@ -781,10 +781,10 @@ h1, h2, h3, h4, h5, h6 {
 .detail-back:hover { color: #0066cc; }
 
 .detail-title {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 4px;
-  font-family: 'Lora', Georgia, 'Songti SC', 'SimSun', serif;
+  font-family: 'Poppins', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
 .detail-meta {
@@ -794,13 +794,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detail-section {
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 .detail-section h2 {
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   padding-bottom: 6px;
   border-bottom: 1px solid #e0e0e0;
   color: #1a1a1a;
@@ -874,6 +874,10 @@ video {
 }
 
 /* ===== Responsive ===== */
+@media (max-width: 1200px) {
+  .masonry-grid { column-count: 3; }
+}
+
 @media (max-width: 900px) {
   .sidebar {
     transform: translateX(-100%);
@@ -885,8 +889,16 @@ video {
     transform: translateX(0);
   }
 
+  .page-wrapper {
+    padding-left: 0;
+  }
+
+  .sidebar {
+    width: 280px;
+  }
+
   .main-content {
-    margin-left: 0;
+    margin: 0;
     padding: 56px 20px 40px;
     max-width: 100%;
   }
@@ -896,7 +908,7 @@ video {
   }
 
   .gallery-body .main-content {
-    margin-left: 0;
+    margin: 0;
     padding: 56px 16px 40px;
   }
 
