@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" type="image/jpg" href="../images/avatar.jpg">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
   <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/js/all.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
 </head>
@@ -19,7 +19,7 @@
 
   <div class="page-wrapper">
     <aside class="sidebar" id="sidebar">
-      <img src="../images/avatar.jpg" alt="Jingyi Huang" class="sidebar-avatar">
+      <img loading="lazy" decoding="async" src="../images/avatar-small.jpg" alt="Jingyi Huang" class="sidebar-avatar"
       <div class="sidebar-brand">Jingyi HUANG</div>
       <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
       <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
@@ -51,7 +51,7 @@
       <div class="detail-section">
         <h3>Overview</h3>
         <p>The "Challenge Cup" (挑战杯) is China's premier science and technology competition for university students. The 2023 edition in Guizhou featured 21 topics and over 2,000 participating projects. Our team was awarded the <strong style="color:#c62828">Grand Prize (特等奖)</strong> — the highest honor in the competition.</p>
-        <img src="../images/projects/challenge-cup/album/IMG_5724.JPG" alt="Attending the competition" class="detail-img-center">
+        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/IMG_5724.JPG" alt="Attending the competition" class="detail-img-center"
       </div>
 
       <div class="detail-section">
@@ -132,7 +132,7 @@
           <li><strong>Dynamic task allocation</strong></li>
         </ul>
         <p>The simulation platform is built using Python, the OpenCV engine, and the Cesium engine.</p>
-        <img src="../images/projects/challenge-cup/album/framework.png" alt="Framework of our project" class="detail-img-center">
+        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/framework.png" alt="Framework of our project" class="detail-img-center"
         <p class="img-caption">System framework: four algorithmic modules + simulation platform.</p>
       </div>
 
@@ -200,11 +200,11 @@ def shortest_distance_to_polygon(point, polygon_vertices):
     return min_distance, closest_point</code></pre>
         </div>
 
-        <img src="../images/projects/challenge-cup/album/forbid_apf.jpg" alt="Calculate U_rep from the convex hull" class="detail-img-center">
+        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/forbid_apf.jpg" alt="Calculate U_rep from the convex hull" class="detail-img-center"
         <p class="img-caption">Repulsive force calculation from the convex hull of the avoidance zone.</p>
 
         <p>However, a <strong>convergence point issue</strong> was discovered: when both the agent and target lie within the perpendicular region of an avoidance zone edge, the potential field fails.</p>
-        <img src="../images/projects/challenge-cup/album/converge_point.jpg" alt="Convergent point" class="detail-img-center">
+        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/converge_point.jpg" alt="Convergent point" class="detail-img-center"
         <p class="img-caption">Convergence point issue: the agent gets trapped when both positions fall within the perpendicular region.</p>
 
         <h4>Stage 3 — A* Algorithm</h4>
@@ -258,7 +258,7 @@ def shortest_distance_to_polygon(point, polygon_vertices):
         return []</code></pre>
         </div>
 
-        <img src="../images/projects/challenge-cup/album/A_star.jpg" alt="A* algorithm" class="detail-img-center">
+        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/A_star.jpg" alt="A* algorithm" class="detail-img-center"
         <p class="img-caption">A* path planning result on the gridified map.</p>
 
         <h4>Integrated Framework</h4>
@@ -270,17 +270,17 @@ def shortest_distance_to_polygon(point, polygon_vertices):
         <p>The following GIFs compare the algorithm performance before and after introducing online optimization:</p>
         <div class="gif-compare">
           <div class="gif-item">
-            <img src="../images/projects/challenge-cup/album/unoptimized.gif" alt="Before optimization">
+            <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/unoptimized.gif" alt="Before optimization"
             <div class="gif-label">Before optimization — agents wander without coordination</div>
           </div>
           <div class="gif-item">
-            <img src="../images/projects/challenge-cup/album/optimized.gif" alt="After optimization">
+            <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/optimized.gif" alt="After optimization"
             <div class="gif-label">After optimization — coordinated coverage with task allocation</div>
           </div>
         </div>
         <p>The GIF below demonstrates the coverage path planning before adding the target exploration module:</p>
         <div class="gif-item" style="margin-top:12px;">
-          <img src="../images/projects/challenge-cup/album/uncovered.gif" alt="Coverage without target exploration" style="display:block; margin:0 auto; max-width:480px; width:100%; border-radius:6px; border:1px solid #e0e0e0;">
+          <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/uncovered.gif" alt="Coverage without target exploration" style="display:block; margin:0 auto; max-width:480px; width:100%; border-radius:6px; border:1px solid #e0e0e0;"
           <div class="gif-label">Coverage path planning without target exploration</div>
         </div>
       </div>

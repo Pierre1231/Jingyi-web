@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" type="image/jpg" href="../images/avatar.jpg">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
   <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/js/all.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
 </head>
@@ -17,7 +17,7 @@
 
   <div class="page-wrapper">
     <aside class="sidebar" id="sidebar">
-      <img src="../images/avatar.jpg" alt="Jingyi Huang" class="sidebar-avatar">
+      <img loading="lazy" decoding="async" src="../images/avatar-small.jpg" alt="Jingyi Huang" class="sidebar-avatar"
       <div class="sidebar-brand">Jingyi HUANG</div>
       <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
       <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
@@ -88,7 +88,7 @@
           <li><strong>Central (Control Tier)</strong> — Python-based middleware managing multi-process simulation. Spawns <code>viewer_process</code>, <code>main_process</code>, and <code>algorithm_process</code> with thread-level concurrency and queue-based inter-process communication (IPC).</li>
           <li><strong>Algorithm (User Tier)</strong> — Python interface where researchers implement their algorithms. Connects to the Central tier on port 7000.</li>
         </ul>
-        <img src="../images/projects/potato/architecture.jpg" alt="Potato platform architecture" class="detail-img-center">
+        <img loading="lazy" decoding="async" src="../images/projects/potato/architecture.jpg" alt="Potato platform architecture" class="detail-img-center"
         <p class="img-caption">Multi-process architecture of the Potato platform.</p>
       </div>
 
@@ -227,11 +227,11 @@
         <p>The Potato Viewer renders agents on a real-world map using the Cesium engine. Below are screenshots showing the 3D visualization of heterogeneous agents in simulation:</p>
         <div class="gif-compare">
           <div class="gif-item">
-            <img src="../images/projects/potato/viewer-demo-1.png" alt="Potato Viewer demo 1">
+            <img loading="lazy" decoding="async" src="../images/projects/potato/viewer-demo-1.png" alt="Potato Viewer demo 1"
             <div class="gif-label">3D visualization of agents on Cesium globe</div>
           </div>
           <div class="gif-item">
-            <img src="../images/projects/potato/viewer-demo-2.png" alt="Potato Viewer demo 2">
+            <img loading="lazy" decoding="async" src="../images/projects/potato/viewer-demo-2.png" alt="Potato Viewer demo 2"
             <div class="gif-label">Multi-agent simulation with real-time state tracking</div>
           </div>
         </div>
@@ -240,7 +240,7 @@
       <div class="detail-section">
         <h3>Platform Interface</h3>
         <p>The Potato Viewer provides an intuitive configuration interface for customizing display settings, debug logging, and socket communication:</p>
-        <img src="../images/projects/potato/ui-settings.png" alt="Potato Viewer settings UI" class="detail-img-center">
+        <img loading="lazy" decoding="async" src="../images/projects/potato/ui-settings.png" alt="Potato Viewer settings UI" class="detail-img-center"
         <p class="img-caption">Potato Viewer configuration panel (v2.3+).</p>
       </div>
 
