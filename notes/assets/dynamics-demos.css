@@ -1,0 +1,54 @@
+figure.note-demo{scroll-margin-top:84px;font-size:14px;line-height:1.65;color:#292a2d}
+.note-demo .demo-card{padding:0;background:#fff;border:1px solid #e1e4e8;border-radius:16px;box-shadow:0 12px 35px -24px #566a88;overflow:hidden}
+.note-reading-task{display:flex;align-items:baseline;gap:12px;margin:0 0 15px;color:#5a6471;font-size:14px}
+.note-reading-task>span{flex:none;color:#0066cc;font-size:12px;font-weight:650}
+.note-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;border-bottom:1px solid #e6e8ec}
+.note-kicker{display:block;font-size:10px;letter-spacing:.13em;color:#818894;font-weight:600}
+.note-head h4{font-size:19px;font-weight:650;letter-spacing:-.03em;margin:5px 0 0;line-height:1.4;color:#292a2d}
+.note-head p{margin:4px 0 0;color:#818894;font-size:12px}
+.note-head-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.note-demo button{border:1px solid #dce1e7;border-radius:7px;padding:6px 10px;background:#fff;color:#596471;font:inherit;font-size:11px;cursor:pointer;white-space:nowrap}
+.note-demo button:hover{background:#f2f6fa;border-color:#a5bdd5}
+.note-demo button[aria-pressed=true]{background:#e8f2ff;border-color:#adcdf4;color:#0066cc}
+.note-demo button:focus-visible,.note-demo input:focus-visible,.note-demo select:focus-visible{outline:2px solid #0066cc;outline-offset:3px}
+.note-demo-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(230px,1fr)}
+.note-view{min-width:0;background:radial-gradient(ellipse at 48% 40%,#fff 10%,#f5f7fa 100%);border-right:1px solid #e6e8ec;display:flex;flex-direction:column}
+.note-demo .demo-stage{position:relative;overflow:hidden;height:390px;border-radius:0;background:transparent;min-width:0;width:100%}
+.note-demo .demo-stage canvas{width:100%;height:100%}
+.note-demo .demo-lbl{position:absolute;pointer-events:none;white-space:nowrap;color:#5c6978;text-shadow:none;transform:translate(-50%,-50%);background:#ffffffdb;border:1px solid #e0e5eb;border-radius:4px;padding:2px 4px;font-size:10px;font-weight:550;line-height:1.5}
+.note-demo .demo-lbl[hidden]{display:none}
+.note-legend{font-size:10px;color:#78828f;padding:0 18px;margin:10px 0 3px;line-height:1.9}
+.note-hint{font-size:10px;color:#9aA2ae;padding:0 18px 15px;margin:0}
+.note-controls{padding:22px;min-width:0}
+.note-control-title{font-size:12px;font-weight:600;color:#636e7b;margin:0 0 10px}
+.note-presets{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px}
+.note-demo .demo-panel{display:flex;flex-direction:column;gap:20px;padding:0;color:#596471}
+.note-demo .ctl{display:grid;grid-template-columns:1fr auto;gap:9px;min-width:0;flex:none}
+.note-demo .ctl label{min-width:0;font-size:12px;color:#65717f}
+.note-demo .ctl .val{min-width:0;font-size:12px;font-variant-numeric:tabular-nums;color:#0066cc;font-family:var(--mono)}
+.note-demo .ctl input[type=range]{width:100%;grid-column:1/-1;accent-color:#0066cc;height:18px;margin:0;cursor:pointer}
+.note-demo .ctl select{grid-column:1/-1;grid-row:2;border:1px solid #dce2e9;border-radius:7px;width:100%;background:#f7f9fb;color:#465365;font-size:12px;padding:7px;min-width:0}
+.note-demo .ctl>button{grid-column:1/-1;background:#e8f2ff;border-color:#c3d9f4;color:#0066cc;font-size:12px}
+.note-demo .tool-row{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:15px 0 0;margin:0;border-top:1px solid #e5e8ee}
+.note-demo .tool-row .cap{color:#798391;font-size:11px}
+.note-demo .chk{color:#5c6978;font-size:11px}
+.note-demo .tool-row button{margin-left:0!important;margin-top:7px;font-size:12px;background:#e8f2ff;color:#0066cc}
+.note-results{border-top:1px solid #e6e8ec;padding:17px 24px 22px;background:#fcfdff}
+.note-demo .readout{margin:8px 0 0;padding:0;border:0;color:#465365;font:12px/1.8 var(--mono);overflow-x:auto;max-width:100%}
+.note-demo .mrow{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin:5px 0;min-width:0}
+.note-demo .mrow>span{overflow-wrap:anywhere;max-width:100%}
+.note-demo table.mat{display:inline-table;width:auto;border-collapse:separate;border-spacing:0;border-left:2px solid #b7c3d0;border-right:2px solid #b7c3d0;border-radius:4px;background:#f2f6fa;margin:0;box-shadow:none}
+.note-demo table.mat td{padding:3px 10px;border:0;min-width:55px;text-align:right;font-size:11px}
+.note-demo table.mat tr:nth-child(1){color:#ad5753}.note-demo table.mat tr:nth-child(2){color:#568267}.note-demo table.mat tr:nth-child(3){color:#3e7fa5}
+.note-demo .warn{color:#a36920;font-size:11px;font-family:var(--sans)}
+.note-fallback{padding:40px;color:#667587;font-size:13px}
+.note-demo figcaption{margin:13px 0 0;color:#818894;font-size:12px;line-height:1.8;text-align:left}
+@media(max-width:680px){
+ .note-demo-layout{grid-template-columns:1fr}.note-view{border-right:0;border-bottom:1px solid #e6e8ec}
+ .note-head{padding:18px;align-items:flex-start;flex-wrap:wrap}.note-head-actions{justify-content:flex-start}.note-head h4{font-size:18px}
+ .note-demo .demo-stage{position:relative;overflow:hidden;height:330px}.note-controls{padding:20px}.note-demo .demo-panel{gap:18px}
+ .note-reading-task{display:block}.note-reading-task>span{display:block;margin-bottom:4px}
+ .note-results{padding:17px 18px}.note-demo .readout{font-size:11px}.note-demo .mrow{gap:8px}
+ .note-demo table.mat td{min-width:49px;padding:3px 7px}.note-legend{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.note-demo *{transition:none!important;animation:none!important}}
