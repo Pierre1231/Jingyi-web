@@ -7,70 +7,64 @@
   <meta name="description" content="Multi-agent decision control for regional information gathering. Grand Prize (特等奖) at the 2023 China Challenge Cup — obstacle avoidance (APF → A*), path planning, and convex hull utilities.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=20260905">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=20260925layout1">
   <link rel="canonical" href="https://pierre-huang.com/projects/challenge-cup.html">
   <meta property="og:title" content="Challenge Cup — Jingyi HUANG">
   <meta property="og:description" content="Multi-agent decision control for regional information gathering. Grand Prize (特等奖) at the 2023 China Challenge Cup — obstacle avoidance (APF → A*), path planning, and convex hull utilities.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pierre-huang.com/projects/challenge-cup.html">
-  <meta property="og:image" content="https://pierre-huang.com/images/avatar.jpg">
+  <meta property="og:image" content="https://pierre-huang.com/images/og-image.png">
   <meta property="og:site_name" content="Jingyi HUANG">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Challenge Cup — Jingyi HUANG">
   <meta name="twitter:description" content="Multi-agent decision control for regional information gathering. Grand Prize (特等奖) at the 2023 China Challenge Cup — obstacle avoidance (APF → A*), path planning, and convex hull utilities.">
-  <meta name="twitter:image" content="https://pierre-huang.com/images/avatar.jpg">
+  <meta name="twitter:image" content="https://pierre-huang.com/images/og-image.png">
   <link rel="icon" type="image/png" href="../images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
-  <script src="../js/main.js?v=20260905" defer></script>
+  <script src="../js/main.js?v=20260925layout1" defer></script>
 </head>
 <body>
-  <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">
-    <i class="fas fa-bars"></i>
-  </button>
+<nav class="topnav" aria-label="Main navigation">
+  <a class="brand" href="../index.html?instant=1">JINGYI HUANG</a>
+  <ul>
+    <li><a href="../index.html?instant=1#news">NEWS</a></li>
+    <li><a href="../index.html?instant=1#experience">EXPERIENCE</a></li>
+    <li><a href="../index.html?instant=1#research">RESEARCH</a></li>
+    <li><a href="../index.html?instant=1#projects">PROJECTS</a></li>
+    <li><a href="../index.html?instant=1#notes">NOTES</a></li>
+    <li><a href="../index.html?instant=1#talks">TALKS</a></li>
+    <li><a href="../gallery/index.html">GALLERY</a></li>
+  </ul>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="menuOverlay">MENU</button>
+</nav>
 
-  <div class="page-wrapper">
-    <aside class="sidebar" id="sidebar">
-      <img loading="lazy" decoding="async" src="../images/avatar-small.jpg" alt="Jingyi Huang" class="sidebar-avatar"
-      <div class="sidebar-brand">Jingyi HUANG</div>
-      <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
-      <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
-
-      <ul class="sidebar-nav">
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#news">News</a></li>
-        <li><a href="../index.html#experience">Experience</a></li>
-        <li><a href="../index.html#research">Research</a></li>
-        <li><a href="../index.html#projects">Projects</a></li>
-        <li><a href="../index.html#talks">Talks</a></li>
-        <li><a href="../index.html#misc">Misc.</a></li>
-        <li><a href="../gallery/index.html">Gallery</a></li>
-      </ul>
-
-      <div class="sidebar-social">
-        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/Pierre1231" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="../gallery/index.html" title="Photography" aria-label="Photography"><i class="fas fa-camera"></i></a>
-      </div>
-    </aside>
+<div class="menu-overlay" id="menuOverlay">
+  <a href="../index.html?instant=1#news"><span class="menu-index">01</span>NEWS</a>
+  <a href="../index.html?instant=1#experience"><span class="menu-index">02</span>EXPERIENCE</a>
+  <a href="../index.html?instant=1#research"><span class="menu-index">03</span>RESEARCH</a>
+  <a href="../index.html?instant=1#projects"><span class="menu-index">04</span>PROJECTS</a>
+  <a href="../index.html?instant=1#notes"><span class="menu-index">05</span>NOTES</a>
+  <a href="../index.html?instant=1#talks"><span class="menu-index">06</span>TALKS</a>
+  <a href="../gallery/index.html"><span class="menu-index">07</span>GALLERY</a>
+</div>
 
     <main class="main-content">
-      <a href="../index.html#projects" class="detail-back">← Back to Projects</a>
-      <h1 class="detail-title">Challenge Cup <span style="font-size:0.7em; font-weight:400; color:#767676;">(<span lang="zh-Hans">挑战杯</span>)</span></h1>
+      <a href="../index.html?instant=1#projects" class="detail-back">← Back to Projects</a>
+      <h1 class="detail-title">Challenge Cup <span class="detail-title-sub">(<span lang="zh-Hans">挑战杯</span>)</span></h1>
       <p class="detail-meta">Apr. 2023 – Sept. 2023 &nbsp;·&nbsp; <span class="tag">Competition</span></p>
 
       <div class="detail-section">
         <h2>Overview</h2>
-        <p>The "Challenge Cup" (<span lang="zh-Hans">挑战杯</span>) is China's premier science and technology competition for university students. The 2023 edition in Guizhou featured 21 topics and over 2,000 participating projects. Our team was awarded the <strong style="color:#c62828">Grand Prize (<span lang="zh-Hans">特等奖</span>)</strong> — the highest honor in the competition.</p>
-        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/IMG_5724.JPG" alt="Attending the competition" class="detail-img-center"
+        <p>The "Challenge Cup" (<span lang="zh-Hans">挑战杯</span>) is China's premier science and technology competition for university students. The 2023 edition in Guizhou featured 21 topics and over 2,000 participating projects. Our team was awarded the <strong class="grand-prize">Grand Prize (<span lang="zh-Hans">特等奖</span>)</strong> — the highest honor in the competition.</p>
+        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/IMG_5724.JPG" alt="Attending the competition" class="detail-img-center">
       </div>
 
       <div class="detail-section">
         <h2>Highlights</h2>
         <div class="highlight-grid">
           <div class="highlight-card">
-            <div class="highlight-value" style="color:#c62828;">Grand Prize</div>
+            <div class="highlight-value grand-prize">Grand Prize</div>
             <div class="highlight-label">Highest Award</div>
           </div>
           <div class="highlight-card">
@@ -131,7 +125,7 @@
             <p class="team-desc">Built and debugged the cluster simulation platform — <a href="https://arxiv.org/abs/2308.12698" target="_blank" rel="noopener">Potato</a>.</p>
           </div>
         </div>
-        <p style="margin-top:16px; font-size:0.85rem; color:#767676;"><strong>Instructors:</strong> <em>LI Xiaoduo, <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=gx0l_7cAAAAJ" target="_blank" rel="noopener">HAN Liang</a>, <a href="https://ieeexplore.ieee.org/author/37418980100" target="_blank" rel="noopener">REN Zhang</a></em></p>
+        <p class="detail-note"><strong>Instructors:</strong> <em>LI Xiaoduo, <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=gx0l_7cAAAAJ" target="_blank" rel="noopener">HAN Liang</a>, <a href="https://ieeexplore.ieee.org/author/37418980100" target="_blank" rel="noopener">REN Zhang</a></em></p>
       </div>
 
       <div class="detail-section">
@@ -144,7 +138,7 @@
           <li><strong>Dynamic task allocation</strong></li>
         </ul>
         <p>The simulation platform is built using Python, the OpenCV engine, and the Cesium engine.</p>
-        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/framework.png" alt="Framework of our project" class="detail-img-center"
+        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/framework.png" alt="Framework of our project" class="detail-img-center">
         <p class="img-caption">System framework: four algorithmic modules + simulation platform.</p>
       </div>
 
@@ -212,11 +206,11 @@ def shortest_distance_to_polygon(point, polygon_vertices):
     return min_distance, closest_point</code></pre>
         </div>
 
-        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/forbid_apf.jpg" alt="Calculate U_rep from the convex hull" class="detail-img-center"
+        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/forbid_apf.jpg" alt="Calculate U_rep from the convex hull" class="detail-img-center">
         <p class="img-caption">Repulsive force calculation from the convex hull of the avoidance zone.</p>
 
         <p>However, a <strong>convergence point issue</strong> was discovered: when both the agent and target lie within the perpendicular region of an avoidance zone edge, the potential field fails.</p>
-        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/converge_point.jpg" alt="Convergent point" class="detail-img-center"
+        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/converge_point.jpg" alt="Convergent point" class="detail-img-center">
         <p class="img-caption">Convergence point issue: the agent gets trapped when both positions fall within the perpendicular region.</p>
 
         <h4>Stage 3 — A* Algorithm</h4>
@@ -270,7 +264,7 @@ def shortest_distance_to_polygon(point, polygon_vertices):
         return []</code></pre>
         </div>
 
-        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/A_star.jpg" alt="A* algorithm" class="detail-img-center"
+        <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/A_star.jpg" alt="A* algorithm" class="detail-img-center">
         <p class="img-caption">A* path planning result on the gridified map.</p>
 
         <h4>Integrated Framework</h4>
@@ -282,17 +276,17 @@ def shortest_distance_to_polygon(point, polygon_vertices):
         <p>The following GIFs compare the algorithm performance before and after introducing online optimization:</p>
         <div class="gif-compare">
           <div class="gif-item">
-            <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/unoptimized.gif" alt="Before optimization"
+            <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/unoptimized.gif" alt="Before optimization">
             <div class="gif-label">Before optimization — agents wander without coordination</div>
           </div>
           <div class="gif-item">
-            <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/optimized.gif" alt="After optimization"
+            <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/optimized.gif" alt="After optimization">
             <div class="gif-label">After optimization — coordinated coverage with task allocation</div>
           </div>
         </div>
         <p>The GIF below demonstrates the coverage path planning before adding the target exploration module:</p>
-        <div class="gif-item" style="margin-top:12px;">
-          <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/uncovered.gif" alt="Coverage without target exploration" style="display:block; margin:0 auto; max-width:480px; width:100%; border-radius:6px; border:1px solid #e0e0e0;"
+        <div class="gif-item gif-item-spaced">
+          <img loading="lazy" decoding="async" src="../images/projects/challenge-cup/album/uncovered.gif" alt="Coverage without target exploration" class="gif-single">
           <div class="gif-label">Coverage path planning without target exploration</div>
         </div>
       </div>
@@ -303,9 +297,8 @@ def shortest_distance_to_polygon(point, polygon_vertices):
         <video src="../images/projects/challenge-cup/videos/result.mp4" controls preload="none" aria-label="Challenge Cup final run video"></video>
       </div>
 
-      <p style="margin-top:20px;"><a href="../index.html#projects" class="detail-back">← Back to Projects</a></p>
+      <p class="detail-back-wrap"><a href="../index.html?instant=1#projects" class="detail-back">← Back to Projects</a></p>
     </main>
-  </div>
 
 </body>
 </html>

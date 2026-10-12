@@ -7,52 +7,50 @@
   <meta name="description" content="Hands-on PID controller course (TA): parameter-tuning experiments on a laboratory simulation platform that give undergraduates an intuitive understanding of PID control.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=20260905">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=20260925layout1">
   <link rel="canonical" href="https://pierre-huang.com/projects/pid-course.html">
   <meta property="og:title" content="PID Course (TA) — Jingyi HUANG">
   <meta property="og:description" content="Hands-on PID controller course (TA): parameter-tuning experiments on a laboratory simulation platform that give undergraduates an intuitive understanding of PID control.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pierre-huang.com/projects/pid-course.html">
-  <meta property="og:image" content="https://pierre-huang.com/images/avatar.jpg">
+  <meta property="og:image" content="https://pierre-huang.com/images/og-image.png">
   <meta property="og:site_name" content="Jingyi HUANG">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PID Course (TA) — Jingyi HUANG">
   <meta name="twitter:description" content="Hands-on PID controller course (TA): parameter-tuning experiments on a laboratory simulation platform that give undergraduates an intuitive understanding of PID control.">
-  <meta name="twitter:image" content="https://pierre-huang.com/images/avatar.jpg">
+  <meta name="twitter:image" content="https://pierre-huang.com/images/og-image.png">
   <link rel="icon" type="image/png" href="../images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
-  <script src="../js/main.js?v=20260905" defer></script>
+  <script src="../js/main.js?v=20260925layout1" defer></script>
 </head>
 <body>
-  <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+<nav class="topnav" aria-label="Main navigation">
+  <a class="brand" href="../index.html?instant=1">JINGYI HUANG</a>
+  <ul>
+    <li><a href="../index.html?instant=1#news">NEWS</a></li>
+    <li><a href="../index.html?instant=1#experience">EXPERIENCE</a></li>
+    <li><a href="../index.html?instant=1#research">RESEARCH</a></li>
+    <li><a href="../index.html?instant=1#projects">PROJECTS</a></li>
+    <li><a href="../index.html?instant=1#notes">NOTES</a></li>
+    <li><a href="../index.html?instant=1#talks">TALKS</a></li>
+    <li><a href="../gallery/index.html">GALLERY</a></li>
+  </ul>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="menuOverlay">MENU</button>
+</nav>
 
-  <div class="page-wrapper">
-    <aside class="sidebar" id="sidebar">
-      <img loading="lazy" decoding="async" src="../images/avatar-small.jpg" alt="Jingyi Huang" class="sidebar-avatar"
-      <div class="sidebar-brand">Jingyi HUANG</div>
-      <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
-      <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
-      <ul class="sidebar-nav">
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#news">News</a></li>
-        <li><a href="../index.html#experience">Experience</a></li>
-        <li><a href="../index.html#research">Research</a></li>
-        <li><a href="../index.html#projects">Projects</a></li>
-        <li><a href="../index.html#talks">Talks</a></li>
-        <li><a href="../index.html#misc">Misc.</a></li>
-        <li><a href="../gallery/index.html">Gallery</a></li>
-      </ul>
-      <div class="sidebar-social">
-        <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/Pierre1231" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="../gallery/index.html" title="Photography" aria-label="Photography"><i class="fas fa-camera"></i></a>
-      </div>
-    </aside>
+<div class="menu-overlay" id="menuOverlay">
+  <a href="../index.html?instant=1#news"><span class="menu-index">01</span>NEWS</a>
+  <a href="../index.html?instant=1#experience"><span class="menu-index">02</span>EXPERIENCE</a>
+  <a href="../index.html?instant=1#research"><span class="menu-index">03</span>RESEARCH</a>
+  <a href="../index.html?instant=1#projects"><span class="menu-index">04</span>PROJECTS</a>
+  <a href="../index.html?instant=1#notes"><span class="menu-index">05</span>NOTES</a>
+  <a href="../index.html?instant=1#talks"><span class="menu-index">06</span>TALKS</a>
+  <a href="../gallery/index.html"><span class="menu-index">07</span>GALLERY</a>
+</div>
 
     <main class="main-content">
-      <a href="../index.html#projects" class="detail-back">← Back to Projects</a>
+      <a href="../index.html?instant=1#projects" class="detail-back">← Back to Projects</a>
       <h1 class="detail-title">PID Course (Teaching Assistant)</h1>
       <p class="detail-meta">Mar. 2023 &nbsp;·&nbsp; <span class="tag">Course</span></p>
 
@@ -70,8 +68,8 @@
           <li><strong>Real-time Simulation</strong>: The main loop simulates the operation of a real-time control system, where students can observe how the controller responds to errors and updates control inputs at each time step.</li>
           <li><strong>Data Visualization</strong>: Through plotting, students can visually comprehend the controller's performance, such as the comparison between the actual and target trajectories, and the error over time.</li>
         </ol>
-        <img loading="lazy" decoding="async" src="../images/projects/pid-course/album/run.png" alt="Real-time Simulation" class="detail-img-center"
-        <img loading="lazy" decoding="async" src="../images/projects/pid-course/album/plot.png" alt="Data Visualization" class="detail-img-center"
+        <img loading="lazy" decoding="async" src="../images/projects/pid-course/album/run.png" alt="Real-time Simulation" class="detail-img-center">
+        <img loading="lazy" decoding="async" src="../images/projects/pid-course/album/plot.png" alt="Data Visualization" class="detail-img-center">
       </div>
 
       <div class="detail-section">
@@ -90,9 +88,8 @@
         <p>The students conducted the simulation and saw the motion of the quadrotor. They got a better understanding of the PID controller and the quadrotor's dynamics. They also learned how to tune the PID parameters to improve the controller's performance. The students were able to complete the course and achieve the expected learning outcomes.</p>
       </div>
 
-      <p style="margin-top:20px;"><a href="../index.html#projects" class="detail-back">← Back to Projects</a></p>
+      <p class="detail-back-wrap"><a href="../index.html?instant=1#projects" class="detail-back">← Back to Projects</a></p>
     </main>
-  </div>
 
 </body>
 </html>

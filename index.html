@@ -3,283 +3,274 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    const arrivalState = document.documentElement.classList;
+    const arrivalParams = new URLSearchParams(location.search);
+    if (arrivalParams.has('instant') || arrivalParams.has('fromGallery')) arrivalState.add('instant-arrival');
+    else if (performance.getEntriesByType('navigation')[0]?.type === 'back_forward') arrivalState.add('restoring-arrival');
+  </script>
   <title>Jingyi HUANG</title>
   <meta name="description" content="Jingyi Huang - Research Assistant at ECPKn, Beihang University. Research interests include AI in robotics, multi-agents formation control and path planning.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260905">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260925layout1">
   <link rel="canonical" href="https://pierre-huang.com/">
   <meta property="og:title" content="Jingyi HUANG">
   <meta property="og:description" content="Jingyi Huang - Research Assistant at ECPKn, Beihang University. Research interests include AI in robotics, multi-agents formation control and path planning.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pierre-huang.com/">
-  <meta property="og:image" content="https://pierre-huang.com/images/avatar.jpg">
+  <meta property="og:image" content="https://pierre-huang.com/images/og-image.png">
   <meta property="og:site_name" content="Jingyi HUANG">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Jingyi HUANG">
   <meta name="twitter:description" content="Jingyi Huang - Research Assistant at ECPKn, Beihang University. Research interests include AI in robotics, multi-agents formation control and path planning.">
-  <meta name="twitter:image" content="https://pierre-huang.com/images/avatar.jpg">
+  <meta name="twitter:image" content="https://pierre-huang.com/images/og-image.png">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
-  <script src="js/main.js?v=20260905" defer></script>
+  <script src="js/main.js?v=20260925layout1" defer></script>
+  <script src="js/swarm.js?v=20260924c" defer></script>
 </head>
 <body>
-  <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">
-    <i class="fas fa-bars"></i>
-  </button>
+  <nav class="topnav" aria-label="Main navigation">
+    <a class="brand" href="index.html?instant=1">JINGYI HUANG</a>
+    <ul>
+      <li><a href="#news">NEWS</a></li>
+      <li><a href="#experience">EXPERIENCE</a></li>
+      <li><a href="#research">RESEARCH</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#notes">NOTES</a></li>
+      <li><a href="#talks">TALKS</a></li>
+      <li><a href="gallery/index.html">GALLERY</a></li>
+    </ul>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menuOverlay">MENU</button>
+  </nav>
 
-  <div class="page-wrapper">
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-      <img src="images/avatar-small.jpg" alt="Jingyi Huang" class="sidebar-avatar">
-      <div class="sidebar-brand">Jingyi HUANG</div>
-      <div class="sidebar-role">Research Assistant<br>ECPKn, Beihang University</div>
-      <p class="sidebar-bio">Formation control, path planning, and AI for UAVs. MSc from Beihang. Former exchange student at INSA Toulouse.</p>
+  <div class="menu-overlay" id="menuOverlay">
+    <a href="#news"><span class="menu-index">01</span>NEWS</a>
+    <a href="#experience"><span class="menu-index">02</span>EXPERIENCE</a>
+    <a href="#research"><span class="menu-index">03</span>RESEARCH</a>
+    <a href="#projects"><span class="menu-index">04</span>PROJECTS</a>
+    <a href="#notes"><span class="menu-index">05</span>NOTES</a>
+    <a href="#talks"><span class="menu-index">06</span>TALKS</a>
+    <a href="gallery/index.html"><span class="menu-index">07</span>GALLERY</a>
+  </div>
 
-      <ul class="sidebar-nav">
-        <li><a href="#about" class="active">About</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#notes">Notes</a></li>
-        <li><a href="#talks">Talks</a></li>
-        <li><a href="#misc">Misc.</a></li>
-        <li><a href="gallery/index.html">Gallery</a></li>
-      </ul>
+  <!-- Hero: interactive swarm -->
+  <header class="hero" id="top">
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="hero-kicker">Research Assistant — ECPKn, Beihang University</p>
+      <h1 class="hero-name">Jingyi HUANG</h1>
+      <p class="hero-tagline">Formation control of UAV swarms, path planning, and AI for multi-agent decision-making. I work on systems that move as one — from simulation to real robots.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="pdfs/CV_Jingyi_HUANG.pdf" target="_blank" rel="noopener">DOWNLOAD CV</a>
+        <a class="btn btn-ghost" href="#projects">VIEW PROJECTS</a>
+      </div>
+    </div>
+    <p class="hero-hint">MOVE TO DISPERSE · CLICK TO CONVERGE</p>
+    <div class="scroll-cue" aria-hidden="true">↓</div>
+  </header>
 
-      <div class="sidebar-social">
+  <main class="home">
+    <!-- News -->
+    <section id="news" class="sec reveal">
+      <p class="sec-kicker"><b>01</b> — NEWS</p>
+      <p class="news-item"><em>Sep. 2026</em>Our paper on correct-by-construction behavior tree synthesis was accepted for publication in <strong>IEEE Robotics and Automation Letters (RA-L)</strong>; final materials submitted.</p>
+      <p class="news-item"><em>Jan. 2026</em>Started working as a Research Assistant at Beihang University (Hangzhou Campus).</p>
+      <p class="news-item"><em>Jun. 2024</em>Graduated from Beihang University with a Master's degree.</p>
+      <p class="news-item"><em>Oct. 2022</em>Paper accepted to <strong>China Automation Conference (CAC)</strong>.</p>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="sec reveal">
+      <p class="sec-kicker"><b>02</b> — EXPERIENCE</p>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-title">Research Assistant</span>
+          <span class="exp-date">Jan. 2026 – Present</span>
+        </div>
+        <div class="exp-meta-line">
+          <a href="https://www.buaa.edu.cn/" target="_blank" rel="noopener">Beihang University (Hangzhou Campus)</a><span class="sep">·</span>Hangzhou, China<span class="sep">·</span>Multi-agents formation control, AI in robotics, simulation development
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-title">Master Student</span>
+          <span class="exp-date">Sep. 2020 – Jun. 2024</span>
+        </div>
+        <div class="exp-meta-line">
+          <a href="https://www.buaa.edu.cn/" target="_blank" rel="noopener">Beihang University</a><span class="sep">·</span>Beijing, China<span class="sep">·</span>Multi-agents formation control, AI in robotics, simulation development
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-title">Exchange Student</span>
+          <span class="exp-date">Sep. 2019 – Jan. 2020</span>
+        </div>
+        <div class="exp-meta-line">
+          <a href="https://www.insa-toulouse.fr/fr/index.html" target="_blank" rel="noopener">INSA Toulouse</a><span class="sep">·</span>Toulouse, France<span class="sep">·</span>IMACS — analog/digital electronics, real-time control, material informatics
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-title">Undergraduate Student</span>
+          <span class="exp-date">Sep. 2016 – Jun. 2020</span>
+        </div>
+        <div class="exp-meta-line">
+          <a href="https://www.buaa.edu.cn/" target="_blank" rel="noopener">Beihang University</a><span class="sep">·</span>Beijing, China<span class="sep">·</span>Algebra, geometry, mathematical analysis, Newtonian mechanics, automatic control
+        </div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research" class="sec reveal">
+      <p class="sec-kicker"><b>03</b> — RESEARCH</p>
+
+      <p class="pub-title-line">Path Planning Method Using Dyna-Q Algorithm under Complex Urban Environment</p>
+      <p class="pub-meta"><span class="author-me">Jingyi HUANG</span>, Qingke TAN, Jiming MA*, Liang HAN · <i>China Automation Conference (<strong>CAC'22</strong>)</i>, Oct. 2022 · [<a href="pdfs/CAC_paper.pdf" target="_blank" rel="noopener">paper</a>]</p>
+      <div class="pub-tags">
+        <span class="tag">Dyna-Q</span>
+        <span class="tag">Path Planning</span>
+        <span class="tag">UGV</span>
+        <span class="tag">RL</span>
+      </div>
+      <p class="pub-lead">Dyna-Q reinforcement learning for obstacle avoidance and path planning of UGV in urban environments, with air-ground collaboration via PID-controlled UAV.</p>
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Path planning and obstacle avoidance problems are now the focus of robotics research. This paper uses the Dyna-Q reinforcement learning algorithm to implement an obstacle avoidance and a path planning algorithm for unmanned ground vehicle (UGV) under urban environment. Using the reinforcement learning algorithm, we calculate the waypoints of the unmanned vehicle and achieve obstacle avoidance tasks and path planning using a vector field. Finally, we use a PID controller on unmanned aerial vehicle (UAV) to realize the air-ground collaboration task. The algorithms and the agents' modeling in this paper are implemented in the lab's simulation platform.</p>
+      </details>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="sec reveal">
+      <p class="sec-kicker"><b>04</b> — SELECTED PROJECTS</p>
+
+      <div class="proj-grid">
+        <div class="card card-wide">
+          <div class="card-meta"><span>Apr. – Sep. 2023</span><span>Competition</span></div>
+          <p class="card-title"><a href="projects/challenge-cup.html">Challenge Cup — Multi-Agent Decision Control</a></p>
+          <p>Multi-agent decision control model for regional information gathering. <span class="grand-prize">Grand Prize (<span lang="zh-Hans">特等奖</span>)</span>. Responsible for obstacle avoidance (APF → A*), path planning, and convex hull utilities. [<a href="projects/challenge-cup.html">detail</a>] [<a href="pdfs/CAC_paper.pdf" target="_blank" rel="noopener">paper</a>]</p>
+        </div>
+
+        <div class="card">
+          <div class="card-meta"><span>Sep. 2022</span><span>Platform</span></div>
+          <p class="card-title"><a href="projects/potato.html">Potato Platform</a></p>
+          <p>Large-scale heterogeneous swarm simulation platform (MOST project). Developed ground vehicle dynamics, path follower, and PID autopilot. [<a href="projects/potato.html">detail</a>] [<a href="https://arxiv.org/abs/2308.12698" target="_blank" rel="noopener">paper</a>]</p>
+        </div>
+
+        <div class="card">
+          <div class="card-meta"><span>Nov. 2023</span><span>Teaching</span></div>
+          <p class="card-title"><a href="projects/research-class.html">Research Class (TA)</a></p>
+          <p>Course for sophomores on UAV/UGV planning and control using DJI RoboMaster TT/EP and lab simulation platform (Potato-mini). [<a href="projects/research-class.html">detail</a>]</p>
+        </div>
+
+        <div class="card">
+          <div class="card-meta"><span>Mar. 2023</span><span>Teaching</span></div>
+          <p class="card-title"><a href="projects/pid-course.html">PID Course (TA)</a></p>
+          <p>Hands-on PID controller demo on simulation platform for undergraduates. [<a href="projects/pid-course.html">detail</a>]</p>
+        </div>
+
+        <div class="card">
+          <div class="card-meta"><span>Nov. 2023</span><span>Coursework</span></div>
+          <p class="card-title"><a href="projects/simulation-optimization.html">Simulation / Optimization</a></p>
+          <p>Neural network for classification from scratch (Python/NumPy) with SGD and Newton's method. [<a href="projects/simulation-optimization.html">detail</a>] [<a href="https://github.com/Pierre1231/SO_1" target="_blank" rel="noopener">code</a>]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notes -->
+    <section id="notes" class="sec reveal">
+      <p class="sec-kicker"><b>05</b> — NOTES</p>
+      <p class="section-intro">Study notes on modeling and control — in Chinese, with interactive demos.</p>
+
+      <div class="list-item">
+        <div class="list-head">
+          <span class="list-title"><a href="notes/quadrotor-dynamics.html">Quadrotor Dynamics 学习笔记（四旋翼无人机动力学）</a></span>
+          <span class="list-date">Aug. 2026</span>
+        </div>
+        <p class="list-desc">Study notes on quadrotor modeling based on <em>Small Unmanned Aircraft: Theory and Practice</em> — coordinate frames, rotation matrices, Euler angles &amp; quaternions, rigid-body dynamics and linearization, with interactive 3D demos. [<a href="notes/quadrotor-dynamics.html">read</a>]</p>
+      </div>
+    </section>
+
+    <!-- Talks -->
+    <section id="talks" class="sec reveal">
+      <p class="sec-kicker"><b>06</b> — TALKS</p>
+      <p class="section-intro">Literature and AI topic sharing at group meetings — papers, workflows, and methods I found worth discussing.</p>
+
+      <div class="list-item">
+        <div class="list-head">
+          <span class="list-title">AI Topic Sharing</span>
+          <span class="list-date">Jun. 2026</span>
+        </div>
+        <p class="list-desc"><em>AI Engineering Workflow — From Idea to Implementation with Software Engineering Fundamentals</em>. A practical workflow for AI-assisted software development, from planning through testing and codebase ownership. [<a href="pdfs/260624_黄靖宜_AI代码开发工作流.pdf" target="_blank" rel="noopener">slides</a>]</p>
+      </div>
+
+      <div class="list-item">
+        <div class="list-head">
+          <span class="list-title">Literature Sharing</span>
+          <span class="list-date">May 2023</span>
+        </div>
+        <p class="list-desc">A self-rotating, single-actuated UAV with extended sensor FOV for autonomous navigation, <em>Science Robotics</em>, 2023 [<a href="pdfs/20230508组会.pdf" target="_blank" rel="noopener">slides</a>]</p>
+      </div>
+
+      <div class="list-item">
+        <div class="list-head">
+          <span class="list-title">Literature Sharing</span>
+          <span class="list-date">Dec. 2022</span>
+        </div>
+        <p class="list-desc">A Survey on Large-Population Systems and Scalable MARL, <em>arXiv</em>, 2022 [<a href="pdfs/20221210组会.pdf" target="_blank" rel="noopener">slides</a>]</p>
+      </div>
+
+      <div class="list-item">
+        <div class="list-head">
+          <span class="list-title">Literature Sharing</span>
+          <span class="list-date">May 2022</span>
+        </div>
+        <p class="list-desc">Trajectory Planning for Autonomous Vehicles Using Hierarchical RL, <em>ITSC</em>, 2021 [<a href="pdfs/20220514组会.pdf" target="_blank" rel="noopener">slides</a>]</p>
+      </div>
+
+      <div class="list-item">
+        <div class="list-head">
+          <span class="list-title">Literature Sharing</span>
+          <span class="list-date">Nov. 2021</span>
+        </div>
+        <p class="list-desc">Fractal Trajectories for Online Non-Uniform Aerial Coverage, <em>ICRA</em>, 2015 [<a href="pdfs/20211127组会.pdf" target="_blank" rel="noopener">slides</a>]</p>
+      </div>
+    </section>
+
+    <!-- Photography -->
+    <section id="photography" class="sec reveal">
+      <p class="sec-kicker"><b>07</b> — PHOTOGRAPHY</p>
+
+      <div class="photos">
+        <a href="gallery/index.html"><img src="images/gallery/architecture/thumbs/L1210710-2.JPG" alt="Architecture photography" loading="lazy"></a>
+        <a href="gallery/index.html"><img src="images/gallery/nature/thumbs/IMG_3163.jpeg" alt="Nature photography" loading="lazy"></a>
+        <a href="gallery/index.html"><img src="images/gallery/street/thumbs/L1210736.JPG" alt="Street photography" loading="lazy"></a>
+        <a href="gallery/index.html"><img src="images/gallery/architecture/thumbs/P1330244-1.jpg" alt="Architecture photography" loading="lazy"></a>
+      </div>
+      <p class="list-desc">Travel inspires my photography — places, people, and moments through the lens. [<a href="gallery/index.html">gallery</a>] [<a href="https://www.instagram.com/jingyi.huang_98/" target="_blank" rel="noopener">instagram</a>]</p>
+    </section>
+
+    <!-- Misc -->
+    <section id="misc" class="sec reveal misc">
+      <p class="sec-kicker"><b>08</b> — MISC.</p>
+      <p>Badminton has been a longstanding interest of mine. I am also an avid reader of economics and social sciences literature, and I am proficient in <a href="pdfs/ielts_JingyiHUANG.pdf" target="_blank" rel="noopener">English</a> and <a href="pdfs/tcf.pdf" target="_blank" rel="noopener">French</a>. I have had the opportunity to travel extensively across Europe, visiting France, Germany, Spain, Belgium, Italy, Switzerland, and Malta.</p>
+    </section>
+
+    <footer class="colophon">
+      <span>© 2026 JINGYI HUANG · HANGZHOU</span>
+      <div class="socials">
         <a href="mailto:jingyi.huang@buaa.edu.cn" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
         <a href="https://github.com/Pierre1231" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/jingyi-huang" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="gallery/index.html" title="Photography" aria-label="Photography"><i class="fas fa-camera"></i></a>
+        <a href="https://www.instagram.com/jingyi.huang_98/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-      <!-- About -->
-      <section id="about" class="hero-section">
-        <h1 class="hero-name">Jingyi HUANG</h1>
-        <p class="hero-role">Research Assistant at ECPKn (<a href="http://ecpknen.buaa.edu.cn/" target="_blank" rel="noopener">école Centrale de Pékin</a>), Beihang University (Hangzhou Campus)</p>
-        <div class="hero-bio">
-          <p>I am currently working under the guidance of <em>Assoc. Prof. Liang HAN</em>. I received my Master's degree from Beihang University in June 2024.</p>
-          <p>My research includes formation control of Unmanned Aerial Vehicles (UAVs), path planning problems, and artificial intelligence applications in UAVs' decision-making and planning.</p>
-          <p>📄 <a href="pdfs/CV_Jingyi_HUANG.pdf" target="_blank" rel="noopener">Curriculum Vitae</a></p>
-        </div>
-      </section>
-
-      <!-- News -->
-      <section id="news" class="section">
-        <h2 class="section-title">News</h2>
-        <p class="news-item"><em>Jun. 2024</em> — Graduated from Beihang University with a Master's degree.</p>
-        <p class="news-item"><em>Jan. 2026</em> — Started working as a Research Assistant at Beihang University (Hangzhou Campus).</p>
-        <p class="news-item"><em>Oct. 2022</em> — Paper accepted to <strong>China Automation Conference (CAC)</strong>.</p>
-      </section>
-
-      <!-- Experience -->
-      <section id="experience" class="section">
-        <h2 class="section-title">Experience</h2>
-
-        <div class="exp-item">
-          <div class="exp-header">
-            <span class="exp-title">Research Assistant</span>
-            <span class="exp-date">Jan. 2026 – Present</span>
-          </div>
-          <div class="exp-meta">
-            <a href="https://www.buaa.edu.cn/" target="_blank" rel="noopener">Beihang University (Hangzhou Campus)</a><span class="sep">·</span>Hangzhou, China<span class="sep">·</span>Multi-agents formation control, AI in robotics, simulation development
-          </div>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-header">
-            <span class="exp-title">Master Student</span>
-            <span class="exp-date">Sep. 2020 – Jun. 2024</span>
-          </div>
-          <div class="exp-meta">
-            <a href="https://www.buaa.edu.cn/" target="_blank" rel="noopener">Beihang University</a><span class="sep">·</span>Beijing, China<span class="sep">·</span>Multi-agents formation control, AI in robotics, simulation development
-          </div>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-header">
-            <span class="exp-title">Exchange Student</span>
-            <span class="exp-date">Sep. 2019 – Jan. 2020</span>
-          </div>
-          <div class="exp-meta">
-            <a href="https://www.insa-toulouse.fr/fr/index.html" target="_blank" rel="noopener">INSA Toulouse</a><span class="sep">·</span>Toulouse, France<span class="sep">·</span>IMACS — analog/digital electronics, real-time control, material informatics
-          </div>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-header">
-            <span class="exp-title">Undergraduate Student</span>
-            <span class="exp-date">Sep. 2016 – Jun. 2020</span>
-          </div>
-          <div class="exp-meta">
-            <a href="https://www.buaa.edu.cn/" target="_blank" rel="noopener">Beihang University</a><span class="sep">·</span>Beijing, China<span class="sep">·</span>Algebra, geometry, mathematical analysis, Newtonian mechanics, automatic control
-          </div>
-        </div>
-      </section>
-
-      <!-- Research -->
-      <section id="research" class="section">
-        <h2 class="section-title">Research</h2>
-
-        <div class="pub-item">
-          <p class="pub-title">Path Planning Method Using Dyna-Q Algorithm under Complex Urban Environment</p>
-          <p class="pub-authors"><span class="author-me">Jingyi HUANG</span>, Qingke TAN, Jiming MA*, Liang HAN</p>
-          <p class="pub-venue"><i>China Automation Conference (<strong>CAC'22</strong>)</i>, Oct. 2022</p>
-          <div class="pub-tags">
-            <span class="tag">Dyna-Q</span>
-            <span class="tag">Path Planning</span>
-            <span class="tag">UGV</span>
-            <span class="tag">RL</span>
-          </div>
-          <p class="pub-links">[<a href="pdfs/CAC_paper.pdf" target="_blank" rel="noopener">paper</a>]</p>
-          <p class="pub-lead">Dyna-Q reinforcement learning for obstacle avoidance and path planning of UGV in urban environments, with air-ground collaboration via PID-controlled UAV.</p>
-          <details class="pub-abstract">
-            <summary>Abstract</summary>
-            <p>Path planning and obstacle avoidance problems are now the focus of robotics research. This paper uses the Dyna-Q reinforcement learning algorithm to implement an obstacle avoidance and a path planning algorithm for unmanned ground vehicle (UGV) under urban environment. Using the reinforcement learning algorithm, we calculate the waypoints of the unmanned vehicle and achieve obstacle avoidance tasks and path planning using a vector field. Finally, we use a PID controller on unmanned aerial vehicle (UAV) to realize the air-ground collaboration task. The algorithms and the agents' modeling in this paper are implemented in the lab's simulation platform.</p>
-          </details>
-        </div>
-      </section>
-
-      <!-- Projects -->
-      <section id="projects" class="section">
-        <h2 class="section-title">Projects</h2>
-
-        <div class="proj-item">
-          <div class="proj-header">
-            <span class="proj-title"><a href="projects/challenge-cup.html">Challenge Cup — Multi-Agent Decision Control</a></span>
-            <span class="proj-meta">Apr. – Sep. 2023</span>
-          </div>
-          <p class="proj-desc">Multi-agent decision control model for regional information gathering. <span style="color:#c62828;font-weight:700">Grand Prize (<span lang="zh-Hans">特等奖</span>)</span>. Responsible for obstacle avoidance (APF → A*), path planning, and convex hull utilities. [<a href="projects/challenge-cup.html">detail</a>] [<a href="pdfs/CAC_paper.pdf" target="_blank" rel="noopener">paper</a>]</p>
-        </div>
-
-        <div class="proj-item">
-          <div class="proj-header">
-            <span class="proj-title"><a href="projects/research-class.html">Research Class (TA)</a></span>
-            <span class="proj-meta">Nov. 2023</span>
-          </div>
-          <p class="proj-desc">Course for sophomores on UAV/UGV planning and control using DJI RoboMaster TT/EP and lab simulation platform (Potato-mini). [<a href="projects/research-class.html">detail</a>]</p>
-        </div>
-
-        <div class="proj-item">
-          <div class="proj-header">
-            <span class="proj-title"><a href="projects/pid-course.html">PID Course (TA)</a></span>
-            <span class="proj-meta">Mar. 2023</span>
-          </div>
-          <p class="proj-desc">Hands-on PID controller demo on simulation platform for undergraduates. [<a href="projects/pid-course.html">detail</a>]</p>
-        </div>
-
-        <div class="proj-item">
-          <div class="proj-header">
-            <span class="proj-title"><a href="projects/potato.html">Potato Platform</a></span>
-            <span class="proj-meta">Sep. 2022</span>
-          </div>
-          <p class="proj-desc">Large-scale heterogeneous swarm simulation platform (MOST project). Developed ground vehicle dynamics, path follower, and PID autopilot. [<a href="projects/potato.html">detail</a>] [<a href="https://arxiv.org/abs/2308.12698" target="_blank" rel="noopener">paper</a>]</p>
-        </div>
-
-        <div class="proj-item">
-          <div class="proj-header">
-            <span class="proj-title"><a href="projects/simulation-optimization.html">Simulation / Optimization</a></span>
-            <span class="proj-meta">Nov. 2023</span>
-          </div>
-          <p class="proj-desc">Neural network for classification from scratch (Python/NumPy) with SGD and Newton's method. [<a href="projects/simulation-optimization.html">detail</a>] [<a href="https://github.com/Pierre1231/SO_1" target="_blank" rel="noopener">code</a>]</p>
-        </div>
-      </section>
-
-      <!-- Notes -->
-      <section id="notes" class="section">
-        <h2 class="section-title">Notes</h2>
-        <p style="font-size:0.85rem; color:#767676; margin-bottom:20px;">Study notes on modeling and control — in Chinese, with interactive demos.</p>
-
-        <div class="proj-item">
-          <div class="proj-header">
-            <span class="proj-title"><a href="notes/quadrotor-dynamics.html">Quadrotor Dynamics 学习笔记（四旋翼无人机动力学）</a></span>
-            <span class="proj-meta">Aug. 2026</span>
-          </div>
-          <p class="proj-desc">Study notes on quadrotor modeling based on <em>Small Unmanned Aircraft: Theory and Practice</em> — coordinate frames, rotation matrices, Euler angles &amp; quaternions, rigid-body dynamics and linearization, with interactive 3D demos. [<a href="notes/quadrotor-dynamics.html">read</a>]</p>
-        </div>
-      </section>
-
-      <!-- Talks -->
-      <section id="talks" class="section">
-        <h2 class="section-title">Talks</h2>
-        <p style="font-size:0.85rem; color:#767676; margin-bottom:20px;">Literature sharing at group meetings — papers and methods I found worth discussing.</p>
-
-        <div class="talk-item">
-          <div class="talk-header">
-            <span class="talk-title">Literature Sharing</span>
-            <span class="talk-date">May 2023</span>
-          </div>
-          <div class="talk-topic">A self-rotating, single-actuated UAV with extended sensor FOV for autonomous navigation, <em>Science Robotics</em>, 2023 [<a href="pdfs/20230508组会.pdf" target="_blank" rel="noopener">slides</a>]</div>
-        </div>
-
-        <div class="talk-item">
-          <div class="talk-header">
-            <span class="talk-title">Literature Sharing</span>
-            <span class="talk-date">Dec. 2022</span>
-          </div>
-          <div class="talk-topic">A Survey on Large-Population Systems and Scalable MARL, <em>arXiv</em>, 2022 [<a href="pdfs/20221210组会.pdf" target="_blank" rel="noopener">slides</a>]</div>
-        </div>
-
-        <div class="talk-item">
-          <div class="talk-header">
-            <span class="talk-title">Literature Sharing</span>
-            <span class="talk-date">May 2022</span>
-          </div>
-          <div class="talk-topic">Trajectory Planning for Autonomous Vehicles Using Hierarchical RL, <em>ITSC</em>, 2021 [<a href="pdfs/20220514组会.pdf" target="_blank" rel="noopener">slides</a>]</div>
-        </div>
-
-        <div class="talk-item">
-          <div class="talk-header">
-            <span class="talk-title">Literature Sharing</span>
-            <span class="talk-date">Nov. 2021</span>
-          </div>
-          <div class="talk-topic">Fractal Trajectories for Online Non-Uniform Aerial Coverage, <em>ICRA</em>, 2015 [<a href="pdfs/20211127组会.pdf" target="_blank" rel="noopener">slides</a>]</div>
-        </div>
-      </section>
-
-      <section id="misc" class="section">
-        <h2 class="section-title">Misc.</h2>
-        <p>Badminton has been a longstanding interest of mine. I am also an avid reader of economics and social sciences literature, and I am proficient in <a href="pdfs/ielts_JingyiHUANG.pdf" target="_blank" rel="noopener">English</a> and <a href="pdfs/tcf.pdf" target="_blank" rel="noopener">French</a>. I have had the opportunity to travel extensively across Europe, visiting France, Germany, Spain, Belgium, Italy, Switzerland, and Malta.</p>
-        <p>My travels have inspired my passion for photography. I am drawn to capturing the essence of diverse places, people, and moments through my lens. For additional works, please visit my <a href="https://www.instagram.com/jingyi.huang_98/" target="_blank" rel="noopener">Instagram account</a>.</p>
-        <p>Visit my <a href="gallery/index.html">Gallery</a> to see a selection of my photographic work.</p>
-      </section>
-    </main>
-  </div>
-
-  <script>
-    // Highlight active nav on scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.sidebar-nav a[href^="#"]');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      const threshold = 150;
-      const scrollPos = window.scrollY;
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (scrollPos >= sectionTop - threshold) {
-          current = section.getAttribute('id');
-        }
-      });
-      // Fallback: if scrolled near bottom but last section is too short to be detected,
-      // force-highlight the last section
-      const lastSection = sections[sections.length - 1];
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (lastSection && current !== lastSection.getAttribute('id') && scrollPos >= maxScroll - 100) {
-        current = lastSection.getAttribute('id');
-      }
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
-    });
-  </script>
+    </footer>
+  </main>
 </body>
 </html>
